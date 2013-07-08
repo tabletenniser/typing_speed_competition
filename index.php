@@ -5,7 +5,10 @@ require_once('AppInfo.php');	// contains appID, SECRET and URL
 
 // Enforce https on production
 if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
-  trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
+ 
+  header('Location: https://google.com');
+    trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
+ 
   header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
   exit();
 }
@@ -27,6 +30,9 @@ if ($user_id) {
     $basic = $facebook->api('/me');
   } catch (FacebookApiException $e) {
     if (!$facebook->getUser()) {
+	
+	header('Location: https://renren.com');
+	
 		trigger_error("Cannot get user ID", E_USER_NOTICE);
   
       header('Location: '. AppInfo::getUrl($_SERVER['REQUEST_URI']));
