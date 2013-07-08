@@ -27,7 +27,7 @@ if ($user_id) {
     $basic = $facebook->api('/me');
   } catch (FacebookApiException $e) {
     if (!$facebook->getUser()) {
-		trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
+		trigger_error("Cannot get user ID", E_USER_NOTICE);
   
       header('Location: '. AppInfo::getUrl($_SERVER['REQUEST_URI']));
       exit();
