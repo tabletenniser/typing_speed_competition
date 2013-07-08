@@ -59,7 +59,7 @@ $app_name = idx($app_info, 'name', '');
 
 
 
-
+/*
 define("DB_HOST","mysql13.000webhost.com");
 define("DB_USER","a2110984_sta286");
 define("DB_PASS","3q3PDmGx");
@@ -78,7 +78,7 @@ mysqli_set_charset($con, "utf8");
 	VALUES (N'a bc')") or die (mysqli_error($con));
 			
 mysqli_close($con);
-	
+	*/
 
 
 ?>
@@ -148,6 +148,88 @@ mysqli_close($con);
   <body>
     <div id="fb-root"></div>
     <script type="text/javascript">
+	
+	
+var start_time;
+var input_text;
+var text;
+
+
+var text = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour. In 1925, this work culminated in the publication of his first book, Statistical Methods for Research Workers.";
+
+var time = 0;
+var err = 0;
+var pos = 0;
+var numOfWords=1;
+
+
+function start(){	
+	start_time=new Date().getTime()/1000;
+//alert (start_time);
+}
+
+// this function is invoked when the user presses a key
+function updateText(event){
+var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
+//alert ("You've pressed"+chCode);
+
+	//var input_text=document.getElementById("input_text").value;
+//alert("new Text: input"+input_text.charAt(input_text.length-1)+"text"+text.charAt(pos));
+
+	//if the user inputs the correct character
+	if (String.fromCharCode(chCode)==text.charAt(pos)){
+		if (text.charAt(pos)==" "){
+			numOfWords+=1;
+		}
+		pos=pos+1;
+		
+		if (pos==text.length){
+			end();
+		}
+		
+		document.getElementById("text_para").innerHTML="<span style='color: #EEEEAA;'>"+text.charAt(pos-1)+"</span>"+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
+	}else{
+		err=err+1;
+	}
+}
+
+
+function end(){
+//alert ("start time"+start_time);
+
+	input_text=document.getElementById("input_text").value;
+	
+	var end_time=new Date().getTime()/1000;
+	var time_diff=end_time-start_time;
+	
+//alert ("you have typed for "+(time_diff)+" seconds");
+	
+	
+	if (window.XMLHttpRequest){//for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}else{//  for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			//document.getElementById("debug").innerHTML=xmlhttp.responseText;
+			window.location = "http://typingtest.p.ht/questions.php";
+		}
+	}
+	
+	var errPercentage=err/pos*100;
+	var speed=numOfWords/time_diff;
+
+	xmlhttp.open("GET","real_ajax.php?time_diff="+time_diff+
+	"&input_text="+encodeURIComponent(input_text)+"&numOfWords="+encodeURIComponent(numOfWords)+"&errPercentage="+errPercentage,true);
+	
+	alert ("you have typed "+numOfWords+" words in "+time_diff+" seconds. (speed="+speed+" words per sec) Among the "+pos+" characters you have typed, "+err+" are wrong ("+errPercentage+"%)");
+	xmlhttp.send();
+}
+	
+	
+	
       window.fbAsyncInit = function() {
         FB.init({
           appId      : '<?php echo AppInfo::appID(); ?>', // App ID
@@ -181,17 +263,39 @@ mysqli_close($con);
       }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <header class="clearfix">
       <?php if (isset($basic)) { ?>
-      <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
-
+     
       <div>
-        <h1>Welcome, <strong><?php echo he(idx($basic, 'name')); ?></strong></h1>
        
 
+<table class="background" width="400px">
+	<tr>
+		<div id="welcome_msg">
+		<h1>Welcome to the typing-speed competition, <strong><?php echo he(idx($basic, 'name')); ?></strong></h1>
+       
+		</div>
+	</tr>
+	<tr>
+	<div class="input_text" style="background-color:#EEEEAA; padding: 2px; width: 180px; height: 60px; overflow:hidden;">
+				<p id="text_para" style="margin: 0px">The term "design of experiments" derives from early statistical work performed by Sir Ronald Fisher. He 
+was described as "a genius who almost single-handedly created the foundations for modern statistical 
+science." Fisher initiated the principles of design of experiments and elaborated on his studies of "analysis of variance". Perhaps even more important, Fisher began his systematic approach to the 
+analysis of real data as the springboard for the development of new statistical methods. He began to pay 
+particular attention to the labour involved in the necessary computations performed by hand, and 
+developed methods that were as practical as they were founded in rigour. In 1925, this work culminated 
+in the publication of his first book, Statistical Methods for Research Workers.
+		</p></div>
+	
+		<div class="input_box" style="margin: 0px;">
+				<input type="text" id="input_text" name="input_text" onkeypress="updateText(event)" onclick="start();"></input><br/>
+				Please enter the text where the cursor points to in the textbox above
+				(Click on the textbox above to start, keep typing and it will finish automatically when the text reaches its end~)
+				<br/><input type="button" value="submit" onclick="end();"></input>
+		</div>
+		
+	</tr>
+</table>
 
-
-ADD SCRIPT CODE HERE
 
 
 
@@ -205,7 +309,7 @@ ADD SCRIPT CODE HERE
         <div id="share-app">
           
               <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="Test this awesome app">
-                <span class="apprequests">Send Requests</span>
+                <span class="apprequests">Share this app with your friends!</span>
               </a>
         </div>
       </div>
@@ -215,12 +319,6 @@ ADD SCRIPT CODE HERE
         <div class="fb-login-button" data-scope="user_likes,user_photos"></div>
       </div>
       <?php } ?>
-    </header>
-
-    <section id="get-started">
-      <p>Welcome to your Facebook app, running on <span>heroku</span>!</p>
-      <a href="https://devcenter.heroku.com/articles/facebook" target="_top" class="button">Learn How to Edit This App</a>
-    </section>
 
     <?php
       if ($user_id) {
@@ -322,32 +420,5 @@ ADD SCRIPT CODE HERE
       }
     ?>
 
-    <section id="guides" class="clearfix">
-      <h1>Learn More About Heroku &amp; Facebook Apps</h1>
-      <ul>
-        <li>
-          <a href="https://www.heroku.com/?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top" class="icon heroku">Heroku</a>
-          <p>Learn more about <a href="https://www.heroku.com/?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top">Heroku</a>, or read developer docs in the Heroku <a href="https://devcenter.heroku.com/" target="_top">Dev Center</a>.</p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/web/" target="_top" class="icon websites">Websites</a>
-          <p>
-            Drive growth and engagement on your site with
-            Facebook Login and Social Plugins.
-          </p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/mobile/" target="_top" class="icon mobile-apps">Mobile Apps</a>
-          <p>
-            Integrate with our core experience by building apps
-            that operate within Facebook.
-          </p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/canvas/" target="_top" class="icon apps-on-facebook">Apps on Facebook</a>
-          <p>Let users find and connect to their friends in mobile apps and games.</p>
-        </li>
-      </ul>
-    </section>
   </body>
 </html>
