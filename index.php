@@ -51,8 +51,15 @@ $app_name = idx($app_info, 'name', '');
 
 
 
+
+
+
+define("DB_HOST","mysql13.000webhost.com");
+define("DB_USER","a2110984_sta286");
+define("DB_PASS","3q3PDmGx");
+define("DB_NAME","a2110984_sta286");
+
 // establish connection to individual database
-require_once("config.php");
 if(!defined('DB_HOST')) {
 	die("ERROR: config.php not configured.  Please run <a href='install.php'>install</a>.");
 }
