@@ -1,4 +1,6 @@
 <?php
+//for IE iFrame 3rd party cookie blocking 
+header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
 
 /**
  * This sample app is provided to kickstart your experience using Facebook's
@@ -14,6 +16,7 @@ require_once('AppInfo.php');
 
 // Enforce https on production
 if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
+  trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
   header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
   exit();
 }
@@ -49,6 +52,8 @@ if ($user_id) {
     // If the call fails we check if we still have a user. The user will be
     // cleared if the error is because of an invalid accesstoken
     if (!$facebook->getUser()) {
+		trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
+  
       header('Location: '. AppInfo::getUrl($_SERVER['REQUEST_URI']));
       exit();
     }
@@ -117,36 +122,6 @@ $app_name = idx($app_info, 'name', '');
 
       $(function(){
         // Set up so we handle click on the buttons
-        $('#postToWall').click(function() {
-          FB.ui(
-            {
-              method : 'feed',
-              link   : $(this).attr('data-url')
-            },
-            function (response) {
-              // If response is null the user canceled the dialog
-              if (response != null) {
-                logResponse(response);
-              }
-            }
-          );
-        });
-
-        $('#sendToFriends').click(function() {
-          FB.ui(
-            {
-              method : 'send',
-              link   : $(this).attr('data-url')
-            },
-            function (response) {
-              // If response is null the user canceled the dialog
-              if (response != null) {
-                logResponse(response);
-              }
-            }
-          );
-        });
-
         $('#sendRequest').click(function() {
           FB.ui(
             {
@@ -214,30 +189,26 @@ $app_name = idx($app_info, 'name', '');
 
       <div>
         <h1>Welcome, <strong><?php echo he(idx($basic, 'name')); ?></strong></h1>
-        <p class="tagline">
+       
+
+
+
+ADD SCRIPT CODE HERE
+
+
+
+
+
+	   <p class="tagline">
           This is your app
           <a href="<?php echo he(idx($app_info, 'link'));?>" target="_top"><?php echo he($app_name); ?></a>
         </p>
 
         <div id="share-app">
-          <p>Share your app:</p>
-          <ul>
-            <li>
-              <a href="#" class="facebook-button" id="postToWall" data-url="<?php echo AppInfo::getUrl(); ?>">
-                <span class="plus">Post to Wall</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="facebook-button speech-bubble" id="sendToFriends" data-url="<?php echo AppInfo::getUrl(); ?>">
-                <span class="speech-bubble">Send Message</span>
-              </a>
-            </li>
-            <li>
+          
               <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="Test this awesome app">
                 <span class="apprequests">Send Requests</span>
               </a>
-            </li>
-          </ul>
         </div>
       </div>
       <?php } else { ?>
