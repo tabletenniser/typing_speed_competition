@@ -59,7 +59,7 @@ $app_name = idx($app_info, 'name', '');
 
 
 
-/*
+
 define("DB_HOST","mysql13.000webhost.com");
 define("DB_USER","a2110984_sta286");
 define("DB_PASS","3q3PDmGx");
@@ -78,7 +78,7 @@ mysqli_set_charset($con, "utf8");
 	VALUES (N'a bc')") or die (mysqli_error($con));
 			
 mysqli_close($con);
-	*/
+	
 
 
 ?>
