@@ -271,8 +271,7 @@ function end(){
 <table class="background" width="400px">
 	<tr>
 		<div id="welcome_msg">
-		<h1>Welcome to the typing-speed competition, <strong><?php echo he(idx($basic, 'name')); ?></strong></h1>
-       
+		<h1>Welcome to the typing-speed competition v2.0</h1>       
 		</div>
 	</tr>
 	<tr>
