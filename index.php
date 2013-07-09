@@ -302,7 +302,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
 
 
 	   <p class="tagline">
-          This is your app
+          This is my app
           <a href="<?php echo he(idx($app_info, 'link'));?>" target="_top"><?php echo he($app_name); ?></a>
         </p>
 
