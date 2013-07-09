@@ -26,8 +26,9 @@ a:hover, a:active {
 h1 {
   color: #656565;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
+  font-size: 32px;
   font-weight: normal;
+  text-align: center;
 }
 
 /* ------------------------------------------ */
