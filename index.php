@@ -271,12 +271,19 @@ function end(){
 <table class="background" width="400px">
 	<tr>
 		<div id="welcome_msg">
-		<h1>Welcome to the typing-speed competition v2.0</h1>       
+		<h1>Welcome to the typing-speed competition v2.0</h1>  
+		<br/>
 		</div>
 	</tr>
 	<tr>
-	<div class="input_text" style="background-color:#EEEEAA; padding: 2px; width: 180px; height: 60px; overflow:hidden;">
-				<p id="text_para" style="margin: 0px">The term "design of experiments" derives from early statistical work performed by Sir Ronald Fisher. He 
+		<div id="author">
+		<h6>---- By Aaron Wang</h6>
+		<br/>
+		</div>
+	</tr>
+	<tr>
+	<div class="input_text" id= "input_text">
+				<p id="text_para" style="margin: 15px">The term "design of experiments" derives from early statistical work performed by Sir Ronald Fisher. He 
 was described as "a genius who almost single-handedly created the foundations for modern statistical 
 science." Fisher initiated the principles of design of experiments and elaborated on his studies of "analysis of variance". Perhaps even more important, Fisher began his systematic approach to the 
 analysis of real data as the springboard for the development of new statistical methods. He began to pay 
@@ -312,9 +319,11 @@ in the publication of his first book, Statistical Methods for Research Workers.
               </a>
         </div>
       </div>
+	  
+	  
       <?php } else { ?>
       <div>
-        <h1>Welcome</h1>
+        <h1>Welcome to typing test competition v2.0!</h1>
         <div class="fb-login-button" data-scope="user_likes,user_photos"></div>
       </div>
       <?php } ?>
