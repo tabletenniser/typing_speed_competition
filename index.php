@@ -189,7 +189,7 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 		end();
 	}
 	
-	innerText+=innerText+.substr(0, pos-1);
+	innerText+=innerText.substr(0, pos-1);
 	innerText+="<span style='color: #2222EE'>"+text.charAt(pos-1)+"</span>";
 	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>";
 	innerText+=text.substr(pos+1, text.length - pos);
@@ -301,7 +301,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
 			Keep typing and it will finish automatically when the text reaches its end~<br/>
 
 			
-			<input type="text" id="input_text" name="input_text" onkeypress="updateText(event)" onclick="start();" style="width: inherit; overflow:hidden;"></input><br/>	
+			<input type="text" id="input_text" name="input_text" onkeypress="updateText(event);" onclick="start();" style="width: inherit; overflow:hidden;"></input><br/>	
 			<br/>
 		</div>
 	</tr>
