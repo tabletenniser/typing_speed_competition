@@ -372,10 +372,6 @@ div.input_box{
 	overflow:hidden;
 }
 
-input.input_text{
-	width: inherit;
-	overflow:hidden;
-}
 
 div.fb-login-button{
 	margin: auto;

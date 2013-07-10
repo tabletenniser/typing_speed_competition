@@ -313,8 +313,8 @@ in the publication of his first book, Statistical Methods for Research Workers.
           ?>
           <li>
 		  	<div>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top"><br/>
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
+            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
+              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>"><br/>
               <?php echo he($name); ?>
             </a>
 			</div>
@@ -324,13 +324,22 @@ in the publication of his first book, Statistical Methods for Research Workers.
           ?>
         </ul>
       </div>
+	  <input type="button" id="sendRequest" value="submit"></input>
+	<tr/>
+	<tr>
+	<div id="share-app">
+          
+              <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="I want to compete typing speed with you">
+                <span class="apprequests">Invite your friends to compete~</span>
+              </a>
+    </div>
 	<tr/>
 </table>
 
 
 
 
-<br/><input type="button" value="submit" onclick="end();"></input>
+<br/>
 
 	   <p class="tagline">
           This is my app
