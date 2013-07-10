@@ -161,6 +161,7 @@ var err = 0;
 var pos = 0;
 var numOfWords=1;
 var innerText="";
+var previousText=""
 var isCorrectChar=false;
 
 function start(){	
@@ -192,11 +193,15 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 		end();
 	}
 	
-	innerText=innerText.substr(0, pos-1);
-	if (isCorrectChar)
-		innerText+="<span style='color: #2222EE'>"+text.charAt(pos-1)+"</span>";
-	else
-		innerText+="<span style='color: #EE2222'>"+text.charAt(pos-1)+"</span>";
+	//innerText=innerText.substr(0, pos-1);	
+	if (isCorrectChar){
+		previousText;="<span style='color: #2222EE'>"+text.charAt(pos-1)+"</span>";
+	}
+	else{
+		previousText;="<span style='color: #EE2222'>"+text.charAt(pos-1)+"</span>";
+		
+	}
+	innerText=previousText;
 	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>";
 	innerText+=text.substr(pos+1, text.length - pos);
 	
