@@ -152,8 +152,7 @@ mysqli_close($con);
 	
 var start_time;
 var input_text;
-var text;
-
+var textCharacters = new Array();	// boolean array, 1 for correct char, 0 for wrong char
 
 var text = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour. In 1925, this work culminated in the publication of his first book, Statistical Methods for Research Workers.";
 
@@ -161,7 +160,7 @@ var time = 0;
 var err = 0;
 var pos = 0;
 var numOfWords=1;
-
+var innerText="";
 
 function start(){	
 	start_time=new Date().getTime()/1000;
@@ -181,17 +180,22 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 		if (text.charAt(pos)==" "){
 			numOfWords+=1;
 		}
-		pos=pos+1;
-		
-		if (pos==text.length){
-			end();
-		}
-		document.getElementById("text_para").innerHTML=text.substr(0, pos)+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
-	
-		//document.getElementById("text_para").innerHTML="<span style='color: #EEEEAA;'>"+text.substr(0, pos-1)+"</span>"+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
 	}else{
 		err=err+1;
 	}
+	
+	pos=pos+1;	
+	if (pos==text.length){
+		end();
+	}
+	
+	innerText+=innerText+.substr(0, pos-1);
+	innerText+="<span style='color: #2222EE'>"+text.charAt(pos-1)+"</span>";
+	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>";
+	innerText+=text.substr(pos+1, text.length - pos);
+	
+	document.getElementById("text_para").innerHTML=innerText;
+	//document.getElementById("text_para").innerHTML=text.substr(0, pos)+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
 }
 
 
