@@ -186,8 +186,9 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 		if (pos==text.length){
 			end();
 		}
-		
-		document.getElementById("text_para").innerHTML="<span style='color: #EEEEAA;'>"+text.substr(0, pos-1)+"</span>"+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
+		document.getElementById("text_para").innerHTML=text.substr(0, pos-1)+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
+	
+		//document.getElementById("text_para").innerHTML="<span style='color: #EEEEAA;'>"+text.substr(0, pos-1)+"</span>"+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
 	}else{
 		err=err+1;
 	}
@@ -310,10 +311,12 @@ in the publication of his first book, Statistical Methods for Research Workers.
               $name = idx($auf, 'name');
           ?>
           <li>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
+		  	<div>
+            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top"><br/>
               <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
               <?php echo he($name); ?>
             </a>
+			<div>
           </li>
           <?php
             }
