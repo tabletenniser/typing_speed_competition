@@ -293,12 +293,12 @@ in the publication of his first book, Statistical Methods for Research Workers.
 		</p></div>
 	
 		<div class="input_box">
-				Please click on the textbox below to start and enter the text where the cursor points to.
-				Keep typing and it will finish automatically when the text reaches its end~<br/>
-	
-				
-				<input type="text" id="input_text" name="input_text" onkeypress="updateText(event)" onclick="start();" style="width: inherit; overflow:hidden;"></input><br/>	
-				<br/>
+			Please click on the textbox below to start and enter the text where the cursor points to.
+			Keep typing and it will finish automatically when the text reaches its end~<br/>
+
+			
+			<input type="text" id="input_text" name="input_text" onkeypress="updateText(event)" onclick="start();" style="width: inherit; overflow:hidden;"></input><br/>	
+			<br/>
 		</div>
 	</tr>
 	<tr>
@@ -324,7 +324,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
           ?>
         </ul>
       </div>
-	  <input type="button" id="sendRequest" value="submit"></input>
+	  <input type="button" id="sendRequest" value="submit" data-message="I want to compete typing speed with you"></input>
 	<tr/>
 	<tr>
 	<div id="share-app">
