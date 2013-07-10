@@ -187,7 +187,7 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 			end();
 		}
 		
-		document.getElementById("text_para").innerHTML="<span style='color: #EEEEAA;'>"+text.charAt(pos-1)+"</span>"+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
+		document.getElementById("text_para").innerHTML="<span style='color: #EEEEAA;'>"+text.substr(0, pos-1)+"</span>"+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
 	}else{
 		err=err+1;
 	}
@@ -278,12 +278,11 @@ function end(){
 	<tr>
 		<div id="author">
 		<h6>---- By Aaron Wang</h6>
-		<br/>
 		</div>
 	</tr>
 	<tr>
 	<div class="input_text" id= "input_text">
-				<p id="text_para" style="margin: 15px">The term "design of experiments" derives from early statistical work performed by Sir Ronald Fisher. He 
+				<p id="text_para" style="font-size: 20px; color: #222299; margin: 15px"><u>T</u>he term "design of experiments" derives from early statistical work performed by Sir Ronald Fisher. He 
 was described as "a genius who almost single-handedly created the foundations for modern statistical 
 science." Fisher initiated the principles of design of experiments and elaborated on his studies of "analysis of variance". Perhaps even more important, Fisher began his systematic approach to the 
 analysis of real data as the springboard for the development of new statistical methods. He began to pay 
@@ -294,7 +293,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
 	
 		<div class="input_box">
 				Please click on the textbox below to start and enter the text where the cursor points to.
-				Keep typing and it will finish automatically when the text reaches its end~
+				Keep typing and it will finish automatically when the text reaches its end~<br/>
 				
 				<input type="text" id="input_text" name="input_text" onkeypress="updateText(event)" onclick="start();"></input><br/>	
 				<br/>
@@ -302,7 +301,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
 	</tr>
 	<tr>
 	<div class="horizontal_list">
-        <h3>Friends using this app</h3>
+        <h3>Top players of your friends</h3>
         <ul class="friends">
           <?php
             foreach ($app_using_friends as $auf) {
