@@ -195,10 +195,10 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 	
 	//innerText=innerText.substr(0, pos-1);	
 	if (isCorrectChar){
-		previousText;="<span style='color: #2222EE'>"+text.charAt(pos-1)+"</span>";
+		previousText+="<span style='color: #2222EE'>"+text.charAt(pos-1)+"</span>";
 	}
 	else{
-		previousText;="<span style='color: #EE2222'>"+text.charAt(pos-1)+"</span>";
+		previousText+="<span style='color: #EE2222'>"+text.charAt(pos-1)+"</span>";
 		
 	}
 	innerText=previousText;
