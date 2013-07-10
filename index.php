@@ -161,6 +161,7 @@ var err = 0;
 var pos = 0;
 var numOfWords=1;
 var innerText="";
+var isCorrectChar=false;
 
 function start(){	
 	start_time=new Date().getTime()/1000;
@@ -180,8 +181,10 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 		if (text.charAt(pos)==" "){
 			numOfWords+=1;
 		}
+		isCorrectChar=true;
 	}else{
 		err=err+1;
+		isCorrectChar=false;
 	}
 	
 	pos=pos+1;	
@@ -189,8 +192,11 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 		end();
 	}
 	
-	innerText+=innerText.substr(0, pos-1);
-	innerText+="<span style='color: #2222EE'>"+text.charAt(pos-1)+"</span>";
+	innerText=innerText.substr(0, pos-1);
+	if (isCorrectChar)
+		innerText+="<span style='color: #2222EE'>"+text.charAt(pos-1)+"</span>";
+	else
+		innerText+="<span style='color: #EE2222'>"+text.charAt(pos-1)+"</span>";
 	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>";
 	innerText+=text.substr(pos+1, text.length - pos);
 	
