@@ -292,20 +292,42 @@ developed methods that were as practical as they were founded in rigour. In 1925
 in the publication of his first book, Statistical Methods for Research Workers.
 		</p></div>
 	
-		<div class="input_box" style="margin: 0px;">
-				<input type="text" id="input_text" name="input_text" onkeypress="updateText(event)" onclick="start();"></input><br/>
-				Please enter the text where the cursor points to in the textbox above
-				(Click on the textbox above to start, keep typing and it will finish automatically when the text reaches its end~)
-				<br/><input type="button" value="submit" onclick="end();"></input>
+		<div class="input_box">
+				Please click on the textbox below to start and enter the text where the cursor points to.
+				Keep typing and it will finish automatically when the text reaches its end~
+				
+				<input type="text" id="input_text" name="input_text" onkeypress="updateText(event)" onclick="start();"></input><br/>	
+				<br/>
 		</div>
-		
 	</tr>
+	<tr>
+	<div class="horizontal_list">
+        <h3>Friends using this app</h3>
+        <ul class="friends">
+          <?php
+            foreach ($app_using_friends as $auf) {
+              // Extract the pieces of info we need from the requests above
+              $id = idx($auf, 'uid');
+              $name = idx($auf, 'name');
+          ?>
+          <li>
+            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
+              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
+              <?php echo he($name); ?>
+            </a>
+          </li>
+          <?php
+            }
+          ?>
+        </ul>
+      </div>
+	<tr/>
 </table>
 
 
 
 
-
+<br/><input type="button" value="submit" onclick="end();"></input>
 
 	   <p class="tagline">
           This is my app
@@ -324,6 +346,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
       <?php } else { ?>
       <div>
         <h1>Welcome to typing test competition v2.0!</h1>
+		<br/>
         <div class="fb-login-button" data-scope="user_likes,user_photos"></div>
       </div>
       <?php } ?>
