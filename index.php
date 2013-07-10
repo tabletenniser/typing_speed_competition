@@ -186,7 +186,7 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 		if (pos==text.length){
 			end();
 		}
-		document.getElementById("text_para").innerHTML=text.substr(0, pos-1)+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
+		document.getElementById("text_para").innerHTML=text.substr(0, pos)+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
 	
 		//document.getElementById("text_para").innerHTML="<span style='color: #EEEEAA;'>"+text.substr(0, pos-1)+"</span>"+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
 	}else{
@@ -295,8 +295,9 @@ in the publication of his first book, Statistical Methods for Research Workers.
 		<div class="input_box">
 				Please click on the textbox below to start and enter the text where the cursor points to.
 				Keep typing and it will finish automatically when the text reaches its end~<br/>
+	
 				
-				<input type="text" id="input_text" name="input_text" onkeypress="updateText(event)" onclick="start();"></input><br/>	
+				<input type="text" id="input_text" name="input_text" onkeypress="updateText(event)" onclick="start();" style="width: inherit; overflow:hidden;"></input><br/>	
 				<br/>
 		</div>
 	</tr>
@@ -316,7 +317,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
               <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
               <?php echo he($name); ?>
             </a>
-			<div>
+			</div>
           </li>
           <?php
             }
