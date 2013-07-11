@@ -156,6 +156,7 @@ var input_text;
 var textCharacters = new Array();	// boolean array, 1 for correct char, 0 for wrong char
 
 var text = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour. In 1925, this work culminated in the publication of his first book, Statistical Methods for Research Workers.";
+document.getElementById("char_entered").innerHTML=text;
 
 var time = 0;
 var err = 0;
@@ -224,7 +225,7 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 
 
 function end(){
-//alert ("start time"+start_time);
+alert ("start time"+start_time);
 	window.clearInterval(int);
 	input_text=document.getElementById("input_text").value;
 	
@@ -326,16 +327,16 @@ in the publication of his first book, Statistical Methods for Research Workers.
 			Keep typing and it will finish automatically when the text reaches its end~<br/>
 
 			
-			<input type="text" id="input_text" name="input_text" onkeypress="updateText(event);" onclick="start();" style="width: inherit; overflow:hidden;"></input><br/>	
+			<input type="text" id="input_text" name="input_text" onkeypress="updateText(event);" onclick="start();" style="width: 660px; overflow:hidden;"></input>	
 		</div>
 	</tr>
 	
 	<tr>
 		<div id="realtime_statistics">
 		<h2>Time: <span id="time">0</span> seconds</h2>
-		<h2>Number of words entered: <span id="word_entered">0</span></h2>
-		<h2>Number of characters entered: <span id="char_entered">0</span></h2>
-		<h2>Number of wrong characters: <span id="char_entered_wrong">0</span></h2>
+		<h2>Words entered: <span id="word_entered">0</span></h2>
+		<h2>Characters entered: <span id="char_entered">0</span></h2>
+		<h2>Wrong characters: <span id="char_entered_wrong">0</span></h2>
 		</div>
 	</tr>
 	
