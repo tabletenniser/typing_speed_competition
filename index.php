@@ -147,151 +147,7 @@ mysqli_close($con);
   </head>
   <body>
     <div id="fb-root"></div>
-    <script type="text/javascript">
-	
 
-	
-var start_time;
-var input_text;
-var textCharacters = new Array();	// boolean array, 1 for correct char, 0 for wrong char
-
-var text = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour. In 1925, this work culminated in the publication of his first book, Statistical Methods for Research Workers.";
-document.getElementById("text_para").innerHTML=text;
-
-var time = 0;
-var err = 0;
-var pos = 0;
-var numOfWords=1;
-var innerText="";
-var previousText=""
-var isCorrectChar=false;
-var timePassedInSec=0;
-
-
-function clock()
-  {
-	  timePassedInSec++;
-	  document.getElementById("time").innerHTML=timePassedInSec;
-  }
-
-
-function start(){	
-	start_time=new Date().getTime()/1000;
-	var int=self.setInterval(function(){clock()},1000);
-//alert (start_time);
-}
-
-// this function is invoked when the user presses a key
-function updateText(event){
-var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
-//alert ("You've pressed"+chCode);
-
-	//var input_text=document.getElementById("input_text").value;
-//alert("new Text: input"+input_text.charAt(input_text.length-1)+"text"+text.charAt(pos));
-
-	//if the user inputs the correct character
-	if (String.fromCharCode(chCode)==text.charAt(pos)){
-		if (text.charAt(pos)==" "){
-			numOfWords+=1;
-			document.getElementById("word_entered").innerHTML=numOfWords;
-		}
-		isCorrectChar=true;
-	}else{
-		err=err+1;
-		isCorrectChar=false;
-	}
-	
-	pos=pos+1;	
-	if (pos==text.length){
-		end();
-	}
-	
-	//innerText=innerText.substr(0, pos-1);	
-	if (isCorrectChar){
-		previousText+="<span style='color: #2222EE'>"+text.charAt(pos-1)+"</span>";
-	}
-	else{
-		previousText+="<span style='color: #EE2222'>"+text.charAt(pos-1)+"</span>";
-		document.getElementById("char_entered_wrong").innerHTML=err;
-	}
-	innerText=previousText;
-	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>";
-	innerText+=text.substr(pos+1, text.length - pos);
-	
-	document.getElementById("char_entered").innerHTML=pos;
-	document.getElementById("text_para").innerHTML=innerText;
-	//document.getElementById("text_para").innerHTML=text.substr(0, pos)+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
-}
-
-
-function end(){
-alert ("start time"+start_time);
-	window.clearInterval(int);
-	input_text=document.getElementById("input_text").value;
-	
-	var end_time=new Date().getTime()/1000;
-	var time_diff=end_time-start_time;
-	
-//alert ("you have typed for "+(time_diff)+" seconds");
-	
-	
-	if (window.XMLHttpRequest){//for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp=new XMLHttpRequest();
-	}else{//  for IE6, IE5
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-
-	xmlhttp.onreadystatechange=function(){
-		if (xmlhttp.readyState==4 && xmlhttp.status==200){
-			//document.getElementById("debug").innerHTML=xmlhttp.responseText;
-			window.location = "http://typingtest.p.ht/questions.php";
-		}
-	}
-	
-	var errPercentage=err/pos*100;
-	var speed=numOfWords/time_diff;
-
-	xmlhttp.open("GET","real_ajax.php?time_diff="+time_diff+
-	"&input_text="+encodeURIComponent(input_text)+"&numOfWords="+encodeURIComponent(numOfWords)+"&errPercentage="+errPercentage,true);
-	
-	alert ("you have typed "+numOfWords+" words in "+time_diff+" seconds. (speed="+speed+" words per sec) Among the "+pos+" characters you have typed, "+err+" are wrong ("+errPercentage+"%)");
-	xmlhttp.send();
-}
-	
-	
-	
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '<?php echo AppInfo::appID(); ?>', // App ID
-          channelUrl : '//<?php echo $_SERVER["HTTP_HOST"]; ?>/channel.html', // Channel File
-          status     : true, // check login status
-          cookie     : true, // enable cookies to allow the server to access the session
-          xfbml      : true // parse XFBML
-        });
-
-        // Listen to the auth.login which will be called when the user logs in
-        // using the Login button
-        FB.Event.subscribe('auth.login', function(response) {
-          // We want to reload the page now so PHP can read the cookie that the
-          // Javascript SDK sat. But we don't want to use
-          // window.location.reload() because if this is in a canvas there was a
-          // post made to this page and a reload will trigger a message to the
-          // user asking if they want to send data again.
-          window.location = window.location;
-        });
-
-        FB.Canvas.setAutoGrow();
-      };
-
-      // Load the SDK Asynchronously
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
 
       <?php if (isset($basic)) { ?>
      
@@ -336,7 +192,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
 		<h2>Time: <span id="time">0</span> seconds</h2>
 		<h2>Words entered: <span id="word_entered">0</span></h2>
 		<h2>Characters entered: <span id="char_entered">0</span></h2>
-		<h2>Wrong characters: <span id="char_entered_wrong">0</span></h2>
+		<h2>Wrong characters: <span id="char_entered_wrong">0</span></h2><br/>
 		</div>
 	</tr>
 	
@@ -502,6 +358,152 @@ in the publication of his first book, Statistical Methods for Research Workers.
     <?php
       }
     ?>
+		
+	    <script type="text/javascript">
+	
+
+	
+var start_time;
+var input_text;
+var textCharacters = new Array();	// boolean array, 1 for correct char, 0 for wrong char
+
+var text = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour. In 1925, this work culminated in the publication of his first book, Statistical Methods for Research Workers.";
+document.getElementById("text_para").innerHTML=text;
+
+var time = 0;
+var err = 0;
+var pos = 0;
+var numOfWords=1;
+var innerText="";
+var previousText=""
+var isCorrectChar=false;
+var timePassedInSec=0;
+
+
+function clock()
+  {
+	  timePassedInSec++;
+	  document.getElementById("time").innerHTML=timePassedInSec;
+  }
+
+
+function start(){	
+	start_time=new Date().getTime()/1000;
+	var int=self.setInterval(function(){clock()},1000);
+//alert (start_time);
+}
+
+// this function is invoked when the user presses a key
+function updateText(event){
+var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
+//alert ("You've pressed"+chCode);
+
+	//var input_text=document.getElementById("input_text").value;
+//alert("new Text: input"+input_text.charAt(input_text.length-1)+"text"+text.charAt(pos));
+
+	//if the user inputs the correct character
+	if (String.fromCharCode(chCode)==text.charAt(pos)){
+		if (text.charAt(pos)==" "){
+			numOfWords+=1;
+			document.getElementById("word_entered").innerHTML=numOfWords;
+		}
+		isCorrectChar=true;
+	}else{
+		err=err+1;
+		isCorrectChar=false;
+	}
+	
+	pos=pos+1;	
+	if (pos==text.length){
+		end();
+	}
+	
+	//innerText=innerText.substr(0, pos-1);	
+	if (isCorrectChar){
+		previousText+="<span style='color: #2222EE'>"+text.charAt(pos-1)+"</span>";
+	}
+	else{
+		previousText+="<span style='color: #EE2222'>"+text.charAt(pos-1)+"</span>";
+		document.getElementById("char_entered_wrong").innerHTML=err;
+	}
+	innerText=previousText;
+	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>";
+	innerText+=text.substr(pos+1, text.length - pos);
+	
+	document.getElementById("char_entered").innerHTML=pos;
+	document.getElementById("text_para").innerHTML=innerText;
+	//document.getElementById("text_para").innerHTML=text.substr(0, pos)+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
+}
+
+
+function end(){
+alert ("start time"+start_time);
+	window.clearInterval(int);
+	input_text=document.getElementById("input_text").value;
+	
+	var end_time=new Date().getTime()/1000;
+	var time_diff=end_time-start_time;
+	
+//alert ("you have typed for "+(time_diff)+" seconds");
+	
+	
+	if (window.XMLHttpRequest){//for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}else{//  for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			//document.getElementById("debug").innerHTML=xmlhttp.responseText;
+			window.location = "http://typingtest.p.ht/questions.php";
+		}
+	}
+	
+	var errPercentage=err/pos*100;
+	var speed=numOfWords/time_diff;
+
+	xmlhttp.open("GET","real_ajax.php?time_diff="+time_diff+
+	"&input_text="+encodeURIComponent(input_text)+"&numOfWords="+encodeURIComponent(numOfWords)+"&errPercentage="+errPercentage,true);
+	
+	alert ("you have typed "+numOfWords+" words in "+time_diff+" seconds. (speed="+speed+" words per sec) Among the "+pos+" characters you have typed, "+err+" are wrong ("+errPercentage+"%)");
+	xmlhttp.send();
+}
+	
+	
+	
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '<?php echo AppInfo::appID(); ?>', // App ID
+          channelUrl : '//<?php echo $_SERVER["HTTP_HOST"]; ?>/channel.html', // Channel File
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow the server to access the session
+          xfbml      : true // parse XFBML
+        });
+
+        // Listen to the auth.login which will be called when the user logs in
+        // using the Login button
+        FB.Event.subscribe('auth.login', function(response) {
+          // We want to reload the page now so PHP can read the cookie that the
+          // Javascript SDK sat. But we don't want to use
+          // window.location.reload() because if this is in a canvas there was a
+          // post made to this page and a reload will trigger a message to the
+          // user asking if they want to send data again.
+          window.location = window.location;
+        });
+
+        FB.Canvas.setAutoGrow();
+      };
+
+      // Load the SDK Asynchronously
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>	
 
   </body>
 </html>
