@@ -156,7 +156,7 @@ var input_text;
 var textCharacters = new Array();	// boolean array, 1 for correct char, 0 for wrong char
 
 var text = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour. In 1925, this work culminated in the publication of his first book, Statistical Methods for Research Workers.";
-document.getElementById("char_entered").innerHTML=text;
+document.getElementById("text_para").innerHTML=text;
 
 var time = 0;
 var err = 0;
