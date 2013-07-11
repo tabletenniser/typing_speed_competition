@@ -166,7 +166,7 @@ var previousText=""
 var isCorrectChar=false;
 var timePassedInSec=0;
 
-var int=self.setInterval(function(){clock()},1000);
+
 function clock()
   {
 	  timePassedInSec++;
@@ -176,6 +176,7 @@ function clock()
 
 function start(){	
 	start_time=new Date().getTime()/1000;
+	var int=self.setInterval(function(){clock()},1000);
 //alert (start_time);
 }
 
@@ -224,7 +225,7 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 
 function end(){
 //alert ("start time"+start_time);
-
+	window.clearInterval(int);
 	input_text=document.getElementById("input_text").value;
 	
 	var end_time=new Date().getTime()/1000;
