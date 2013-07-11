@@ -149,6 +149,7 @@ mysqli_close($con);
     <div id="fb-root"></div>
     <script type="text/javascript">
 	
+
 	
 var start_time;
 var input_text;
@@ -163,6 +164,15 @@ var numOfWords=1;
 var innerText="";
 var previousText=""
 var isCorrectChar=false;
+var timePassedInSec=0;
+
+var int=self.setInterval(function(){clock()},1000);
+function clock()
+  {
+	  timePassedInSec++;
+	  document.getElementById("time").innerHTML=timePassedInSec;
+  }
+
 
 function start(){	
 	start_time=new Date().getTime()/1000;
@@ -316,13 +326,12 @@ in the publication of his first book, Statistical Methods for Research Workers.
 
 			
 			<input type="text" id="input_text" name="input_text" onkeypress="updateText(event);" onclick="start();" style="width: inherit; overflow:hidden;"></input><br/>	
-			<br/>
 		</div>
 	</tr>
 	
 	<tr>
 		<div id="realtime_statistics">
-		<h2>Time: <span id="time">0</span></h2>
+		<h2>Time: <span id="time">0</span> seconds</h2>
 		<h2>Number of words entered: <span id="word_entered">0</span></h2>
 		<h2>Number of characters entered: <span id="char_entered">0</span></h2>
 		<h2>Number of wrong characters: <span id="char_entered_wrong">0</span></h2>
