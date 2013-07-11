@@ -181,6 +181,7 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 	if (String.fromCharCode(chCode)==text.charAt(pos)){
 		if (text.charAt(pos)==" "){
 			numOfWords+=1;
+			document.getElementById("word_entered").innerHTML=numOfWords;
 		}
 		isCorrectChar=true;
 	}else{
@@ -199,12 +200,13 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 	}
 	else{
 		previousText+="<span style='color: #EE2222'>"+text.charAt(pos-1)+"</span>";
-		
+		document.getElementById("char_entered_wrong").innerHTML=err;
 	}
 	innerText=previousText;
 	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>";
 	innerText+=text.substr(pos+1, text.length - pos);
 	
+	document.getElementById("char_entered").innerHTML=pos;
 	document.getElementById("text_para").innerHTML=innerText;
 	//document.getElementById("text_para").innerHTML=text.substr(0, pos)+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
 }
@@ -296,6 +298,7 @@ function end(){
 		<h6>---- By Aaron Wang</h6>
 		</div>
 	</tr>
+		
 	<tr>
 	<div class="input_text" id= "input_text">
 				<p id="text_para" style="font-size: 20px; color: #222299; margin: 15px"><u>T</u>he term "design of experiments" derives from early statistical work performed by Sir Ronald Fisher. He 
@@ -316,6 +319,17 @@ in the publication of his first book, Statistical Methods for Research Workers.
 			<br/>
 		</div>
 	</tr>
+	
+	<tr>
+		<div id="realtime_statistics">
+		<h2>Time: <span id="time">0</span></h2>
+		<h2>Number of words entered: <span id="word_entered">0</span></h2>
+		<h2>Number of characters entered: <span id="char_entered">0</span></h2>
+		<h2>Number of wrong characters: <span id="char_entered_wrong">0</span></h2>
+		</div>
+	</tr>
+	
+	
 	<tr>
 	<div class="horizontal_list">
         <h3>Top players of your friends</h3>
@@ -340,7 +354,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
         </ul>
       </div>
 	  <input type="button" id="sendRequest" value="submit" data-message="I want to compete typing speed with you"></input>
-	<tr/>
+	<tr/>	
 	<tr>
 	<div id="share-app">
           
