@@ -389,7 +389,8 @@ function clock()
 
 function start(){	
 	start_time=new Date().getTime()/1000;
-	var int=self.setInterval(function(){clock()},1000);
+	//var int=self.
+	setInterval(function(){clock()},1000);
 //alert (start_time);
 }
 
