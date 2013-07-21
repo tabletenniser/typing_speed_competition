@@ -448,7 +448,19 @@ function end(){
 	window.clearInterval(TimerID);
 	//window.clearTimeout(timerID);
 	
-	sessionStorage.setItem("username", "John");
+	// calculation of values required
+	var end_time=new Date().getTime()/1000;
+	var time_diff=end_time-start_time;
+	var errPercentage=err/pos*100;
+	var speed=numOfWords/time_diff;
+	
+	// set session variables to pass values to result.php
+	sessionStorage.setItem("time", time_diff);
+	sessionStorage.setItem("words", numOfWords);
+	sessionStorage.setItem("charactersEntered", pos);
+	sessionStorage.setItem("wrongCharacters", err);
+	sessionStorage.setItem("speed", speed);
+	sessionStorage.setItem("errPercentage", errPercentage);
 	window.location = "result.php";
 	
 	/*

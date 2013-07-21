@@ -168,8 +168,25 @@ mysqli_close($con);
 	</tr>
 		
 	<tr>
-	<div class="input_text" id= "input_text">
-				LALALLALA
+	<div class="input_text" id= "input_text"><br/>
+		<table>
+			<tr>
+				<td>
+					TIME:
+				</td>
+				<td id="time_value">
+					0
+				</td>
+			</tr>
+			<tr>
+				<td>
+					WORDS:
+				</td>
+				<td id="words">
+					0
+				</td>
+			</tr>
+		</table>
 		</p></div>
 	</tr>
 	
@@ -336,7 +353,21 @@ mysqli_close($con);
     ?>
 		
 	    <script type="text/javascript">	
-alert( "username = " + sessionStorage.getItem("username"));
+alert( "time = " + sessionStorage.getItem("time"));
+
+essionStorage.setItem("time", time_diff);
+	sessionStorage.setItem("words", numOfWords);
+	sessionStorage.setItem("charactersEntered", pos);
+	sessionStorage.setItem("wrongCharacters", err);
+	sessionStorage.setItem("speed", speed);
+	sessionStorage.setItem("errPercentage", errPercentage);
+
+document.getElementById("time_value").innerHTML=sessionStorage.getItem("time");
+document.getElementById("words_value").innerHTML=sessionStorage.getItem("words");
+document.getElementById("charactersEntered_value").innerHTML=sessionStorage.getItem("charactersEntered");
+document.getElementById("wrongChracters_value").innerHTML=sessionStorage.getItem("wrongCharacters");
+document.getElementById("speed_value").innerHTML=sessionStorage.getItem("speed");
+document.getElementById("errPercentage_value").innerHTML=sessionStorage.getItem("errPercentage");
 	
       window.fbAsyncInit = function() {
         FB.init({
