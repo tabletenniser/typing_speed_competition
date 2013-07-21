@@ -182,12 +182,44 @@ mysqli_close($con);
 				<td>
 					WORDS:
 				</td>
-				<td id="words">
+				<td id="words_value">
 					0
 				</td>
 			</tr>
+			<tr>
+				<td>
+					CHARATERS ENTERED:
+				</td>
+				<td id="charactersEntered_value">
+					0
+				</td>
+			</tr>
+			<tr>
+				<td>
+					WRONG CHARACTERS:
+				</td>
+				<td id="wrongCharacters_value">
+					0
+				</td>
+			</tr>
+			<b><tr>
+				<td>
+					SPEED:
+				</td>
+				<td id="speed_value">
+					0
+				</td>
+			</tr>
+			<tr>
+				<td>
+					ACCURACY:
+				</td>
+				<td id="errPercentage_value">
+					0
+				</td>
+			</tr></b>
 		</table>
-		</p></div>
+	</div>
 	</tr>
 	
 	<tr>
