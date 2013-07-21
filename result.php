@@ -135,6 +135,13 @@ mysqli_close($con);
           );
         });
       });
+	  
+	  $(function(){
+        // Set up so we handle click on the buttons
+        $('#retry').click(function() {
+          window.location = "index.php";
+        });
+      });
     </script>
 
     <!--[if IE]>
@@ -169,12 +176,12 @@ mysqli_close($con);
 		
 	<tr><td>
 	<div class="input_text" id= "input_text"><br/>
-		<table>
+		<table cellpadding="5" cellspacing="5">
 			<tr>
 				<td>
 					TIME:
 				</td>
-				<td id="time_value">
+				<td id="time_value" border-left="10px">
 					0
 				</td>
 			</tr>
@@ -182,13 +189,13 @@ mysqli_close($con);
 				<td>
 					WORDS:
 				</td>
-				<td id="words_value">
+				<td id="words_value" border-left="10px">
 					0
 				</td>
 			</tr>
 			<tr>
 				<td>
-					CHARATERS ENTERED:
+					CHARACTERS ENTERED:
 				</td>
 				<td id="charactersEntered_value">
 					0
@@ -222,7 +229,8 @@ mysqli_close($con);
 	</div>
 	</td></tr>
 	<tr><td>
-		<input type="button" id="sendRequest" value="submit" data-message="I want to compete typing speed with you"></input>
+		<input type="button" id="retry" value="Retry"></input>
+		<input type="button" id="sendRequest" value="Compete with Friends" data-message="I want to compete typing speed with you"></input>
 	</td></tr>
 	<tr><td>
 	<br/>
