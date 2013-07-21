@@ -445,7 +445,7 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 
 
 function end(){
-	window.clearInterval(timerID);
+	window.clearInterval(TimerID);
 	//window.clearTimeout(timerID);
 	
 	sessionStorage.setItem("username", "John");
