@@ -169,7 +169,7 @@ mysqli_close($con);
 		
 	<tr>
 	<div class="input_text" id= "input_text">
-				<p id="text_para" style="font-size: 20px; color: #222299; margin: 15px"><u>T</u>he term "design of experiments" derives from early statistical work performed by Sir Ronald Fisher. He 
+				<p id="text_para" style="font-size: 18px; color: #222299; margin: 15px"><u>T</u>he term "design of experiments" derives from early statistical work performed by Sir Ronald Fisher. He 
 was described as "a genius who almost single-handedly created the foundations for modern statistical 
 science." Fisher initiated the principles of design of experiments and elaborated on his studies of "analysis of variance". Perhaps even more important, Fisher began his systematic approach to the 
 analysis of real data as the springboard for the development of new statistical methods. He began to pay 
@@ -375,7 +375,7 @@ var time = 0;
 var TimerID=0;
 var err = 0;
 var pos = 0;
-var numOfWords=1;
+var numOfWords=0;
 var innerText="";
 var previousText=""
 var isCorrectChar=false;
@@ -392,8 +392,8 @@ function clock()
 function start(){	
 	start_time=new Date().getTime()/1000;
 	//var int=self.
-	//setInterval(function(){clock()},1000);
-	timerID=setTimeout(function(){clock()},1000);
+	TimerID=setInterval(function(){clock()},1000);
+	//timerID=setTimeout(function(){clock()},1000);
 //alert (start_time);
 }
 
@@ -421,6 +421,8 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 	
 	pos=pos+1;	
 	if (pos==text_array[randomNumberGenerator].length){
+		numOfWords+=1;
+		document.getElementById("word_entered").innerHTML=numOfWords;
 		end();
 	}
 	
@@ -443,10 +445,13 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 
 
 function end(){
-alert ("start time"+start_time);
-	//window.clearInterval(int);
-	window.clearTimeout(timerID);
+	window.clearInterval(timerID);
+	//window.clearTimeout(timerID);
 	
+	sessionStorage.setItem("username", "John");
+	window.location = "result.php";
+	
+	/*
 	input_text=document.getElementById("input_text").value;
 	
 	var end_time=new Date().getTime()/1000;
@@ -475,7 +480,8 @@ alert ("start time"+start_time);
 	"&input_text="+encodeURIComponent(input_text)+"&numOfWords="+encodeURIComponent(numOfWords)+"&errPercentage="+errPercentage,true);
 	
 	alert ("you have typed "+numOfWords+" words in "+time_diff+" seconds. (speed="+speed+" words per sec) Among the "+pos+" characters you have typed, "+err+" are wrong ("+errPercentage+"%)");
-	xmlhttp.send();
+	xmlhttp.send();*/
+	
 }
 	
 	
