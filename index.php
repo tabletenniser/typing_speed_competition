@@ -359,18 +359,20 @@ in the publication of his first book, Statistical Methods for Research Workers.
       }
     ?>
 		
-	    <script type="text/javascript">
-	
-
-	
+	    <script type="text/javascript">	
 var start_time;
 var input_text;
 var textCharacters = new Array();	// boolean array, 1 for correct char, 0 for wrong char
 
-var text = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour. In 1925, this work culminated in the publication of his first book, Statistical Methods for Research Workers.";
-document.getElementById("text_para").innerHTML=text;
+var text_array = new Array();
+text_array[0] = "ab \" cd.";
+text_array[1] = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour. In 1925, this work culminated in the publication of his first book, Statistical Methods for Research Workers.";
+var randomNumberGenerator=0;
+
+document.getElementById("text_para").innerHTML=text_array[randomNumberGenerator];
 
 var time = 0;
+var TimerID=0;
 var err = 0;
 var pos = 0;
 var numOfWords=1;
@@ -390,7 +392,8 @@ function clock()
 function start(){	
 	start_time=new Date().getTime()/1000;
 	//var int=self.
-	setInterval(function(){clock()},1000);
+	//setInterval(function(){clock()},1000);
+	timerID=setTimeout(function(){clock()},1000);
 //alert (start_time);
 }
 
@@ -403,33 +406,35 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 //alert("new Text: input"+input_text.charAt(input_text.length-1)+"text"+text.charAt(pos));
 
 	//if the user inputs the correct character
-	if (String.fromCharCode(chCode)==text.charAt(pos)){
-		if (text.charAt(pos)==" "){
-			numOfWords+=1;
-			document.getElementById("word_entered").innerHTML=numOfWords;
-		}
+	if (String.fromCharCode(chCode)==text_array[randomNumberGenerator].charAt(pos)){
+		
 		isCorrectChar=true;
 	}else{
 		err=err+1;
 		isCorrectChar=false;
 	}
 	
+	if (text_array[randomNumberGenerator].charAt(pos)==" "){
+			numOfWords+=1;
+			document.getElementById("word_entered").innerHTML=numOfWords;
+	}
+	
 	pos=pos+1;	
-	if (pos==text.length){
+	if (pos==text_array[randomNumberGenerator].length){
 		end();
 	}
 	
 	//innerText=innerText.substr(0, pos-1);	
 	if (isCorrectChar){
-		previousText+="<span style='color: #2222EE'>"+text.charAt(pos-1)+"</span>";
+		previousText+="<span style='color: #2222EE'>"+text_array[randomNumberGenerator].charAt(pos-1)+"</span>";
 	}
 	else{
-		previousText+="<span style='color: #EE2222'>"+text.charAt(pos-1)+"</span>";
+		previousText+="<span style='color: #EE2222'>"+text_array[randomNumberGenerator].charAt(pos-1)+"</span>";
 		document.getElementById("char_entered_wrong").innerHTML=err;
 	}
 	innerText=previousText;
-	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>";
-	innerText+=text.substr(pos+1, text.length - pos);
+	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text_array[randomNumberGenerator].charAt(pos)+"</span>";
+	innerText+=text_array[randomNumberGenerator].substr(pos+1, text_array[randomNumberGenerator].length - pos);
 	
 	document.getElementById("char_entered").innerHTML=pos;
 	document.getElementById("text_para").innerHTML=innerText;
@@ -439,7 +444,9 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 
 function end(){
 alert ("start time"+start_time);
-	window.clearInterval(int);
+	//window.clearInterval(int);
+	window.clearTimeout(timerID);
+	
 	input_text=document.getElementById("input_text").value;
 	
 	var end_time=new Date().getTime()/1000;
