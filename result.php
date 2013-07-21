@@ -355,13 +355,6 @@ mysqli_close($con);
 	    <script type="text/javascript">	
 alert( "time = " + sessionStorage.getItem("time"));
 
-	sessionStorage.setItem("time", time_diff);
-	sessionStorage.setItem("words", numOfWords);
-	sessionStorage.setItem("charactersEntered", pos);
-	sessionStorage.setItem("wrongCharacters", err);
-	sessionStorage.setItem("speed", speed);
-	sessionStorage.setItem("errPercentage", errPercentage);
-
 document.getElementById("time_value").innerHTML=sessionStorage.getItem("time");
 document.getElementById("words_value").innerHTML=sessionStorage.getItem("words");
 document.getElementById("charactersEntered_value").innerHTML=sessionStorage.getItem("charactersEntered");
