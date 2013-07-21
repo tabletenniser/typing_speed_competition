@@ -221,7 +221,7 @@ mysqli_close($con);
 				<td>
 					ACCURACY:
 				</td>
-				<td id="errPercentage_value">
+				<td id="accuracy_value">
 					0
 				</td>
 			</tr><br/>
@@ -273,14 +273,14 @@ mysqli_close($con);
 
 		
 	    <script type="text/javascript">	
-alert( "time = " + sessionStorage.getItem("time"));
+alert( "accuracy = " + sessionStorage.getItem("time"));
 
 document.getElementById("time_value").innerHTML=sessionStorage.getItem("time");
 document.getElementById("words_value").innerHTML=sessionStorage.getItem("words");
 document.getElementById("charactersEntered_value").innerHTML=sessionStorage.getItem("charactersEntered");
 document.getElementById("wrongCharacters_value").innerHTML=sessionStorage.getItem("wrongCharacters");
 document.getElementById("speed_value").innerHTML=sessionStorage.getItem("speed");
-document.getElementById("errPercentage_value").innerHTML=sessionStorage.getItem("errPercentage");
+document.getElementById("accuracy_value").innerHTML=sessionStorage.getItem("accuracy");
 	
       window.fbAsyncInit = function() {
         FB.init({
