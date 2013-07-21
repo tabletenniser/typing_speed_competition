@@ -355,7 +355,7 @@ mysqli_close($con);
 	    <script type="text/javascript">	
 alert( "time = " + sessionStorage.getItem("time"));
 
-essionStorage.setItem("time", time_diff);
+	sessionStorage.setItem("time", time_diff);
 	sessionStorage.setItem("words", numOfWords);
 	sessionStorage.setItem("charactersEntered", pos);
 	sessionStorage.setItem("wrongCharacters", err);
