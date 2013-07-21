@@ -176,7 +176,7 @@ mysqli_close($con);
 		
 	<tr><td>
 	<div class="input_text" id= "input_text"><br/>
-		<table cellpadding="5" cellspacing="5">
+		<table border-spacing="15px 5px">
 			<tr>
 				<td>
 					TIME:
@@ -226,10 +226,11 @@ mysqli_close($con);
 				</td>
 			</tr><br/>
 		</table>
+	<br/>
 	</div>
 	</td></tr>
 	<tr><td>
-		<input type="button" id="retry" value="Retry"></input>
+		<input type="button" id="retry" value="Retry"></input><br/>
 		<input type="button" id="sendRequest" value="Compete with Friends" data-message="I want to compete typing speed with you"></input>
 	</td></tr>
 	<tr><td>
