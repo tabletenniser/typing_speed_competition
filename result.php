@@ -155,19 +155,19 @@ mysqli_close($con);
        
 
 <table class="background" width="400px">
-	<tr>
+	<tr><td>
 		<div id="welcome_msg">
 		<h1>Welcome to the typing-speed competition v2.0</h1>  
 		<br/>
 		</div>
-	</tr>
-	<tr>
+	</td></tr>
+	<tr><td>
 		<div id="author">
 		<h6>---- By Aaron Wang</h6>
 		</div>
-	</tr>
+	</td></tr>
 		
-	<tr>
+	<tr><td>
 	<div class="input_text" id= "input_text"><br/>
 		<table>
 			<tr>
@@ -202,7 +202,7 @@ mysqli_close($con);
 					0
 				</td>
 			</tr>
-			<b><tr>
+			<tr>
 				<td>
 					SPEED:
 				</td>
@@ -217,12 +217,15 @@ mysqli_close($con);
 				<td id="errPercentage_value">
 					0
 				</td>
-			</tr></b>
+			</tr><br/>
 		</table>
 	</div>
-	</tr>
-	
-	<tr>
+	</td></tr>
+	<tr><td>
+		<input type="button" id="sendRequest" value="submit" data-message="I want to compete typing speed with you"></input>
+	</td></tr>
+	<tr><td>
+	<br/>
 	<div class="horizontal_list">
         <h3>Top players of your friends</h3>
         <ul class="friends">
@@ -245,8 +248,7 @@ mysqli_close($con);
           ?>
         </ul>
       </div>
-	  <input type="button" id="sendRequest" value="submit" data-message="I want to compete typing speed with you"></input>
-	<tr/>
+	</td></tr>
 </table>
 <br/>
 </div>
@@ -267,7 +269,7 @@ alert( "time = " + sessionStorage.getItem("time"));
 document.getElementById("time_value").innerHTML=sessionStorage.getItem("time");
 document.getElementById("words_value").innerHTML=sessionStorage.getItem("words");
 document.getElementById("charactersEntered_value").innerHTML=sessionStorage.getItem("charactersEntered");
-document.getElementById("wrongChracters_value").innerHTML=sessionStorage.getItem("wrongCharacters");
+document.getElementById("wrongCharacters_value").innerHTML=sessionStorage.getItem("wrongCharacters");
 document.getElementById("speed_value").innerHTML=sessionStorage.getItem("speed");
 document.getElementById("errPercentage_value").innerHTML=sessionStorage.getItem("errPercentage");
 	
