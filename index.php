@@ -221,7 +221,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
 				<h2>Speed: </h2>
 			</td>
 			<td>
-				<h2><span id="speed">0</span>word/s</h2>
+				<h2><span id="speed">0</span> word/s</h2>
 			</td>
 			<td>
 				<h2>Accuracy: </h2>
@@ -234,7 +234,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
 				<h2>Total Score: </h2>
 			</td>
 			<td>
-				<h2><span id="score">0</span>pts</h2>
+				<h2><span id="score">0</span> pts</h2>
 			</td>
 		</tr></table>
 		</div>
@@ -428,10 +428,10 @@ function clock()
   {
 	  timePassedInSec++;
 	  document.getElementById("time").innerHTML=timePassedInSec;
-	  
-	  document.getElementById("score").innerHTML=Math.round(speed*10*accuracy);	  
-	  document.getElementById("speed").innerHTML=numOfWords/time_diff;
-	  document.getElementById("accuracy").innerHTML=(1-err/pos)*100;
+	    
+	  document.getElementById("speed").innerHTML=numOfWords/timePassedInSec;
+	  document.getElementById("accuracy").innerHTML=(1-err/pos)*100;	  
+	  document.getElementById("score").innerHTML=Math.round(speed*10*accuracy);	
   }
 
 
