@@ -436,6 +436,9 @@ function clock()
 	  document.getElementById("time").innerHTML=Math.round(timePassedInSec*1000)/1000;	// 3 decimal places
 	    
 	  document.getElementById("speed").innerHTML=Math.round(numOfWords/timePassedInSec*1000)/1000;
+	  
+	  alert(err);
+		alert(position);
 	  if (position==0){
 		document.getElementById("accuracy").innerHTML=0;	  
 	  	document.getElementById("score").innerHTML=0;
@@ -468,12 +471,12 @@ position++;
 	if (String.fromCharCode(chCode)==text_array[randomNumberGenerator].charAt(position)){		
 		isCorrectChar=true;
 	}else{
-		err=err+1;
+		err++;
 		isCorrectChar=false;
 	}
 	
 	if (text_array[randomNumberGenerator].charAt(position-1)==" "){
-			numOfWords+=1;
+			numOfWords++;
 			document.getElementById("word_entered").innerHTML=numOfWords;
 	}
 	
