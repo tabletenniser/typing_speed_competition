@@ -238,8 +238,10 @@ mysqli_close($con);
 	</div>
 	</td></tr>
 	<tr><td>
-		<input type="button" id="retry" value="Retry"></input><br/>
+		<div class="center_alignment">
+		<input type="button" id="retry" value="Retry" ></input><br/>
 		<input type="button" id="sendRequest" value="Compete with Friends" data-message="I want to compete typing speed with you"></input>
+		</div>
 	</td></tr>
 	<tr><td>
 	<br/>

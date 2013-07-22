@@ -427,9 +427,9 @@ var timePassedInSec=0;
 function clock()
   {
 	  timePassedInSec++;
-	  document.getElementById("time").innerHTML=timePassedInSec;
+	  document.getElementById("time").innerHTML=Math.round(timePassedInSec*1000)/1000;	// 3 decimal places
 	    
-	  document.getElementById("speed").innerHTML=numOfWords/timePassedInSec;
+	  document.getElementById("speed").innerHTML=Math.round(numOfWords/timePassedInSec*1000)/1000;
 	  document.getElementById("accuracy").innerHTML=(1-err/pos)*100;	  
 	  document.getElementById("score").innerHTML=Math.round(speed*10*accuracy);	
   }
@@ -498,10 +498,10 @@ function end(){
 	var end_time=new Date().getTime()/1000;
 	var time_diff=end_time-start_time;
 	var accuracy=(1-err/pos)*100;
-	var speed=numOfWords/time_diff;
+	var speed=Math.round(numOfWords/time_diff*1000)/1000;
 	
 	// set session variables to pass values to result.php
-	sessionStorage.setItem("time", time_diff);
+	sessionStorage.setItem("time", Math.round(time_diff*1000)/1000);
 	sessionStorage.setItem("words", numOfWords);
 	sessionStorage.setItem("charactersEntered", pos);
 	sessionStorage.setItem("wrongCharacters", err);

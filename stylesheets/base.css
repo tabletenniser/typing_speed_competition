@@ -353,6 +353,10 @@ header .tagline {
   text-indent: -9999px;
 }
 
+td
+{
+	padding:15px 5px;
+}
 
 /* ------------------------------------------ */
 
@@ -368,6 +372,9 @@ div.input_text{
 	
 	border:2px solid #a1a1a1;
 	border-radius:10px;
+}
+div.center_alignment{
+	text-align: center;
 }
 
 div.input_box{
