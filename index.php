@@ -466,21 +466,21 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 position++;
 alert(position);
 
-	if (String.fromCharCode(chCode)==text_array[randomNumberGenerator].charAt(pos)){		
+	if (String.fromCharCode(chCode)==text_array[randomNumberGenerator].charAt(position)){		
 		isCorrectChar=true;
 	}else{
 		err=err+1;
 		isCorrectChar=false;
 	}
 	
-	if (text_array[randomNumberGenerator].charAt(pos)==" "){
+	if (text_array[randomNumberGenerator].charAt(position-1)==" "){
 			numOfWords+=1;
 			document.getElementById("word_entered").innerHTML=numOfWords;
 	}
 	
-	pos++;
+	//pos++;
 	
-	if (pos==text_array[randomNumberGenerator].length){
+	if (position==text_array[randomNumberGenerator].length){
 		numOfWords+=1;
 		document.getElementById("word_entered").innerHTML=numOfWords;
 		end();
@@ -488,19 +488,19 @@ alert(position);
 	
 	//innerText=innerText.substr(0, pos-1);	
 	if (isCorrectChar){
-		previousText+="<span style='color: #2222EE'>"+text_array[randomNumberGenerator].charAt(pos-1)+"</span>";
+		previousText+="<span style='color: #2222EE'>"+text_array[randomNumberGenerator].charAt(position-1)+"</span>";
 	}
 	else{
-		previousText+="<span style='color: #EE2222'>"+text_array[randomNumberGenerator].charAt(pos-1)+"</span>";
+		previousText+="<span style='color: #EE2222'>"+text_array[randomNumberGenerator].charAt(position-1)+"</span>";
 		document.getElementById("char_entered_wrong").innerHTML=err;
 	}
 	innerText=previousText;
-	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text_array[randomNumberGenerator].charAt(pos)+"</span>";
+	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text_array[randomNumberGenerator].charAt(position)+"</span>";
 	//innerText+=text_array[randomNumberGenerator].substr(pos+1, text_array[randomNumberGenerator].length - pos);	// 2nd para is the length selected
-	innerText+=text_array[randomNumberGenerator].substr(pos+1);
+	innerText+=text_array[randomNumberGenerator].substr(position+1);
 	
 	
-	document.getElementById("char_entered").innerHTML=pos;
+	document.getElementById("char_entered").innerHTML=position;
 	document.getElementById("text_para").innerHTML=innerText;
 	//document.getElementById("text_para").innerHTML=text.substr(0, pos)+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
 }
