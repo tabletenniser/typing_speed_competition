@@ -437,15 +437,15 @@ function clock()
 	    
 	  document.getElementById("speed").innerHTML=Math.round(numOfWords/timePassedInSec*1000)/1000;
 	  
-	  alert(err);
-		alert(position);
-	  if (position==0){
+	if (position==0){
 		document.getElementById("accuracy").innerHTML=0;	  
 	  	document.getElementById("score").innerHTML=0;
-	  }else{		  	
+	}else if (speed*10*(1-err/position)<1){
+			document.getElementById("score").innerHTML=0;
+	}else{		  	
 	  	document.getElementById("accuracy").innerHTML=(1-err/position)*100;	  
 	  	document.getElementById("score").innerHTML=Math.round(speed*10*(1-err/position));	
-	  }
+	}
   }
 
 
@@ -468,7 +468,7 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 	//if the user inputs the correct character
 position++;
 
-	if (String.fromCharCode(chCode)==text_array[randomNumberGenerator].charAt(position)){		
+	if (String.fromCharCode(chCode)==text_array[randomNumberGenerator].charAt(position-1)){		
 		isCorrectChar=true;
 	}else{
 		err++;
