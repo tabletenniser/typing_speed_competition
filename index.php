@@ -422,6 +422,7 @@ var time = 0;
 var TimerID=0;
 var err = 0;
 var pos = 0;
+var position=0;
 var numOfWords=0;
 var innerText="";
 var previousText="";
@@ -462,8 +463,8 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 //alert("new Text: input"+input_text.charAt(input_text.length-1)+"text"+text.charAt(pos));
 
 	//if the user inputs the correct character
-alert(pos);
-alert(text_array[randomNumberGenerator].charAt(pos));
+position++;
+alert(position);
 
 	if (String.fromCharCode(chCode)==text_array[randomNumberGenerator].charAt(pos)){		
 		isCorrectChar=true;
@@ -476,9 +477,9 @@ alert(text_array[randomNumberGenerator].charAt(pos));
 			numOfWords+=1;
 			document.getElementById("word_entered").innerHTML=numOfWords;
 	}
-	alert(pos);
+	
 	pos++;
-	alert(pos);
+	
 	if (pos==text_array[randomNumberGenerator].length){
 		numOfWords+=1;
 		document.getElementById("word_entered").innerHTML=numOfWords;
