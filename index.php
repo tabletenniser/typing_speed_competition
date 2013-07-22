@@ -169,13 +169,7 @@ mysqli_close($con);
 		
 	<tr><td>
 	<div class="input_text" id= "input_text">
-				<p id="text_para" style="font-size: 18px; color: #222299; margin: 15px"><u>T</u>he term "design of experiments" derives from early statistical work performed by Sir Ronald Fisher. He 
-was described as "a genius who almost single-handedly created the foundations for modern statistical 
-science." Fisher initiated the principles of design of experiments and elaborated on his studies of "analysis of variance". Perhaps even more important, Fisher began his systematic approach to the 
-analysis of real data as the springboard for the development of new statistical methods. He began to pay 
-particular attention to the labour involved in the necessary computations performed by hand, and 
-developed methods that were as practical as they were founded in rigour. In 1925, this work culminated 
-in the publication of his first book, Statistical Methods for Research Workers.
+				<p id="text_para" style="font-size: 18px; color: #222299; margin: 15px">
 		</p></div>
 	
 		<div class="input_box">
@@ -408,7 +402,10 @@ var textCharacters = new Array();	// boolean array, 1 for correct char, 0 for wr
 
 var text_array = new Array();
 text_array[0] = "ab \" cd.";
-text_array[1] = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour. In 1925, this work culminated in the publication of his first book, Statistical Methods for Research Workers.";
+text_array[1] = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour.";
+text_array[2] = "On their return to England, Hawking attended Radlett School for a year and from September 1952, St Albans School. The family placed a high value on education. Hawking's father wanted his son to attend the well-regarded Westminster School, but the 13-year-old Hawking was ill on the day of the scholarship examination. His family could not afford the school fees without the financial aid of a scholarship, so Hawking remained at St Albans. A positive consequence was that Hawking remained with a close group of friends with whom he enjoyed board games, the manufacture of fireworks, model aeroplanes and boats, and long discussions about Christianity and extrasensory perception.";
+
+
 var randomNumberGenerator=0;
 
 document.getElementById("text_para").innerHTML=text_array[randomNumberGenerator];

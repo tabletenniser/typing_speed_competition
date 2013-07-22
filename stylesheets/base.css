@@ -358,6 +358,15 @@ td.large_padding
 	padding:3px 35px;
 }
 
+tr.highlight_row{
+	font-weight: bold;
+}
+
+tr.super_highlight_row{
+	font-weight: bold;
+	color: #FFAAAA
+}
+
 /* ------------------------------------------ */
 
 /* =input text

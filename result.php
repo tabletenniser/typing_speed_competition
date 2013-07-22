@@ -209,7 +209,7 @@ mysqli_close($con);
 					0
 				</td>
 			</tr>
-			<tr>
+			<tr class="highlight_row">
 				<td class="large_padding">
 					SPEED:
 				</td>
@@ -217,14 +217,14 @@ mysqli_close($con);
 					0
 				</td>
 			</tr>
-			<tr>
+			<tr class="highlight_row">
 				<td class="large_padding">
 					ACCURACY:
 				</td>
 				<td id="accuracy_value" class="large_padding">
 					0
 				</td>
-			</tr>
+			</tr class="super_highlight_row">
 			<tr>
 				<td class="large_padding">
 					TOTAL SCORE:
@@ -285,13 +285,13 @@ mysqli_close($con);
 	    <script type="text/javascript">	
 alert( "accuracy = " + sessionStorage.getItem("time"));
 
-document.getElementById("time_value").innerHTML=sessionStorage.getItem("time");
+document.getElementById("time_value").innerHTML=sessionStorage.getItem("time")+" s";
 document.getElementById("words_value").innerHTML=sessionStorage.getItem("words");
 document.getElementById("charactersEntered_value").innerHTML=sessionStorage.getItem("charactersEntered");
 document.getElementById("wrongCharacters_value").innerHTML=sessionStorage.getItem("wrongCharacters");
-document.getElementById("speed_value").innerHTML=sessionStorage.getItem("speed");
+document.getElementById("speed_value").innerHTML=sessionStorage.getItem("speed")+" words/s";
 document.getElementById("accuracy_value").innerHTML=sessionStorage.getItem("accuracy")+"%";
-document.getElementById("score_value").innerHTML=sessionStorage.getItem("score");
+document.getElementById("score_value").innerHTML=sessionStorage.getItem("score")+" pts";
       window.fbAsyncInit = function() {
         FB.init({
           appId      : '<?php echo AppInfo::appID(); ?>', // App ID
