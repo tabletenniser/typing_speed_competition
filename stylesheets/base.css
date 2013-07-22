@@ -353,9 +353,9 @@ header .tagline {
   text-indent: -9999px;
 }
 
-td
+td.large_padding
 {
-	padding:15px 5px;
+	padding:3px 35px;
 }
 
 /* ------------------------------------------ */

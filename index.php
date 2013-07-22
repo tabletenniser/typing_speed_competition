@@ -430,8 +430,13 @@ function clock()
 	  document.getElementById("time").innerHTML=Math.round(timePassedInSec*1000)/1000;	// 3 decimal places
 	    
 	  document.getElementById("speed").innerHTML=Math.round(numOfWords/timePassedInSec*1000)/1000;
-	  document.getElementById("accuracy").innerHTML=(1-err/pos)*100;	  
-	  document.getElementById("score").innerHTML=Math.round(speed*10*accuracy);	
+	  if (pos=0){
+		document.getElementById("accuracy").innerHTML=0;	  
+	  	document.getElementById("score").innerHTML=0;
+	  }else{		  	
+	  	document.getElementById("accuracy").innerHTML=(1-err/pos)*100;	  
+	  	document.getElementById("score").innerHTML=Math.round(speed*10*(1-err/pos));	
+	  }
   }
 
 

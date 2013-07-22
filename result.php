@@ -178,58 +178,58 @@ mysqli_close($con);
 	<div class="input_text" id= "input_text"><br/>
 		<table cellpadding="10">
 			<tr>
-				<td>
+				<td class="large_padding">
 					TIME:
 				</td>
-				<td id="time_value" border-left="10px">
+				<td id="time_value" class="large_padding">
 					0
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="large_padding">
 					WORDS:
 				</td>
-				<td id="words_value" border-left="10px">
+				<td id="words_value" class="large_padding">
 					0
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="large_padding">
 					CHARACTERS ENTERED:
 				</td>
-				<td id="charactersEntered_value">
+				<td id="charactersEntered_value" class="large_padding">
 					0
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="large_padding">
 					WRONG CHARACTERS:
 				</td>
-				<td id="wrongCharacters_value">
+				<td id="wrongCharacters_value" class="large_padding">
 					0
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="large_padding">
 					SPEED:
 				</td>
-				<td id="speed_value">
+				<td id="speed_value" class="large_padding">
 					0
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="large_padding">
 					ACCURACY:
 				</td>
-				<td id="accuracy_value">
+				<td id="accuracy_value" class="large_padding">
 					0
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="large_padding">
 					TOTAL SCORE:
 				</td>
-				<td id="score_value">
+				<td id="score_value" class="large_padding">
 					0
 				</td>
 			</tr><br/>
