@@ -462,6 +462,9 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 //alert("new Text: input"+input_text.charAt(input_text.length-1)+"text"+text.charAt(pos));
 
 	//if the user inputs the correct character
+alert(pos);
+alert(text_array[randomNumberGenerator].charAt(pos));
+
 	if (String.fromCharCode(chCode)==text_array[randomNumberGenerator].charAt(pos)){
 		
 		isCorrectChar=true;
@@ -492,7 +495,9 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 	}
 	innerText=previousText;
 	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text_array[randomNumberGenerator].charAt(pos)+"</span>";
-	innerText+=text_array[randomNumberGenerator].substr(pos+1, text_array[randomNumberGenerator].length - pos);
+	//innerText+=text_array[randomNumberGenerator].substr(pos+1, text_array[randomNumberGenerator].length - pos);	// 2nd para is the length selected
+	innerText+=text_array[randomNumberGenerator].substr(pos+1);
+	
 	
 	document.getElementById("char_entered").innerHTML=pos;
 	document.getElementById("text_para").innerHTML=innerText;
