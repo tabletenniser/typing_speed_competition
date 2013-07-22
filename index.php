@@ -154,7 +154,7 @@ mysqli_close($con);
       <div>
        
 
-<table class="background" width="400px">
+<table class="background">
 	<tr>
 		<div id="welcome_msg">
 		<h1>Welcome to the typing-speed competition v2.0</h1>  
@@ -221,7 +221,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
         </ul>
       </div>
 	  <input type="button" id="sendRequest" value="submit" data-message="I want to compete typing speed with you"></input>
-	<tr/>	
+	</tr>	
 	<tr>
 	<div id="share-app">
           
@@ -229,7 +229,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
                 <span class="apprequests">Invite your friends to compete~</span>
               </a>
     </div>
-	<tr/>
+	</tr>
 </table>
 
 
