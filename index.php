@@ -451,7 +451,7 @@ function end(){
 	// calculation of values required
 	var end_time=new Date().getTime()/1000;
 	var time_diff=end_time-start_time;
-	var accuracy=1-err/pos*100;
+	var accuracy=(1-err/pos)*100;
 	var speed=numOfWords/time_diff;
 	
 	// set session variables to pass values to result.php
@@ -461,6 +461,7 @@ function end(){
 	sessionStorage.setItem("wrongCharacters", err);
 	sessionStorage.setItem("speed", speed);
 	sessionStorage.setItem("accuracy", accuracy);
+	sessionStorage.setItem("score", Math.round(numOfWords*1000*accuracy));
 	window.location = "result.php";
 	
 	/*

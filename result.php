@@ -224,6 +224,14 @@ mysqli_close($con);
 				<td id="accuracy_value">
 					0
 				</td>
+			</tr>
+			<tr>
+				<td>
+					TOTAL SCORE:
+				</td>
+				<td id="score_value">
+					0
+				</td>
 			</tr><br/>
 		</table>
 	<br/>
@@ -280,8 +288,8 @@ document.getElementById("words_value").innerHTML=sessionStorage.getItem("words")
 document.getElementById("charactersEntered_value").innerHTML=sessionStorage.getItem("charactersEntered");
 document.getElementById("wrongCharacters_value").innerHTML=sessionStorage.getItem("wrongCharacters");
 document.getElementById("speed_value").innerHTML=sessionStorage.getItem("speed");
-document.getElementById("accuracy_value").innerHTML=sessionStorage.getItem("accuracy");
-	
+document.getElementById("accuracy_value").innerHTML=sessionStorage.getItem("accuracy")+"%";
+document.getElementById("score_value").innerHTML=sessionStorage.getItem("score");
       window.fbAsyncInit = function() {
         FB.init({
           appId      : '<?php echo AppInfo::appID(); ?>', // App ID
