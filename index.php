@@ -195,7 +195,7 @@ in the publication of his first book, Statistical Methods for Research Workers.
 				<h2>Time: </h2>
 			</td>
 			<td>
-				<h2><span id="time">0</span> seconds</h2>
+				<h2><span id="time">0</span> s</h2>
 			</td>
 			<td>
 				<h2>Words: </h2>
@@ -221,20 +221,20 @@ in the publication of his first book, Statistical Methods for Research Workers.
 				<h2>Speed: </h2>
 			</td>
 			<td>
-				<h2><span id="speed">0</span></h2>
+				<h2><span id="speed">0</span>word/s</h2>
 			</td>
 			<td>
 				<h2>Accuracy: </h2>
 			</td>
 			<td>
-				<h2><span id="accuracy">0</span></h2>
+				<h2><span id="accuracy">0</span>%</h2>
 			</td>
 		</tr><tr>
 			<td>
 				<h2>Total Score: </h2>
 			</td>
 			<td>
-				<h2><span id="score">0</span></h2>
+				<h2><span id="score">0</span>pts</h2>
 			</td>
 		</tr></table>
 		</div>
@@ -428,6 +428,10 @@ function clock()
   {
 	  timePassedInSec++;
 	  document.getElementById("time").innerHTML=timePassedInSec;
+	  
+	  document.getElementById("score").innerHTML=Math.round(speed*10*accuracy);	  
+	  document.getElementById("speed").innerHTML=numOfWords/time_diff;
+	  document.getElementById("accuracy").innerHTML=(1-err/pos)*100;
   }
 
 
@@ -503,7 +507,7 @@ function end(){
 	sessionStorage.setItem("wrongCharacters", err);
 	sessionStorage.setItem("speed", speed);
 	sessionStorage.setItem("accuracy", accuracy);
-	sessionStorage.setItem("score", Math.round(speed*1000*accuracy));
+	sessionStorage.setItem("score", Math.round(speed*10*accuracy));
 	window.location = "result.php";
 	
 	/*

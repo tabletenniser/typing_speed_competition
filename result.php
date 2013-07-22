@@ -176,7 +176,7 @@ mysqli_close($con);
 		
 	<tr><td>
 	<div class="input_text" id= "input_text"><br/>
-		<table border-spacing="15px 5px">
+		<table cellpadding="10">
 			<tr>
 				<td>
 					TIME:
