@@ -189,14 +189,56 @@ in the publication of his first book, Statistical Methods for Research Workers.
 	
 	<tr><td>
 		<div id="realtime_statistics">
-		<h2>Time: <span id="time">0</span> seconds</h2>
-		<h2>Words entered: <span id="word_entered">0</span></h2>
-		<h2>Characters entered: <span id="char_entered">0</span></h2>
-		<h2>Wrong characters: <span id="char_entered_wrong">0</span></h2><br/>
+		<table>
+		<tr>
+			<td>
+				<h2>Time: </h2>
+			</td>
+			<td>
+				<h2><span id="time">0</span> seconds</h2>
+			</td>
+			<td>
+				<h2>Words: </h2>
+			</td>
+			<td>
+				<h2><span id="word_entered">0</span></h2>
+			</td>
+		</tr><tr>
+			<td>
+				<h2>Characters Enetred: </h2>
+			</td>
+			<td>
+				<h2><span id="char_entered">0</span></h2>
+			</td>
+			<td>
+				<h2>Wrong Characters: </h2>
+			</td>
+			<td>
+				<h2><span id="char_entered_wrong">0</span></h2>
+			</td>
+		</tr><tr>
+			<td>
+				<h2>Speed: </h2>
+			</td>
+			<td>
+				<h2><span id="speed">0</span></h2>
+			</td>
+			<td>
+				<h2>Accuracy: </h2>
+			</td>
+			<td>
+				<h2><span id="accuracy">0</span></h2>
+			</td>
+		</tr><tr>
+			<td>
+				<h2>Total Score: </h2>
+			</td>
+			<td>
+				<h2><span id="score">0</span></h2>
+			</td>
+		</tr></table>
 		</div>
 	</td></tr>
-	
-	
 	<tr><td>
 	<div class="horizontal_list">
         <h3>Top players of your friends</h3>
