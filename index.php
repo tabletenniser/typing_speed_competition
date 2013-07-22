@@ -428,6 +428,7 @@ var innerText="";
 var previousText="";
 var isCorrectChar=false;
 var timePassedInSec=0;
+var started=false;
 
 
 function clock()
@@ -440,19 +441,24 @@ function clock()
 	if (position==0){
 		document.getElementById("accuracy").innerHTML=0;	  
 	  	document.getElementById("score").innerHTML=0;
-	}else if (speed*10*(1-err/position)<1){
+	}else if (speed==0 || err/position==1){
 			document.getElementById("score").innerHTML=0;
 	}else{		  	
 	  	document.getElementById("accuracy").innerHTML=(1-err/position)*100;	  
+		
+		alert();
 	  	document.getElementById("score").innerHTML=Math.round(speed*10*(1-err/position));	
 	}
   }
 
 
-function start(){	
-	start_time=new Date().getTime()/1000;
-	//var int=self.
-	TimerID=setInterval(function(){clock()},1000);
+function start(){
+	if (!started){
+		start_time=new Date().getTime()/1000;
+		//var int=self.
+		TimerID=setInterval(function(){clock()},1000);
+		started=true;
+	}
 	//timerID=setTimeout(function(){clock()},1000);
 //alert (start_time);
 }
