@@ -161,7 +161,7 @@ mysqli_close($con);
       <div>
        
 
-<table class="background" width="400px">
+<table class="background">
 	<tr><td>
 		<div id="welcome_msg">
 		<h1>Welcome to the typing-speed competition v2.0</h1>  

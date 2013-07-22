@@ -155,19 +155,19 @@ mysqli_close($con);
        
 
 <table class="background">
-	<tr>
+	<tr><td>
 		<div id="welcome_msg">
 		<h1>Welcome to the typing-speed competition v2.0</h1>  
 		<br/>
 		</div>
-	</tr>
-	<tr>
+	</td></tr>
+	<tr><td>
 		<div id="author">
 		<h6>---- By Aaron Wang</h6>
 		</div>
-	</tr>
+	</td></tr>
 		
-	<tr>
+	<tr><td>
 	<div class="input_text" id= "input_text">
 				<p id="text_para" style="font-size: 18px; color: #222299; margin: 15px"><u>T</u>he term "design of experiments" derives from early statistical work performed by Sir Ronald Fisher. He 
 was described as "a genius who almost single-handedly created the foundations for modern statistical 
@@ -185,19 +185,19 @@ in the publication of his first book, Statistical Methods for Research Workers.
 			
 			<input type="text" id="input_text" name="input_text" onkeypress="updateText(event);" onclick="start();" style="width: 660px; overflow:hidden;"></input>	
 		</div>
-	</tr>
+	</td></tr>
 	
-	<tr>
+	<tr><td>
 		<div id="realtime_statistics">
 		<h2>Time: <span id="time">0</span> seconds</h2>
 		<h2>Words entered: <span id="word_entered">0</span></h2>
 		<h2>Characters entered: <span id="char_entered">0</span></h2>
 		<h2>Wrong characters: <span id="char_entered_wrong">0</span></h2><br/>
 		</div>
-	</tr>
+	</td></tr>
 	
 	
-	<tr>
+	<tr><td>
 	<div class="horizontal_list">
         <h3>Top players of your friends</h3>
         <ul class="friends">
@@ -221,15 +221,15 @@ in the publication of his first book, Statistical Methods for Research Workers.
         </ul>
       </div>
 	  <input type="button" id="sendRequest" value="submit" data-message="I want to compete typing speed with you"></input>
-	</tr>	
-	<tr>
+	</td></tr>	
+	<tr><td>
 	<div id="share-app">
           
               <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="I want to compete typing speed with you">
                 <span class="apprequests">Invite your friends to compete~</span>
               </a>
     </div>
-	</tr>
+	</td></tr>
 </table>
 
 
@@ -461,7 +461,7 @@ function end(){
 	sessionStorage.setItem("wrongCharacters", err);
 	sessionStorage.setItem("speed", speed);
 	sessionStorage.setItem("accuracy", accuracy);
-	sessionStorage.setItem("score", Math.round(numOfWords*1000*accuracy));
+	sessionStorage.setItem("score", Math.round(speed*1000*accuracy));
 	window.location = "result.php";
 	
 	/*
