@@ -444,7 +444,7 @@ function clock()
 			document.getElementById("score").innerHTML=0;
 	}else{		  	
 	  	document.getElementById("accuracy").innerHTML=(1-err/position)*100;	  
-	  	document.getElementById("score").innerHTML=Math.round(numOfWords/timePassedInSec*10*(1-err/position));	
+	  	document.getElementById("score").innerHTML=Math.round(numOfWords/timePassedInSec*1000*(1-err/position));	
 	}
   }
 
