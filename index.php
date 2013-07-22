@@ -465,8 +465,7 @@ var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
 alert(pos);
 alert(text_array[randomNumberGenerator].charAt(pos));
 
-	if (String.fromCharCode(chCode)==text_array[randomNumberGenerator].charAt(pos)){
-		
+	if (String.fromCharCode(chCode)==text_array[randomNumberGenerator].charAt(pos)){		
 		isCorrectChar=true;
 	}else{
 		err=err+1;
@@ -477,8 +476,9 @@ alert(text_array[randomNumberGenerator].charAt(pos));
 			numOfWords+=1;
 			document.getElementById("word_entered").innerHTML=numOfWords;
 	}
-	
-	pos++;	
+	alert(pos);
+	pos++;
+	alert(pos);
 	if (pos==text_array[randomNumberGenerator].length){
 		numOfWords+=1;
 		document.getElementById("word_entered").innerHTML=numOfWords;
