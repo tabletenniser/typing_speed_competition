@@ -424,7 +424,7 @@ var err = 0;
 var pos = 0;
 var numOfWords=0;
 var innerText="";
-var previousText=""
+var previousText="";
 var isCorrectChar=false;
 var timePassedInSec=0;
 
