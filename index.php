@@ -478,7 +478,7 @@ alert(text_array[randomNumberGenerator].charAt(pos));
 			document.getElementById("word_entered").innerHTML=numOfWords;
 	}
 	
-	pos=pos+1;	
+	pos++;	
 	if (pos==text_array[randomNumberGenerator].length){
 		numOfWords+=1;
 		document.getElementById("word_entered").innerHTML=numOfWords;
