@@ -283,8 +283,6 @@ mysqli_close($con);
 
 		
 	    <script type="text/javascript">	
-alert( "accuracy = " + sessionStorage.getItem("time"));
-
 document.getElementById("time_value").innerHTML=sessionStorage.getItem("time")+" s";
 document.getElementById("words_value").innerHTML=sessionStorage.getItem("words");
 document.getElementById("charactersEntered_value").innerHTML=sessionStorage.getItem("charactersEntered");
