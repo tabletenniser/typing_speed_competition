@@ -5,9 +5,7 @@ require_once('AppInfo.php');	// contains appID, SECRET and URL
 
 // Enforce https on production
 if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
- 
-  header('Location: https://google.com');
-    trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
+ trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
  
   header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
   exit();
@@ -30,20 +28,12 @@ if ($user_id) {
     $basic = $facebook->api('/me');
   } catch (FacebookApiException $e) {
     if (!$facebook->getUser()) {
-	
-	header('Location: https://renren.com');
-	
-		trigger_error("Cannot get user ID", E_USER_NOTICE);
-  
+		trigger_error("Cannot get user ID", E_USER_NOTICE);  
       header('Location: '. AppInfo::getUrl($_SERVER['REQUEST_URI']));
       exit();
     }
   }
 	
-	//graph API to retrieve likes, friends and photos
-  $likes = idx($facebook->api('/me/likes?limit=4'), 'data', array());
-  $friends = idx($facebook->api('/me/friends?limit=4'), 'data', array());
-  $photos = idx($facebook->api('/me/photos?limit=16'), 'data', array());
   //FQL
   $app_using_friends = $facebook->api(array(
     'method' => 'fql.query',
@@ -55,8 +45,15 @@ if ($user_id) {
 $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
 
+// post scores on the api
+$success=$facebook->api(
+    '/me/feed/',
+    'post',
+    array('access_token' => $this->access_token, 'message' => 'Playing around with FB Graph..')
+);
 
 
+$facebook->api('/'. AppInfo::appID());
 
 
 /*
@@ -249,17 +246,25 @@ mysqli_close($con);
         <h3>Top players of your friends</h3>
         <ul class="friends">
           <?php
-            foreach ($app_using_friends as $auf) {
+		  // GET the scores from fb api
+		  $scores = idx($facebook->api('/'+$app_info+'/scores?limit=16'), 'data', array());
+		  
+            foreach ($scores as $scoreForIndividualUser) {
               // Extract the pieces of info we need from the requests above
-              $id = idx($auf, 'uid');
-              $name = idx($auf, 'name');
+              $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
+              $name = idx(idx($scoreForIndividualUser, 'user'), 'name');
           ?>
           <li>
 		  	<div>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>"><br/>
-              <?php echo he($name); ?>
-            </a>
+            <a href="https://www.facebook.com/<?php echo he($user_id); ?>" target="_top">
+              <img src="https://graph.facebook.com/<?php echo he($user_id) ?>/picture?type=square" alt="<?php echo he($name); ?>"><br/>
+              <?php 
+			  	echo he($name); 
+			  ?>
+            </a><br/>
+			<?php 
+			echo he((idx($scoreForIndividualUser, 'score')); 
+			  ?>pts
 			</div>
           </li>
           <?php

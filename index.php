@@ -5,8 +5,6 @@ require_once('AppInfo.php');	// contains appID, SECRET and URL
 
 // Enforce https on production
 if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
- 
-  header('Location: https://google.com');
     trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
  
   header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
@@ -30,8 +28,6 @@ if ($user_id) {
     $basic = $facebook->api('/me');
   } catch (FacebookApiException $e) {
     if (!$facebook->getUser()) {
-	
-	header('Location: https://renren.com');
 	
 		trigger_error("Cannot get user ID", E_USER_NOTICE);
   
@@ -238,17 +234,25 @@ mysqli_close($con);
         <h3>Top players of your friends</h3>
         <ul class="friends">
           <?php
-            foreach ($app_using_friends as $auf) {
+		  // GET the scores from fb api
+		  $scores = idx($facebook->api('/'+$app_info+'/scores?limit=16'), 'data', array());
+		  
+            foreach ($scores as $scoreForIndividualUser) {
               // Extract the pieces of info we need from the requests above
-              $id = idx($auf, 'uid');
-              $name = idx($auf, 'name');
+              $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
+              $name = idx(idx($scoreForIndividualUser, 'user'), 'name');
           ?>
           <li>
 		  	<div>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>"><br/>
-              <?php echo he($name); ?>
-            </a>
+            <a href="https://www.facebook.com/<?php echo he($user_id); ?>" target="_top">
+              <img src="https://graph.facebook.com/<?php echo he($user_id) ?>/picture?type=square" alt="<?php echo he($name); ?>"><br/>
+              <?php 
+			  	echo he($name); 
+			  ?>
+            </a><br/>
+			<?php 
+			echo he((idx($scoreForIndividualUser, 'score')); 
+			  ?>pts
 			</div>
           </li>
           <?php
@@ -267,23 +271,6 @@ mysqli_close($con);
     </div>
 	</td></tr>
 </table>
-
-
-
-
-<br/>
-
-	   <p class="tagline">
-          This is my app
-          <a href="<?php echo he(idx($app_info, 'link'));?>" target="_top"><?php echo he($app_name); ?></a>
-        </p>
-
-        <div id="share-app">
-          
-              <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="Test this awesome app">
-                <span class="apprequests">Share this app with your friends!</span>
-              </a>
-        </div>
       </div>
 	  
 	  
@@ -291,109 +278,11 @@ mysqli_close($con);
       <div>
         <h1>Welcome to typing test competition v2.0!</h1>
 		<br/>
-        <div class="fb-login-button" data-scope="user_likes,user_photos"></div>
+        <div class="fb-login-button" data-scope="publish_actions, user_games_activity, friends_games_activity"></div>
       </div>
       <?php } ?>
 
-    <?php
-      if ($user_id) {
-    ?>
 
-    <section id="samples" class="clearfix">
-      <h1>Examples of the Facebook Graph API</h1>
-
-      <div class="list">
-        <h3>A few of your friends</h3>
-        <ul class="friends">
-          <?php
-            foreach ($friends as $friend) {
-              // Extract the pieces of info we need from the requests above
-              $id = idx($friend, 'id');
-              $name = idx($friend, 'name');
-          ?>
-          <li>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
-              <?php echo he($name); ?>
-            </a>
-          </li>
-          <?php
-            }
-          ?>
-        </ul>
-      </div>
-
-      <div class="list inline">
-        <h3>Recent photos</h3>
-        <ul class="photos">
-          <?php
-            $i = 0;
-            foreach ($photos as $photo) {
-              // Extract the pieces of info we need from the requests above
-              $id = idx($photo, 'id');
-              $picture = idx($photo, 'picture');
-              $link = idx($photo, 'link');
-
-              $class = ($i++ % 4 === 0) ? 'first-column' : '';
-          ?>
-          <li style="background-image: url(<?php echo he($picture); ?>);" class="<?php echo $class; ?>">
-            <a href="<?php echo he($link); ?>" target="_top"></a>
-          </li>
-          <?php
-            }
-          ?>
-        </ul>
-      </div>
-
-      <div class="list">
-        <h3>Things you like</h3>
-        <ul class="things">
-          <?php
-            foreach ($likes as $like) {
-              // Extract the pieces of info we need from the requests above
-              $id = idx($like, 'id');
-              $item = idx($like, 'name');
-
-              // This display's the object that the user liked as a link to
-              // that object's page.
-          ?>
-          <li>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($item); ?>">
-              <?php echo he($item); ?>
-            </a>
-          </li>
-          <?php
-            }
-          ?>
-        </ul>
-      </div>
-
-      <div class="list">
-        <h3>Friends using this app</h3>
-        <ul class="friends">
-          <?php
-            foreach ($app_using_friends as $auf) {
-              // Extract the pieces of info we need from the requests above
-              $id = idx($auf, 'uid');
-              $name = idx($auf, 'name');
-          ?>
-          <li>
-            <a href="https://www.facebook.com/<?php echo he($id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($id) ?>/picture?type=square" alt="<?php echo he($name); ?>">
-              <?php echo he($name); ?>
-            </a>
-          </li>
-          <?php
-            }
-          ?>
-        </ul>
-      </div>
-    </section>
-
-    <?php
-      }
-    ?>
 		
 	    <script type="text/javascript">	
 var start_time;
