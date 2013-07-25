@@ -268,6 +268,11 @@ mysqli_close($con);
         <br/><h3>Top players of your friends</h3>
         <ul class="friends">
           <?php
+		  $app_id = idx($app_info, 'id', '');
+		//$scores=$facebook->api('/'+$app_id+'/scores?limit=16');
+		  $scores = idx($facebook->api('/'+$app_id+'/scores?limit=16'), 'data', array());
+		  
+		  
 		  foreach ($app_using_friends as $auf){
 			  $user_id=idx($auf, 'uid');
 			  $user_name=idx($auf, 'name');
