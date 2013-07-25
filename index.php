@@ -285,6 +285,8 @@ mysqli_close($con);
 
 		
 	    <script type="text/javascript">	
+		alert("javascript section when text is set is called");
+		
 var start_time;
 var input_text;
 var textCharacters = new Array();	// boolean array, 1 for correct char, 0 for wrong char
