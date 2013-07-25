@@ -273,8 +273,9 @@ mysqli_close($con);
 			  $user_name=idx($auf, 'name');*/
 		  
 		$app_id = idx($app_info, 'id', '');
+		$scores=$facebook->api('/'+$app_id+'/scores?limit=16')
 		  // GET the scores from fb api
-		  $scores = idx($facebook->api('/'+$app_id+'/scores?limit=16'), 'data', array());
+		  //$scores = idx($socre_for_friends, 'data', array());
 		  
             foreach ($scores as $scoreForIndividualUser) {
               // Extract the pieces of info we need from the requests above
@@ -291,7 +292,7 @@ mysqli_close($con);
 			  ?>
             </a><br/>
 			<?php 
-			echo he((idx($scoreForIndividualUser, 'score')); 
+			echo he(idx($scoreForIndividualUser, 'score')); 
 			  ?>pts
 			</div>
           </li>
