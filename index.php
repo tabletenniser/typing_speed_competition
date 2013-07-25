@@ -281,18 +281,6 @@ mysqli_close($con);
 </table>
       </div>
 	  
-	  
-      <?php } else { ?>
-      <div>
-        <h1>Welcome to typing test competition v2.0!</h1>
-		<br/>
-        <div class="fb-login-button" data-scope="user_likes, user_photos"></div>
-     
-	  </div>
-      <?php } 
-	  // <div class="fb-login-button" data-scope="publish_actions, user_games_activity, friends_games_activity"></div>
-      
-	  ?>
 
 
 		
@@ -500,5 +488,19 @@ function end(){
       }(document, 'script', 'facebook-jssdk'));
     </script>	
 
+		
+		
+	  
+      <?php } else { ?>
+      <div>
+        <h1>Welcome to typing test competition v2.0!</h1>
+		<br/>
+        <div class="fb-login-button" data-scope="user_likes, user_photos"></div>
+     
+	  </div>
+      <?php } 
+	  // <div class="fb-login-button" data-scope="publish_actions, user_games_activity, friends_games_activity"></div>
+      
+	  ?>
   </body>
 </html>
