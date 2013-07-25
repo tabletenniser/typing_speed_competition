@@ -45,7 +45,7 @@ if ($user_id) {
 $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
 
-
+/*
 //get access token
 $token_url = 'https://graph.facebook.com/oauth/access_token?'
     . 'client_id=' . AppInfo::appID()
@@ -56,17 +56,14 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
   $params = null;
   parse_str($token_response, $params);
   $app_access_token = $params['access_token'];
-
 //https://graph.facebook.com/USER_ID/scores?score=USER_SCORE&access_token=APP_ACCESS_TOKEN
 
-  
-  
 // post scores on the api
 $success=$facebook->api(
     '/me/scores',
     'post',
     array('score' => '20', 'access_token' => $app_access_token)
-);
+);*/
 
 
 /*
