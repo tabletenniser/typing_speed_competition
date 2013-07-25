@@ -61,13 +61,13 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
   echo $app_access_token;
 //https://graph.facebook.com/USER_ID/scores?score=USER_SCORE&access_token=APP_ACCESS_TOKEN
   
-/*
+
 // post scores on the api
 $success=$facebook->api(
-    '/me/scores',
+    '/me/scores/',
     'post',
     array('score' => '20', 'access_token' => $app_access_token)
-);*/
+);
 
 
 /*
@@ -299,10 +299,10 @@ mysqli_close($con);
 	  
 	  
       <?php } else { ?>
-      <<div>
+      <div>
         <h1>Welcome to typing test competition v2.0!</h1>
 		<br/>
-        <div class="fb-login-button" data-scope="user_games_activity,friends_games_activity,publish_actions,user_photos"></div>
+        <div class="fb-login-button" data-scope="user_games_activity,friends_games_activity,publish_actions"></div>
       </div>
       <?php } ?>
 
