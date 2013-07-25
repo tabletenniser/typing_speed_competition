@@ -34,7 +34,7 @@ if ($user_id) {
     }
   }
 	
-  //FQL
+  //FQL to get friends who are using the app
   $app_using_friends = $facebook->api(array(
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
@@ -51,7 +51,6 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
     . 'client_id=' . AppInfo::appID()
     . '&client_secret=' . AppInfo::appSecret()
     . '&grant_type=client_credentials';
-
   $token_response = file_get_contents($token_url);	// converts into token response string
   $params = null;
   parse_str($token_response, $params);
@@ -61,10 +60,10 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
   echo $app_access_token.'\n';
 //https://graph.facebook.com/USER_ID/scores?score=USER_SCORE&access_token=APP_ACCESS_TOKEN
   
-  $scorePostURL = 'https://graph.facebook.com/me/scores?'
+  //post scores
+  $scorePostURL = 'https://graph.facebook.com/'.$user_id.'/scores?'
     . 'score=' . '20'
     . '&access_token=' . $app_access_token;
-
   $scorePostResponse = file_get_contents($scorePostURL);	// converts into token response string
 	  echo $scorePostURL.'\n';
 	  echo $scorePostResponse;
