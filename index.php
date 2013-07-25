@@ -265,7 +265,7 @@ mysqli_close($con);
 	</td></tr>
 	<tr><td>
 	<div class="horizontal_list">
-        <h3>Top players of your friends</h3>
+        <br/><h3>Top players of your friends</h3>
         <ul class="friends">
           <?php
 		  foreach ($app_using_friends as $auf){

@@ -268,7 +268,7 @@ mysqli_close($con);
 			  ?>
             </a><br/>
 			<?php 
-			echo he((idx($scoreForIndividualUser, 'score')); 
+			//echo he((idx($scoreForIndividualUser, 'score')); 
 			  ?>pts
 			</div>
           </li>
