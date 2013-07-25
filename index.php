@@ -267,11 +267,11 @@ mysqli_close($con);
 	<div class="horizontal_list">
         <br/><h3>Top players of your friends</h3>
         <ul class="friends">
-          <?php/* WITHOUT USER SCORE
+          <?php
 		  foreach ($app_using_friends as $auf){
 			  $user_id=idx($auf, 'uid');
-			  $user_name=idx($auf, 'name');*/
-		  
+			  $user_name=idx($auf, 'name');
+		  /*
 		$app_id = idx($app_info, 'id', '');
 		//$scores=$facebook->api('/'+$app_id+'/scores?limit=16');
 		  // GET the scores from fb api
@@ -280,7 +280,7 @@ mysqli_close($con);
             foreach ($scores as $scoreForIndividualUser) {
               // Extract the pieces of info we need from the requests above
               $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
-              $user_name = idx(idx($scoreForIndividualUser, 'user'), 'name');
+              $user_name = idx(idx($scoreForIndividualUser, 'user'), 'name');*/
          
 		 ?>
           <li>
