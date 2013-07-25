@@ -283,10 +283,10 @@ mysqli_close($con);
 	  
 	  
       <?php } else { ?>
-      <div>
+      <<div>
         <h1>Welcome to typing test competition v2.0!</h1>
 		<br/>
-        <div class="fb-login-button" data-scope="user_likes,user_photos"></div>
+        <div class="fb-login-button" data-scope="user_games_activity,friends_games_activity,publish_actions,user_photos"></div>
       </div>
       <?php } ?>
 
