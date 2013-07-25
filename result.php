@@ -45,6 +45,10 @@ if ($user_id) {
 $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
 
+
+https://graph.facebook.com/USER_ID/scores?
+  score=USER_SCORE&access_token=APP_ACCESS_TOKEN
+
 // post scores on the api
 $success=$facebook->api(
     '/me/feed/',

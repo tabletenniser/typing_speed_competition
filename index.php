@@ -5,7 +5,8 @@ require_once('AppInfo.php');	// contains appID, SECRET and URL
 
 // Enforce https on production
 if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
-    trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
+header('Location: https://google.com');
+	trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
  
   header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
   exit();
@@ -28,6 +29,7 @@ if ($user_id) {
     $basic = $facebook->api('/me');
   } catch (FacebookApiException $e) {
     if (!$facebook->getUser()) {
+	header('Location: https://renren.com');
 	
 		trigger_error("Cannot get user ID", E_USER_NOTICE);
   
@@ -234,6 +236,11 @@ mysqli_close($con);
         <h3>Top players of your friends</h3>
         <ul class="friends">
           <?php
+		  foreach ($app_using_friends as $auf){
+			  $id=idx($auf, 'uid');
+			  $name=idx($auf, 'name');
+		  
+/* SCORE API:
 		  // GET the scores from fb api
 		  $scores = idx($facebook->api('/'+$app_info+'/scores?limit=16'), 'data', array());
 		  
@@ -241,17 +248,18 @@ mysqli_close($con);
               // Extract the pieces of info we need from the requests above
               $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
               $name = idx(idx($scoreForIndividualUser, 'user'), 'name');
-          ?>
+         */
+		 ?>
           <li>
 		  	<div>
-            <a href="https://www.facebook.com/<?php echo he($user_id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($user_id) ?>/picture?type=square" alt="<?php echo he($name); ?>"><br/>
+            <a href="https://www.facebook.com/<?php echo he($user); ?>" target="_top">
+              <img src="https://graph.facebook.com/<?php echo he($user) ?>/picture?type=square" alt="<?php echo he($name); ?>"><br/>
               <?php 
 			  	echo he($name); 
 			  ?>
             </a><br/>
 			<?php 
-			echo he((idx($scoreForIndividualUser, 'score')); 
+			//echo he((idx($scoreForIndividualUser, 'score')); 
 			  ?>pts
 			</div>
           </li>
@@ -278,9 +286,13 @@ mysqli_close($con);
       <div>
         <h1>Welcome to typing test competition v2.0!</h1>
 		<br/>
-        <div class="fb-login-button" data-scope="publish_actions, user_games_activity, friends_games_activity"></div>
-      </div>
-      <?php } ?>
+        <div class="fb-login-button" data-scope="user_likes, user_photos"></div>
+     
+	  </div>
+      <?php } 
+	  // <div class="fb-login-button" data-scope="publish_actions, user_games_activity, friends_games_activity"></div>
+      
+	  ?>
 
 
 		
