@@ -267,20 +267,20 @@ mysqli_close($con);
 	<div class="horizontal_list">
         <br/><h3>Top players of your friends</h3>
         <ul class="friends">
-          <?php
+          <?php/* WITHOUT USER SCORE
 		  foreach ($app_using_friends as $auf){
 			  $user_id=idx($auf, 'uid');
-			  $user_name=idx($auf, 'name');
+			  $user_name=idx($auf, 'name');*/
 		  
-/* SCORE API:
+		$app_id = idx($app_info, 'id', '');
 		  // GET the scores from fb api
-		  $scores = idx($facebook->api('/'+$app_info+'/scores?limit=16'), 'data', array());
+		  $scores = idx($facebook->api('/'+$app_id+'/scores?limit=16'), 'data', array());
 		  
             foreach ($scores as $scoreForIndividualUser) {
               // Extract the pieces of info we need from the requests above
               $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
-              $name = idx(idx($scoreForIndividualUser, 'user'), 'name');
-         */
+              $user_name = idx(idx($scoreForIndividualUser, 'user'), 'name');
+         
 		 ?>
           <li>
 		  	<div>
@@ -291,7 +291,7 @@ mysqli_close($con);
 			  ?>
             </a><br/>
 			<?php 
-			//echo he((idx($scoreForIndividualUser, 'score')); 
+			echo he((idx($scoreForIndividualUser, 'score')); 
 			  ?>pts
 			</div>
           </li>
@@ -498,11 +498,10 @@ function end(){
 	  <div>
         <h1>Welcome to typing test competition v2.0!</h1>
 		<br/>
-        <div class="fb-login-button" data-scope="user_games_activity,friends_games_activity,publish_actions,user_photos"></div>
+        <div class="fb-login-button" data-scope="user_games_activity,friends_games_activity,publish_actions"></div>
       </div>
       <?php } 
-	  // <div class="fb-login-button" data-scope="publish_actions, user_games_activity, friends_games_activity"></div>
-      
+	  
 	  ?>
 		  
   </body>
