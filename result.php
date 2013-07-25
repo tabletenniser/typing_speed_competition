@@ -57,6 +57,7 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
   parse_str($token_response, $params);
   $app_access_token = $params['access_token'];
   
+  echo $token_response;
   echo $app_access_token;
 //https://graph.facebook.com/USER_ID/scores?score=USER_SCORE&access_token=APP_ACCESS_TOKEN
   
