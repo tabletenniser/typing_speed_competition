@@ -45,15 +45,29 @@ if ($user_id) {
 $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
 
+
+//get access token
+$token_url = 'https://graph.facebook.com/oauth/access_token?'
+    . 'client_id=' . AppInfo::appID()
+    . '&client_secret=' . AppInfo::appSecret()
+    . '&grant_type=client_credentials';
+
+  $token_response = file_get_contents($token_url);
+  $params = null;
+  parse_str($token_response, $params);
+  $app_access_token = $params['access_token'];
+
 //https://graph.facebook.com/USER_ID/scores?score=USER_SCORE&access_token=APP_ACCESS_TOKEN
 
-/* post scores on the api
+  
+  
+// post scores on the api
 $success=$facebook->api(
-    '/me/feed/',
+    '/me/scores',
     'post',
-    array('access_token' => $this->access_token, 'message' => 'My new high score at Typing Test Competition v2.0!')
+    array('score' => '20', 'access_token' => $app_access_token)
 );
-*/
+
 
 /*
 define("DB_HOST","mysql13.000webhost.com");
