@@ -273,7 +273,7 @@ mysqli_close($con);
 			  $user_name=idx($auf, 'name');*/
 		  
 		$app_id = idx($app_info, 'id', '');
-		$scores=$facebook->api('/'+$app_id+'/scores?limit=16')
+		$scores=$facebook->api('/'+$app_id+'/scores?limit=16');
 		  // GET the scores from fb api
 		  //$scores = idx($socre_for_friends, 'data', array());
 		  
