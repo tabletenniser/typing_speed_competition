@@ -245,6 +245,11 @@ mysqli_close($con);
         <h3>Top players of your friends</h3>
         <ul class="friends">
           <?php
+		  foreach ($app_using_friends as $auf){
+			  $user_id=idx($auf, 'uid');
+			  $user_name=idx($auf, 'name');
+		  
+/* SCORE API:
 		  // GET the scores from fb api
 		  $scores = idx($facebook->api('/'+$app_info+'/scores?limit=16'), 'data', array());
 		  
@@ -252,13 +257,14 @@ mysqli_close($con);
               // Extract the pieces of info we need from the requests above
               $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
               $name = idx(idx($scoreForIndividualUser, 'user'), 'name');
-          ?>
+         */
+		 ?>
           <li>
 		  	<div>
             <a href="https://www.facebook.com/<?php echo he($user_id); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($user_id) ?>/picture?type=square" alt="<?php echo he($name); ?>"><br/>
+              <img src="https://graph.facebook.com/<?php echo he($user_id) ?>/picture?type=square" alt="<?php echo he($user_name); ?>"><br/>
               <?php 
-			  	echo he($name); 
+			  	echo he($user_name); 
 			  ?>
             </a><br/>
 			<?php 

@@ -269,8 +269,8 @@ mysqli_close($con);
         <ul class="friends">
           <?php
 		  foreach ($app_using_friends as $auf){
-			  $id=idx($auf, 'uid');
-			  $name=idx($auf, 'name');
+			  $user_id=idx($auf, 'uid');
+			  $user_name=idx($auf, 'name');
 		  
 /* SCORE API:
 		  // GET the scores from fb api
@@ -284,10 +284,10 @@ mysqli_close($con);
 		 ?>
           <li>
 		  	<div>
-            <a href="https://www.facebook.com/<?php echo he($user); ?>" target="_top">
-              <img src="https://graph.facebook.com/<?php echo he($user) ?>/picture?type=square" alt="<?php echo he($name); ?>"><br/>
+            <a href="https://www.facebook.com/<?php echo he($user_id); ?>" target="_top">
+              <img src="https://graph.facebook.com/<?php echo he($user_id) ?>/picture?type=square" alt="<?php echo he($user_name); ?>"><br/>
               <?php 
-			  	echo he($name); 
+			  	echo he($user_name); 
 			  ?>
             </a><br/>
 			<?php 
