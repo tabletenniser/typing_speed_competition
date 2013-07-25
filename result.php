@@ -45,19 +45,14 @@ if ($user_id) {
 $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
 
-
-https://graph.facebook.com/USER_ID/scores?
-  score=USER_SCORE&access_token=APP_ACCESS_TOKEN
+//https://graph.facebook.com/USER_ID/scores?score=USER_SCORE&access_token=APP_ACCESS_TOKEN
 
 // post scores on the api
 $success=$facebook->api(
     '/me/feed/',
     'post',
-    array('access_token' => $this->access_token, 'message' => 'Playing around with FB Graph..')
+    array('access_token' => $this->access_token, 'message' => 'My new high score at Typing Test Competition v2.0!')
 );
-
-
-$facebook->api('/'. AppInfo::appID());
 
 
 /*
