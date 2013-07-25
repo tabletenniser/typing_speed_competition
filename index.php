@@ -276,11 +276,11 @@ mysqli_close($con);
               // Extract the pieces of info we need from the requests above
               $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
               $user_name = idx(idx($scoreForIndividualUser, 'user'), 'name');
-			}
+		/*	}
 		  
 		  foreach ($app_using_friends as $auf){
 			  $user_id=idx($auf, 'uid');
-			  $user_name=idx($auf, 'name');
+			  $user_name=idx($auf, 'name');*/
 		  /*
 		$app_id = idx($app_info, 'id', '');
 		//$scores=$facebook->api('/'+$app_id+'/scores?limit=16');
