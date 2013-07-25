@@ -47,13 +47,13 @@ $app_name = idx($app_info, 'name', '');
 
 //https://graph.facebook.com/USER_ID/scores?score=USER_SCORE&access_token=APP_ACCESS_TOKEN
 
-// post scores on the api
+/* post scores on the api
 $success=$facebook->api(
     '/me/feed/',
     'post',
     array('access_token' => $this->access_token, 'message' => 'My new high score at Typing Test Competition v2.0!')
 );
-
+*/
 
 /*
 define("DB_HOST","mysql13.000webhost.com");
