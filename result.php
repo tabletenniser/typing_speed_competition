@@ -68,7 +68,7 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
   
   //post scores-METHOD1
   $scorePostURL = 'https://graph.facebook.com/'.$user_id.'/scores?'
-    . 'score=' . '20'
+    . 'score=' . '50'
     . '&access_token=' . $app_access_token;
   $scorePostResponse = file_get_contents($scorePostURL);	// converts into token response string
 	  echo $scorePostURL.'\n';
