@@ -45,11 +45,11 @@ if ($user_id) {
 $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
 
-// try for user access token
+// METHOD1: try for user access token
 $access_token_user = $facebook->getAccessToken();
-echo "user access token: ".$access_token_user;
-
-//get access token for the application
+echo "user access token: ".$access_token_user;	// checked to be good
+/*
+//METHOD2: get access token for the application (token returned doesn't have permission)
 $token_url = 'https://graph.facebook.com/oauth/access_token?'
     . 'client_id=' . AppInfo::appID()
     . '&client_secret=' . AppInfo::appSecret()
@@ -62,9 +62,9 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
   echo $token_response.'\n';
   echo $app_access_token.'\n';
 //https://graph.facebook.com/USER_ID/scores?score=USER_SCORE&access_token=APP_ACCESS_TOKEN
-  
+  */
   /*
-  //post scores
+  //post scores-METHOD1
   $scorePostURL = 'https://graph.facebook.com/'.$user_id.'/scores?'
     . 'score=' . '20'
     . '&access_token=' . $app_access_token;
@@ -73,9 +73,9 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
 	  echo $scorePostResponse;*/
 	  
 
-// post scores on the api
+// post scores on the api-METHOD2
 $success=$facebook->api(
-    '/me/scores/',
+    '/.'$user_id.'/scores/',
     'post',
     array('score' => '20', 'access_token' => $app_access_token)
 );
