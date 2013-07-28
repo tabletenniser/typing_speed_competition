@@ -83,8 +83,8 @@ $success=$facebook->api(
 );
 echo 'is successful? '.$success.'\n';
 
-//display the scores
-$scores = idx($facebook->api('/'+AppInfo::appID()+'/scores?limit=16'), 'data', array());
+//display the scores: REQUIRE AN ACCESS TOKEN
+$scores = idx($facebook->api('/'+AppInfo::appID()+'/scores?limit=16', 'post', array('access_token' => $app_access_token)), 'data', array());
 echo "Scores: ";
 var_dump($scores);
 
