@@ -79,7 +79,7 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
 $success=$facebook->api(
     '/me/scores/',
     'post',
-    array('score' => '20', 'access_token' => $app_access_token)
+    array('score' => '50', 'access_token' => $app_access_token)
 );
 echo 'is successful? '.$success.'\n';
 echo "REQUEST array variable:";
