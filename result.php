@@ -65,22 +65,22 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
   echo $app_access_token.'\n';
 //https://graph.facebook.com/USER_ID/scores?score=USER_SCORE&access_token=APP_ACCESS_TOKEN
   */
-  
-  //post scores-METHOD1
+  /*
+  //post scores-METHOD1: doesnt work
   $scorePostURL = 'https://graph.facebook.com/'.$user_id.'/scores?'
     . 'score=' . '50'
     . '&access_token=' . $app_access_token;
   $scorePostResponse = file_get_contents($scorePostURL);	// converts into token response string
 	  echo $scorePostURL.'\n';
-	  echo $scorePostResponse;
+	  echo $scorePostResponse;*/
 	  
-/*
+
 // post scores on the api-METHOD2
 $success=$facebook->api(
     '/me/scores/',
     'post',
     array('score' => '20', 'access_token' => $app_access_token)
-);*/
+);
 echo 'is successful? '.$success.'\n';
 echo "REQUEST array variable:";
 var_dump($_REQUEST);
