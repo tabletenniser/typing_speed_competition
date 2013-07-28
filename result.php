@@ -82,9 +82,15 @@ $success=$facebook->api(
     array('score' => '50', 'access_token' => $app_access_token)
 );
 echo 'is successful? '.$success.'\n';
-echo "REQUEST array variable:";
-var_dump($_REQUEST);
 
+//display the scores
+$scores = idx($facebook->api('/'+AppInfo::appID()+'/scores?limit=16'), 'data', array());
+echo "Scores: ".$scores;
+foreach ($scores as $scoreForIndividualUser) {
+  // Extract the pieces of info we need from the requests above
+  $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
+  $user_name = idx(idx($scoreForIndividualUser, 'user'), 'name');
+}
 /*
 define("DB_HOST","mysql13.000webhost.com");
 define("DB_USER","a2110984_sta286");
