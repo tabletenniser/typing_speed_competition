@@ -85,7 +85,9 @@ echo 'is successful? '.$success.'\n';
 
 //display the scores
 $scores = idx($facebook->api('/'+AppInfo::appID()+'/scores?limit=16'), 'data', array());
-echo "Scores: ".$scores;
+echo "Scores: ";
+var_dump($scores);
+
 foreach ($scores as $scoreForIndividualUser) {
   // Extract the pieces of info we need from the requests above
   $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
