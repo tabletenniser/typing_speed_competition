@@ -45,11 +45,11 @@ if ($user_id) {
 $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
 
-echo "app ID:".AppInfo::appID();
+//echo "app ID:".AppInfo::appID();
 
-// METHOD1: try for user access token
-$access_token_user = $facebook->getAccessToken();
-echo "user access token: ".$access_token_user;	// checked to be good
+// METHOD1: try for user access token ==> works for user access token, but not app access token
+//$access_token_user = $facebook->getAccessToken();
+//echo "user access token: ".$access_token_user;	// checked to be good
 /*
 //METHOD2: get access token for the application (token returned doesn't have permission)
 $token_url = 'https://graph.facebook.com/oauth/access_token?'
@@ -86,7 +86,9 @@ echo 'is successful? '.$success.'\n';
 //display the scores: REQUIRE AN ACCESS TOKEN
 $scores = idx($facebook->api('/'.AppInfo::appID().'/scores?limit=16', 'get', array('access_token' => $app_access_token)), 'data', array());
 echo "Scores: ";
-var_dump($scores);
+echo  $scores['score'];
+
+//var_dump($scores);
 
 foreach ($scores as $scoreForIndividualUser) {
   // Extract the pieces of info we need from the requests above
