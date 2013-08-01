@@ -86,9 +86,9 @@ echo 'is successful? '.$success.'\n';
 //display the scores: REQUIRE AN ACCESS TOKEN
 $scores = idx($facebook->api('/'.AppInfo::appID().'/scores?limit=16', 'get', array('access_token' => $app_access_token)), 'data', array());
 echo "Scores: ";
-echo  $scores["score"];
+echo $scores["score"];
 
-//var_dump($scores);
+var_dump($scores);
 
 foreach ($scores as $scoreForIndividualUser) {
   // Extract the pieces of info we need from the requests above
