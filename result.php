@@ -14,6 +14,7 @@ if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != 
 require_once('utils.php');		// global array and html helper functions
 require_once('sdk/src/facebook.php');	// fb API
 
+// construct a new Facebook object of this application
 $facebook = new Facebook(array(
   'appId'  => AppInfo::appID(),
   'secret' => AppInfo::appSecret(),
@@ -45,8 +46,6 @@ if ($user_id) {
 $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
 
-//echo "app ID:".AppInfo::appID();
-
 // METHOD1: try for user access token ==> works for user access token, but not app access token
 //$access_token_user = $facebook->getAccessToken();
 //echo "user access token: ".$access_token_user;	// checked to be good
@@ -74,12 +73,12 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
 	  echo $scorePostURL.'\n';
 	  echo $scorePostResponse;*/
 	  
-
+echo 'app access token: '.$app_access_token;
 // post scores on the api-METHOD2
 $success=$facebook->api(
     '/me/scores/',
     'post',
-    array('score' => '50', 'access_token' => $app_access_token)
+    array('score' => '60', 'access_token' => $app_access_token)
 );
 echo 'is successful? '.$success.'\n';
 
@@ -88,7 +87,7 @@ $scores = idx($facebook->api('/'.AppInfo::appID().'/scores?limit=16', 'get', arr
 echo "Scores: ";
 echo $scores[0]["score"]."\n";
 
-var_dump($scores);
+//var_dump($scores);
 
 foreach ($scores as $scoreForIndividualUser) {
   // Extract the pieces of info we need from the requests above
