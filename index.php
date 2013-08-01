@@ -299,16 +299,8 @@ mysqli_close($con);
           ?>
         </ul>
       </div>
-	  <input type="button" id="sendRequest" value="submit" data-message="I want to compete typing speed with you"></input>
+	  <input type="button" id="sendRequest" value="Invite friends to compete" data-message="I want to compete typing speed with you"></input>
 	</td></tr>	
-	<tr><td>
-	<div id="share-app">
-          
-              <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="I want to compete typing speed with you">
-                <span class="apprequests">Invite your friends to compete~</span>
-              </a>
-    </div>
-	</td></tr>
 </table>
       </div>
 	  
