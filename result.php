@@ -72,7 +72,27 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
   $scorePostResponse = file_get_contents($scorePostURL);	// converts into token response string
 	  echo $scorePostURL.'\n';
 	  echo $scorePostResponse;*/
+
 	  
+	  
+	  // if the score obtained is higher than the score in the Graph API, post the score and ask for a request to send to the user next
+$my_scores = idx($facebook->api('/me/scores?limit=16', 'post', array('access_token' => $app_access_token)), 'data', array());
+foreach ($my_scores as $my_individual_app_score){
+    $application_id_for_the_score = idx(idx($my_individual_app_score, 'application'), 'id');
+	if (AppInfo::appID()==$application_id_for_the_score){
+		$my_previous_score=idx($my_individual_app_score, 'score');
+		if (>$my_previous_score){
+			$success=$facebook->api(
+    		'/me/scores/',
+    		'post',
+    		array('score' => '20', 'access_token' => $app_access_token)
+			);
+			echo 'is successful? '.$success.'\n';			
+		}
+	}
+}
+
+var_dump($_SESSION);
 echo 'app access token: '.$app_access_token;
 // post scores on the api-METHOD2
 $success=$facebook->api(
@@ -82,18 +102,17 @@ $success=$facebook->api(
 );
 echo 'is successful? '.$success.'\n';
 
+
+
+
 //display the scores: REQUIRE AN ACCESS TOKEN
 $scores = idx($facebook->api('/'.AppInfo::appID().'/scores?limit=16', 'get', array('access_token' => $app_access_token)), 'data', array());
-echo "Scores: ";
-echo $scores[0]["score"]."\n";
 
-//var_dump($scores);
 
-foreach ($scores as $scoreForIndividualUser) {
-  // Extract the pieces of info we need from the requests above
-  $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
-  $user_name = idx(idx($scoreForIndividualUser, 'user'), 'name');
-}
+
+echo "user_id".$scores[0]["user"]["id"]."\n";
+echo "Scores: ".$scores[0]["score"]."\n";
+
 /*
 define("DB_HOST","mysql13.000webhost.com");
 define("DB_USER","a2110984_sta286");
