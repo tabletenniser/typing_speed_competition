@@ -277,6 +277,12 @@ mysqli_close($con);
 				<td id="score_value" class="large_padding">
 					0
 				</td>
+			</tr>
+			<tr class="highlight_row">
+				<td class="large_padding" colspan="2">
+					Your typing speed and accuracy is placed in top <span id="ranking_precentage">0</span>% among students aged between 15 to 25.
+					(According to a research done by a group of University of Toronto STA286 students in Apr.2013.)
+				</td>
 			</tr><br/>
 		</table>
 	<br/>
@@ -348,6 +354,10 @@ document.getElementById("wrongCharacters_value").innerHTML=sessionStorage.getIte
 document.getElementById("speed_value").innerHTML=sessionStorage.getItem("speed")+" words/s";
 document.getElementById("accuracy_value").innerHTML=sessionStorage.getItem("accuracy")+"%";
 document.getElementById("score_value").innerHTML=sessionStorage.getItem("score")+" pts";
+
+document.getElementById("ranking_percentage").innerHTML=20;
+
+
       window.fbAsyncInit = function() {
         FB.init({
           appId      : '<?php echo AppInfo::appID(); ?>', // App ID
