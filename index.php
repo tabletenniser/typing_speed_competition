@@ -265,33 +265,22 @@ mysqli_close($con);
 	</td></tr>
 	<tr><td>
 	<div class="horizontal_list">
-        <br/><h3>Top players of your friends</h3>
+        <h3>Top players of your friends</h3>
         <ul class="friends">
           <?php
-		  $app_id = idx($app_info, 'id', '');
-		//$scores=$facebook->api('/'+$app_id+'/scores?limit=16');
-		  $scores = idx($facebook->api('/'+$app_id+'/scores?limit=16'), 'data', array());
-		  
-            foreach ($scores as $scoreForIndividualUser) {
-              // Extract the pieces of info we need from the requests above
-              $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
-              $user_name = idx(idx($scoreForIndividualUser, 'user'), 'name');
-		/*	}
-		  
 		  foreach ($app_using_friends as $auf){
-			  $user_id=idx($auf, 'uid');
-			  $user_name=idx($auf, 'name');*/
-		  /*
-		$app_id = idx($app_info, 'id', '');
-		//$scores=$facebook->api('/'+$app_id+'/scores?limit=16');
-		  // GET the scores from fb api
-		  $scores = idx($facebook->api('/'+$app_id+'/scores?limit=16'), 'data', array());
+			$user_id=idx($auf, 'uid');
+			$user_name=idx($auf, 'name');
+			$friend_actual_score=0;
 		  
-            foreach ($scores as $scoreForIndividualUser) {
-              // Extract the pieces of info we need from the requests above
-              $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
-              $user_name = idx(idx($scoreForIndividualUser, 'user'), 'name');*/
-         
+			$friend_scores = idx($facebook->api('/'.$user_id.'/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
+			foreach ($friend_scores as $friend_individual_app_score){
+				$application_id_for_the_score = idx(idx($friend_individual_app_score, 'application'), 'id');
+				if (AppInfo::appID()==$application_id_for_the_score){
+					$friend_actual_score=idx($friend_individual_app_score, 'score');
+				}
+			}			  
+		  
 		 ?>
           <li>
 		  	<div>
@@ -302,8 +291,7 @@ mysqli_close($con);
 			  ?>
             </a><br/>
 			<?php 
-			//echo he(idx($scoreForIndividualUser, 'score')); 
-			  ?>pts
+			  echo $friend_actual_score." "; ?>pts
 			</div>
           </li>
           <?php
@@ -346,8 +334,8 @@ text_array[8] = "The term engineering itself has a much more recent etymology, d
 text_array[9] = "A computer network (or data network) is a telecommunications network that allows computers to exchange data. The physical connection between networked computing devices is established using either cable media or wireless media. The best-known computer network is the Internet. Network devices that originate, route and terminate the data are called network nodes. Nodes can include hosts such as servers and personal computers, as well as networking hardware. Two devices are said to be networked when a process in one device is able to exchange information with a process in another device.";
 text_array[10] = "Electrical engineering can trace its origins back to the experiments of Alessandro Volta in the 1800s, the experiments of Michael Faraday, Georg Ohm and others and the invention of the electric motor in 1872. The work of James Maxwell and Heinrich Hertz in the late 19th century gave rise to the field of electronics. The later inventions of the vacuum tube and the transistor further accelerated the development of electronics to such an extent that electrical and electronics engineers currently outnumber their colleagues of any other engineering specialty.";
 
-var randomNumberGenerator=0;
-//var randomNumberGenerator=Math.floor(Math.random()*10)+1;	// replace 3 with the max index value
+//var randomNumberGenerator=0;
+var randomNumberGenerator=Math.floor(Math.random()*10)+1;	// replace 10 with the max index value
 
 document.getElementById("text_para").innerHTML=text_array[randomNumberGenerator];
 
