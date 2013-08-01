@@ -317,7 +317,7 @@ mysqli_close($con);
 			  ?>
             </a><br/>
 			<?php 
-			  $friend_actual_score?>pts
+			  echo $friend_actual_score." "; ?>pts
 			</div>
           </li>
           <?php
