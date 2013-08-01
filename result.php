@@ -97,21 +97,10 @@ foreach ($my_scores as $my_individual_app_score){
 //var_dump($_SESSION);
 echo "$_GET: ";
 var_dump($_GET);
-/*
-// post scores on the api-METHOD2
-$success=$facebook->api(
-    '/me/scores/',
-    'post',
-    array('score' => '60', 'access_token' => $app_access_token)
-);
-echo 'is successful? '.$success.'\n';*/
-
-
 
 
 //display the scores: REQUIRE AN ACCESS TOKEN
 $scores = idx($facebook->api('/'.AppInfo::appID().'/scores?limit=16', 'get', array('access_token' => $app_access_token)), 'data', array());
-
 echo "\nuser_id: ".$scores[0]["user"]["id"]."\n";
 echo "Scores: ".$scores[0]["score"]."\n";
 
@@ -280,8 +269,8 @@ mysqli_close($con);
 				<td id="accuracy_value" class="large_padding">
 					0
 				</td>
-			</tr class="super_highlight_row">
-			<tr>
+			</tr>
+			<tr class="super_highlight_row">
 				<td class="large_padding">
 					TOTAL SCORE:
 				</td>
@@ -306,18 +295,18 @@ mysqli_close($con);
         <ul class="friends">
           <?php
 		  foreach ($app_using_friends as $auf){
-			  $user_id=idx($auf, 'uid');
-			  $user_name=idx($auf, 'name');
+			$user_id=idx($auf, 'uid');
+			$user_name=idx($auf, 'name');
+			$friend_actual_score=0;
 		  
-/* SCORE API:
-		  // GET the scores from fb api
-		  $scores = idx($facebook->api('/'+$app_info+'/scores?limit=16'), 'data', array());
+			$friend_scores = idx($facebook->api('/'.$user_id.'/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
+			foreach ($friend_scores as $friend_individual_app_score){
+				$application_id_for_the_score = idx(idx($friend_individual_app_score, 'application'), 'id');
+				if (AppInfo::appID()==$application_id_for_the_score){
+					$friend_actual_score=idx($friend_individual_app_score, 'score');
+				}
+			}			  
 		  
-            foreach ($scores as $scoreForIndividualUser) {
-              // Extract the pieces of info we need from the requests above
-              $user_id = idx(idx($scoreForIndividualUser, 'user'), 'id');
-              $name = idx(idx($scoreForIndividualUser, 'user'), 'name');
-         */
 		 ?>
           <li>
 		  	<div>
@@ -328,8 +317,7 @@ mysqli_close($con);
 			  ?>
             </a><br/>
 			<?php 
-			//echo he((idx($scoreForIndividualUser, 'score')); 
-			  ?>pts
+			  $friend_actual_score?>pts
 			</div>
           </li>
           <?php
