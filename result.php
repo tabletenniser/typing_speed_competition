@@ -82,19 +82,21 @@ foreach ($my_scores as $my_individual_app_score){
     $application_id_for_the_score = idx(idx($my_individual_app_score, 'application'), 'id');
 	if (AppInfo::appID()==$application_id_for_the_score){
 		$my_previous_score=idx($my_individual_app_score, 'score');
-		if (122>$my_previous_score){
+		if ($_GET['score']>$my_previous_score){
 			// post scores on the api-METHOD2
 			$success=$facebook->api(
     			'/me/scores/',
     			'post',
-    			array('score' => '122', 'access_token' => $app_access_token)
+    			array('score' => $_GET['score'], 'access_token' => $app_access_token)
 				);	
 			echo 'is successful? '.$success.'\n';			
 		}
 	}
 }
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
+echo "$_GET: ";
+var_dump($_GET);
 /*
 // post scores on the api-METHOD2
 $success=$facebook->api(
@@ -110,9 +112,7 @@ echo 'is successful? '.$success.'\n';*/
 //display the scores: REQUIRE AN ACCESS TOKEN
 $scores = idx($facebook->api('/'.AppInfo::appID().'/scores?limit=16', 'get', array('access_token' => $app_access_token)), 'data', array());
 
-
-
-echo "user_id".$scores[0]["user"]["id"]."\n";
+echo "\nuser_id: ".$scores[0]["user"]["id"]."\n";
 echo "Scores: ".$scores[0]["score"]."\n";
 
 /*

@@ -453,6 +453,7 @@ function end(){
 	var time_diff=end_time-start_time;
 	var accuracy=(1-err/position)*100;
 	var speed=Math.round(numOfWords/time_diff*1000)/1000;
+	var score=Math.round(speed*10*accuracy);
 	
 	// set session variables to pass values to result.php
 	sessionStorage.setItem("time", Math.round(time_diff*1000)/1000);
@@ -461,8 +462,12 @@ function end(){
 	sessionStorage.setItem("wrongCharacters", err);
 	sessionStorage.setItem("speed", speed);
 	sessionStorage.setItem("accuracy", accuracy);
-	sessionStorage.setItem("score", Math.round(speed*10*accuracy));
-	window.location = "result.php";
+	sessionStorage.setItem("score", score);
+	
+	//window.location.href = "http://localhost/main.php?width=" + width + "&height=" + height;
+
+	
+	window.location = "result.php?score="+score;
 	
 	/*
 	input_text=document.getElementById("input_text").value;
