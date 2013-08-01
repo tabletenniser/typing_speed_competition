@@ -75,32 +75,34 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
 
 	  
 	  
+echo 'app access token: '.$app_access_token;
 	  // if the score obtained is higher than the score in the Graph API, post the score and ask for a request to send to the user next
-$my_scores = idx($facebook->api('/me/scores?limit=16', 'post', array('access_token' => $app_access_token)), 'data', array());
+$my_scores = idx($facebook->api('/me/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
 foreach ($my_scores as $my_individual_app_score){
     $application_id_for_the_score = idx(idx($my_individual_app_score, 'application'), 'id');
 	if (AppInfo::appID()==$application_id_for_the_score){
 		$my_previous_score=idx($my_individual_app_score, 'score');
-		if (>$my_previous_score){
+		if (122>$my_previous_score){
+			// post scores on the api-METHOD2
 			$success=$facebook->api(
-    		'/me/scores/',
-    		'post',
-    		array('score' => '20', 'access_token' => $app_access_token)
-			);
+    			'/me/scores/',
+    			'post',
+    			array('score' => '122', 'access_token' => $app_access_token)
+				);	
 			echo 'is successful? '.$success.'\n';			
 		}
 	}
 }
 
 var_dump($_SESSION);
-echo 'app access token: '.$app_access_token;
+/*
 // post scores on the api-METHOD2
 $success=$facebook->api(
     '/me/scores/',
     'post',
     array('score' => '60', 'access_token' => $app_access_token)
 );
-echo 'is successful? '.$success.'\n';
+echo 'is successful? '.$success.'\n';*/
 
 
 
