@@ -209,9 +209,14 @@ mysqli_close($con);
         $('#retry').click(function() {
 			if (typeof sessionStorge !== 'undefined' && sessionStorge!=null)
 				sessionStorge.clear();
+			
 			var cookies = document.cookie.split(";");
-			for (var i = 0; i < cookies.length; i++)
- 				eraseCookie(cookies[i].split("=")[0]);
+		    for (var i = 0; i < cookies.length; i++) {
+    			var cookie = cookies[i];
+    			var eqPos = cookie.indexOf("=");
+    			var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    			document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    		}	
 			
 			
           window.location = "index.php";
