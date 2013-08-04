@@ -79,7 +79,9 @@ echo 'app access token: '.$app_access_token;
 	  // if the score obtained is higher than the score in the Graph API, post the score and ask for a request to send to the user next
 $my_scores = idx($facebook->api('/me/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
 
-echo "before foreach loop";
+echo "before foreach loop, $my_scores var:";
+var_dump($my_scores);
+
 		
 
 foreach ($my_scores as $my_individual_app_score){
