@@ -80,10 +80,10 @@ echo 'app access token: '.$app_access_token;
 $my_scores = idx($facebook->api('/me/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
 
 echo "before foreach loop, $my_scores var:";
-var_dump($my_scores);
+var_dump($my_scores);	// retores an empty array
 
 		
-
+$score_found=false;
 foreach ($my_scores as $my_individual_app_score){
 	echo "in foreach loop";
 	
@@ -102,9 +102,19 @@ foreach ($my_scores as $my_individual_app_score){
     			'post',
     			array('score' => $_GET['score'], 'access_token' => $app_access_token)
 				);	
-			echo 'is successful? '.$success.'\n';			
+			echo 'is successful? '.$success.'\n';
+			$score_found=true;
 		}
 	}
+}
+if ($score_not_found==false){
+	// post scores on the api-METHOD2
+			$success=$facebook->api(
+    			'/me/scores/',
+    			'post',
+    			array('score' => $_GET['score'], 'access_token' => $app_access_token)
+				);	
+			echo 'is successful? '.$success.'\n';	
 }
 
 //var_dump($_SESSION);
