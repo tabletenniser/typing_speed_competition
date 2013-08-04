@@ -357,7 +357,7 @@ function clock()
 			document.getElementById("score").innerHTML=0;
 	}else{		  	
 	  	document.getElementById("accuracy").innerHTML=Math.round((1-err/position)*100000)/1000;	  
-	  	document.getElementById("score").innerHTML=Math.round(numOfWords/timePassedInSec*100000*(1-err/position)*(1-err/position));	
+	  	document.getElementById("score").innerHTML=Math.round(numOfWords/timePassedInSec*1000*(1-err/position)*(1-err/position));	
 	}
   }
 
@@ -433,7 +433,7 @@ function end(){
 	var time_diff=end_time-start_time;
 	var accuracy=(1-err/position)*100;
 	var speed=Math.round(numOfWords/time_diff*1000)/1000;
-	var score=Math.round(speed*10*accuracy*accuracy);
+	var score=Math.round(speed*accuracy*accuracy/10);
 	
 	// set session variables to pass values to result.php
 	sessionStorage.setItem("time", Math.round(time_diff*1000)/1000);
