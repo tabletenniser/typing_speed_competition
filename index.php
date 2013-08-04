@@ -326,8 +326,8 @@ text_array[8] = "The term engineering itself has a much more recent etymology, d
 text_array[9] = "A computer network (or data network) is a telecommunications network that allows computers to exchange data. The physical connection between networked computing devices is established using either cable media or wireless media. The best-known computer network is the Internet. Network devices that originate, route and terminate the data are called network nodes. Nodes can include hosts such as servers and personal computers, as well as networking hardware. Two devices are said to be networked when a process in one device is able to exchange information with a process in another device.";
 text_array[10] = "Electrical engineering can trace its origins back to the experiments of Alessandro Volta in the 1800s, the experiments of Michael Faraday, Georg Ohm and others and the invention of the electric motor in 1872. The work of James Maxwell and Heinrich Hertz in the late 19th century gave rise to the field of electronics. The later inventions of the vacuum tube and the transistor further accelerated the development of electronics to such an extent that electrical and electronics engineers currently outnumber their colleagues of any other engineering specialty.";
 
-//var randomNumberGenerator=0;
-var randomNumberGenerator=Math.floor(Math.random()*10)+1;	// replace 10 with the max index value
+var randomNumberGenerator=0;
+//var randomNumberGenerator=Math.floor(Math.random()*10)+1;	// replace 10 with the max index value
 
 document.getElementById("text_para").innerHTML=text_array[randomNumberGenerator];
 
