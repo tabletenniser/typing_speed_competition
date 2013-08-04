@@ -78,7 +78,14 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
 echo 'app access token: '.$app_access_token;
 	  // if the score obtained is higher than the score in the Graph API, post the score and ask for a request to send to the user next
 $my_scores = idx($facebook->api('/me/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
+
+echo "before foreach loop";
+		
+
 foreach ($my_scores as $my_individual_app_score){
+	echo "in foreach loop";
+	
+	
     $application_id_for_the_score = idx(idx($my_individual_app_score, 'application'), 'id');
 	if (AppInfo::appID()==$application_id_for_the_score){
 		$my_previous_score=idx($my_individual_app_score, 'score');
@@ -188,7 +195,7 @@ mysqli_close($con);
 	  $(function(){
         // Set up so we handle click on the buttons
         $('#retry').click(function() {
-			if (sessionStorge)
+			if (typeof sessionStorge !== 'undefined' && sessionStorge!=null)
 				sessionStorge.clear();
 			var cookies = document.cookie.split(";");
 			for (var i = 0; i < cookies.length; i++)
