@@ -74,27 +74,16 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
 	  echo $scorePostResponse;*/
 
 	  
-	  
-echo 'app access token: '.$app_access_token;
-	  // if the score obtained is higher than the score in the Graph API, post the score and ask for a request to send to the user next
+ // if the score obtained is higher than the score in the Graph API, post the score and ask for a request to send to the user next
 $my_scores = idx($facebook->api('/me/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
-
-echo "before foreach loop, $my_scores var:";
-var_dump($my_scores);	// retores an empty array
-
-		
 $score_found=false;
 foreach ($my_scores as $my_individual_app_score){
-	echo "in foreach loop";
-	
-	
-    $application_id_for_the_score = idx(idx($my_individual_app_score, 'application'), 'id');
+	$application_id_for_the_score = idx(idx($my_individual_app_score, 'application'), 'id');
 	if (AppInfo::appID()==$application_id_for_the_score){
+		$score_found=true;
 		$my_previous_score=idx($my_individual_app_score, 'score');
 		
-		echo "my previous score: ".$my_previous_score;
-		
-		
+		//echo "my previous score: ".$my_previous_score;
 		if ($_GET['score']>$my_previous_score){
 			// post scores on the api-METHOD2
 			$success=$facebook->api(
@@ -103,7 +92,6 @@ foreach ($my_scores as $my_individual_app_score){
     			array('score' => $_GET['score'], 'access_token' => $app_access_token)
 				);	
 			echo 'is successful? '.$success.'\n';
-			$score_found=true;
 		}
 	}
 }
@@ -118,14 +106,14 @@ if ($score_not_found==false){
 }
 
 //var_dump($_SESSION);
-echo "$_GET: ";
-var_dump($_GET);
+//echo "$_GET: ";
+//var_dump($_GET);
 
 
 //display the scores: REQUIRE AN ACCESS TOKEN
 $scores = idx($facebook->api('/'.AppInfo::appID().'/scores?limit=16', 'get', array('access_token' => $app_access_token)), 'data', array());
-echo "\nuser_id: ".$scores[0]["user"]["id"]."\n";
-echo "Scores: ".$scores[0]["score"]."\n";
+//echo "\nuser_id: ".$scores[0]["user"]["id"]."\n";
+//echo "Scores: ".$scores[0]["score"]."\n";
 
 /*
 define("DB_HOST","mysql13.000webhost.com");
@@ -216,10 +204,8 @@ mysqli_close($con);
     			var eqPos = cookie.indexOf("=");
     			var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
     			document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    		}	
-			
-			
-          window.location = "index.php";
+    		}		
+          	window.location = "index.php";
         });
       });
     </script>
@@ -388,7 +374,13 @@ document.getElementById("charactersEntered_value").innerHTML=sessionStorage.getI
 document.getElementById("wrongCharacters_value").innerHTML=sessionStorage.getItem("wrongCharacters");
 document.getElementById("speed_value").innerHTML=sessionStorage.getItem("speed")+" words/s";
 document.getElementById("accuracy_value").innerHTML=sessionStorage.getItem("accuracy")+"%";
+var score=sessionStorage.getItem("score");
 document.getElementById("score_value").innerHTML=sessionStorage.getItem("score")+" pts";
+
+var score=sessionStorage.getItem("score");
+
+
+
 
 document.getElementById("ranking_percentage").innerHTML=20;
 
@@ -398,7 +390,7 @@ document.getElementById("ranking_percentage").innerHTML=20;
           appId      : '<?php echo AppInfo::appID(); ?>', // App ID
           channelUrl : '//<?php echo $_SERVER["HTTP_HOST"]; ?>/channel.html', // Channel File
           status     : true, // check login status
-          cookie     : true, // enable cookies to allow the server to access the session
+          cookie     : false, // enable cookies to allow the server to access the session
           xfbml      : true // parse XFBML
         });
 
