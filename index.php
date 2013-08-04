@@ -265,7 +265,7 @@ mysqli_close($con);
 	</td></tr>
 	<tr><td>
 	<div class="horizontal_list">
-        <h3>Top players of your friends</h3>
+        <br/><h3>Top players of your friends</h3>
         <ul class="friends">
           <?php
 		  foreach ($app_using_friends as $auf){
@@ -356,7 +356,7 @@ function clock()
 	}else if (speed==0 || err/position==1){
 			document.getElementById("score").innerHTML=0;
 	}else{		  	
-	  	document.getElementById("accuracy").innerHTML=(1-err/position)*100;	  
+	  	document.getElementById("accuracy").innerHTML=Math.round((1-err/position)*100000)/1000;	  
 	  	document.getElementById("score").innerHTML=Math.round(numOfWords/timePassedInSec*1000*(1-err/position));	
 	}
   }

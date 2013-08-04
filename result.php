@@ -184,6 +184,12 @@ mysqli_close($con);
 	  $(function(){
         // Set up so we handle click on the buttons
         $('#retry').click(function() {
+			sessionStorge.clear();
+			var cookies = document.cookie.split(";");
+			for (var i = 0; i < cookies.length; i++)
+ 				eraseCookie(cookies[i].split("=")[0]);
+			
+			
           window.location = "index.php";
         });
       });
@@ -280,7 +286,7 @@ mysqli_close($con);
 			</tr>
 			<tr class="highlight_row">
 				<td class="large_padding" colspan="2">
-					Your typing speed and accuracy is placed in top <span id="ranking_precentage">0</span>% among students aged between 15 to 25.
+					Your typing speed and accuracy is placed in top <span id="ranking_precentage">0</span>% among students.<br/>
 					(According to a research done by a group of University of Toronto STA286 students in Apr.2013.)
 				</td>
 			</tr><br/>
@@ -297,7 +303,7 @@ mysqli_close($con);
 	<tr><td>
 	<br/>
 	<div class="horizontal_list">
-        <h3>Top players of your friends</h3>
+        <br/><h3>Top players of your friends</h3>
         <ul class="friends">
           <?php
 		  foreach ($app_using_friends as $auf){
