@@ -380,8 +380,7 @@ document.getElementById("score_value").innerHTML=sessionStorage.getItem("score")
 var score=sessionStorage.getItem("score");
 
 
-
-
+if (score>10000)
 document.getElementById("ranking_percentage").innerHTML=20;
 
 
@@ -390,7 +389,7 @@ document.getElementById("ranking_percentage").innerHTML=20;
           appId      : '<?php echo AppInfo::appID(); ?>', // App ID
           channelUrl : '//<?php echo $_SERVER["HTTP_HOST"]; ?>/channel.html', // Channel File
           status     : true, // check login status
-          cookie     : false, // enable cookies to allow the server to access the session
+          cookie     : true, // enable cookies to allow the server to access the session
           xfbml      : true // parse XFBML
         });
 

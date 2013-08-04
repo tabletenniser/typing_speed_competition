@@ -151,7 +151,7 @@ mysqli_close($con);
           appId      : '<?php echo AppInfo::appID(); ?>', // App ID
           channelUrl : '//<?php echo $_SERVER["HTTP_HOST"]; ?>/channel.html', // Channel File
           status     : true, // check login status
-          cookie     : false, // enable cookies to allow the server to access the session
+          cookie     : true, // enable cookies to allow the server to access the session
           xfbml      : true // parse XFBML
         });
 
@@ -446,7 +446,14 @@ function end(){
 	
 	//window.location.href = "http://localhost/main.php?width=" + width + "&height=" + height;
 
-	
+	// clear all cokies
+	var cookies = document.cookie.split(";");
+		    for (var i = 0; i < cookies.length; i++) {
+    			var cookie = cookies[i];
+    			var eqPos = cookie.indexOf("=");
+    			var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    			document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    		}
 	window.location = "result.php?score="+score;
 	
 	/*
