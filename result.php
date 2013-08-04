@@ -82,6 +82,10 @@ foreach ($my_scores as $my_individual_app_score){
     $application_id_for_the_score = idx(idx($my_individual_app_score, 'application'), 'id');
 	if (AppInfo::appID()==$application_id_for_the_score){
 		$my_previous_score=idx($my_individual_app_score, 'score');
+		
+		echo "my previous score: ".$my_previous_score;
+		
+		
 		if ($_GET['score']>$my_previous_score){
 			// post scores on the api-METHOD2
 			$success=$facebook->api(
