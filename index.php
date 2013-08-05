@@ -293,7 +293,7 @@ mysqli_close($con);
 				
 		foreach ($app_using_friends_with_scores as $auf_with_score){			
 			$user_id=idx($auf_with_score, 'user_id');
-			$friend_actual_score=idx($auf_with_score, 'score');
+			$friend_actual_score=idx($auf_with_score, 'value');
 			
 			$user_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'name', array());
 			
