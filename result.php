@@ -96,7 +96,7 @@ foreach ($my_scores as $my_individual_app_score){
 		}
 	}
 }
-if ($score_not_found==false){
+if ($score_found==false){
 	echo 'score not found\n';
 	$success=$facebook->api(
 		'/me/scores/',
