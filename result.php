@@ -47,6 +47,8 @@ if ($user_id) {
 }
 
 
+header('Location: www.renren.com');
+
 // Fetch the basic info of the app that they are using
 $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
@@ -111,7 +113,6 @@ if ($score_found==false){
 }
 
 
-header('Location: www.renren.com');
 
 
 //var_dump($_SESSION);
