@@ -367,6 +367,10 @@ tr.highlight_row{
 	color: #FFAAAA;
 }
 
+.smaller_font{
+	font-size: 9px;
+}
+
 a.link_to_another_page{
 	text-decoration:underline;
 }

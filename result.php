@@ -318,7 +318,7 @@ mysqli_close($con);
 			<tr">
 				<td class="large_padding" colspan="2">
 					Your typing speed and accuracy is placed in top <span class="super_highlight_row"><span id="ranking_percentage">0</span>%</span> among students.<br/>
-					<span style="font-size: 9px;">(According to a study done by a group of University of Toronto STA286 students, check <a class="link_to_another_page" onclick="window.open('http://individual.utoronto.ca/zexuan/sta286_report.pdf');">here</a> for more details)</span>
+					<span class="smaller_font">(According to a study done by a group of University of Toronto STA286 students, check <a class="link_to_another_page" onclick="window.open('http://individual.utoronto.ca/zexuan/sta286_report.pdf');">here</a> for more details)</span>
 				</td>
 			</tr><br/>
 		</table>
