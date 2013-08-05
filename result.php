@@ -83,7 +83,8 @@ foreach ($my_scores as $my_individual_app_score){
 		$score_found=true;
 		$my_previous_score=idx($my_individual_app_score, 'score');
 		
-		//echo "my previous score: ".$my_previous_score;
+		echo "my previous score: ".$my_previous_score;
+		
 		if ($_GET['score']>$my_previous_score){
 			// post scores on the api-METHOD2
 			$success=$facebook->api(
@@ -96,13 +97,12 @@ foreach ($my_scores as $my_individual_app_score){
 	}
 }
 if ($score_not_found==false){
-	// post scores on the api-METHOD2
-			$success=$facebook->api(
-    			'/me/scores/',
-    			'post',
-    			array('score' => $_GET['score'], 'access_token' => $app_access_token)
-				);	
-			echo 'is successful? '.$success.'\n';	
+	echo 'score not found\n';
+	$success=$facebook->api(
+		'/me/scores/',
+		'post',
+		array('score' => $_GET['score'], 'access_token' => $app_access_token)
+		);	
 }
 
 //var_dump($_SESSION);
@@ -379,9 +379,14 @@ document.getElementById("score_value").innerHTML=sessionStorage.getItem("score")
 
 var score=sessionStorage.getItem("score");
 
-
-if (score>10000)
-document.getElementById("ranking_percentage").innerHTML=20;
+if (score>3000)
+	document.getElementById("ranking_percentage").innerHTML=0.5;
+else if (score>2500)
+	document.getElementById("ranking_percentage").innerHTML=1;
+else if (score>625)
+	document.getElementById("ranking_percentage").innerHTML=50;
+else if (score>325)
+	document.getElementById("ranking_percentage").innerHTML=80;
 
 
       window.fbAsyncInit = function() {
