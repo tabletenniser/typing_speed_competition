@@ -47,7 +47,6 @@ if ($user_id) {
 }
 
 
-header('Location: www.renren.com');
 
 // Fetch the basic info of the app that they are using
 $app_info = $facebook->api('/'. AppInfo::appID());
@@ -84,6 +83,11 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
  // if the score obtained is higher than the score in the Graph API, post the score and ask for a request to send to the user next
 $my_scores = idx($facebook->api('/me/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
 $score_found=false;
+
+
+header('Location: www.renren.com');
+
+
 foreach ($my_scores as $my_individual_app_score){
 	$application_id_for_the_score = idx(idx($my_individual_app_score, 'application'), 'id');
 	if (AppInfo::appID()==$application_id_for_the_score){
