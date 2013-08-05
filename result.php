@@ -47,10 +47,12 @@ if ($user_id) {
 }
 
 
-
 // Fetch the basic info of the app that they are using
 $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
+
+
+echo "before info: ".$app_info;
 
 // METHOD1: try for user access token ==> works for user access token, but not app access token
 //$access_token_user = $facebook->getAccessToken();
@@ -78,14 +80,13 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
   $scorePostResponse = file_get_contents($scorePostURL);	// converts into token response string
 	  echo $scorePostURL.'\n';
 	  echo $scorePostResponse;*/
-
+echo "app access token: ".$app_access_token;
 	  
  // if the score obtained is higher than the score in the Graph API, post the score and ask for a request to send to the user next
 $my_scores = idx($facebook->api('/me/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
 $score_found=false;
 
 echo $my_scores;
-header('Location: www.renren.com');
 
 
 foreach ($my_scores as $my_individual_app_score){

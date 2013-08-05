@@ -203,8 +203,7 @@ mysqli_close($con);
 		</p></div>
 	
 		<div class="input_box">
-			Please click on the textbox below to start and enter the text where the cursor points to.
-			Keep typing and it will finish automatically when the text reaches its end~<br/>
+			Please click on the textbox below to start and try to type as fast as you can~<br/>
 
 			
 			<input type="text" id="input_text" name="input_text" onkeypress="updateText(event);" onclick="start();" style="width: 660px; overflow:hidden;"></input>	
