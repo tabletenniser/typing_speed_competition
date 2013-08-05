@@ -318,7 +318,7 @@ mysqli_close($con);
 			<tr class="highlight_row">
 				<td class="large_padding" colspan="2">
 					Your typing speed and accuracy is placed in top <span id="ranking_percentage">0</span>% among students.<br/>
-					(According to a research done by a group of University of Toronto STA286 students in Apr.2013.)
+					<span>(According to a study done by a group of University of Toronto STA286 students, check <a href="http://individual.utoronto.ca/zexuan/sta286_report.pdf">here</a>for more details )
 				</td>
 			</tr><br/>
 		</table>
@@ -437,6 +437,10 @@ else if (score>325)
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>	
-
+<?php 
+echo '<script type="text/javascript">';
+echo "alert('page is loaded');";
+echo '</script>';
+?>
   </body>
 </html>
