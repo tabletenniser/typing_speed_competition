@@ -364,7 +364,11 @@ tr.highlight_row{
 
 .super_highlight_row{
 	font-weight: bold;
-	color: #FFAAAA
+	color: #FFAAAA;
+}
+
+a.link_to_another_page{
+	text-decoration:underline;
 }
 
 /* ------------------------------------------ */
