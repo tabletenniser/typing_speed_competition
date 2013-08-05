@@ -29,8 +29,6 @@ if ($user_id) {
     $basic = $facebook->api('/me');
   } catch (FacebookApiException $e) {
     if (!$facebook->getUser()) {
-	header('Location: https://renren.com');
-	
 		trigger_error("Cannot get user ID", E_USER_NOTICE);
   
       header('Location: '. AppInfo::getUrl($_SERVER['REQUEST_URI']));
@@ -54,7 +52,8 @@ $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
 
 
-
+echo "before info, app ID:".AppInfo::appID();
+echo "before info, user ID:".$user_id;
 
 
 /*
