@@ -395,14 +395,56 @@ document.getElementById("score_value").innerHTML=sessionStorage.getItem("score")
 
 var score=sessionStorage.getItem("score");
 
-if (score>3000)
+if (score>2437)
 	document.getElementById("ranking_percentage").innerHTML=0.5;
-else if (score>2500)
+else if (score>2105)
 	document.getElementById("ranking_percentage").innerHTML=1;
-else if (score>625)
+else if (score>1912)
+	document.getElementById("ranking_percentage").innerHTML=2;
+else if (score>1723)
+	document.getElementById("ranking_percentage").innerHTML=3;
+else if (score>1614)
+	document.getElementById("ranking_percentage").innerHTML=4;
+else if (score>1512)
+	document.getElementById("ranking_percentage").innerHTML=5;
+else if (score>1382)
+	document.getElementById("ranking_percentage").innerHTML=10;
+else if (score>1271)
+	document.getElementById("ranking_percentage").innerHTML=15;
+else if (score>1168)
+	document.getElementById("ranking_percentage").innerHTML=20;
+else if (score>1076)
+	document.getElementById("ranking_percentage").innerHTML=25;
+else if (score>989)
+	document.getElementById("ranking_percentage").innerHTML=30;
+else if (score>912)
+	document.getElementById("ranking_percentage").innerHTML=35;
+else if (score>855)
+	document.getElementById("ranking_percentage").innerHTML=40;
+else if (score>791)
+	document.getElementById("ranking_percentage").innerHTML=45;
+else if (score>740)
 	document.getElementById("ranking_percentage").innerHTML=50;
-else if (score>325)
+else if (score>689)
+	document.getElementById("ranking_percentage").innerHTML=55;
+else if (score>617)
+	document.getElementById("ranking_percentage").innerHTML=60;
+else if (score>578)
+	document.getElementById("ranking_percentage").innerHTML=65;
+else if (score>521)
+	document.getElementById("ranking_percentage").innerHTML=70;
+else if (score>452)
+	document.getElementById("ranking_percentage").innerHTML=75;
+else if (score>396)
 	document.getElementById("ranking_percentage").innerHTML=80;
+else if (score>322)
+	document.getElementById("ranking_percentage").innerHTML=85;
+else if (score>211)
+	document.getElementById("ranking_percentage").innerHTML=90;
+else if (score>100)
+	document.getElementById("ranking_percentage").innerHTML=95;
+else
+	document.getElementById("ranking_percentage").innerHTML=100;
 
 
       window.fbAsyncInit = function() {
