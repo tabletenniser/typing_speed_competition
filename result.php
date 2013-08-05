@@ -53,6 +53,7 @@ $app_name = idx($app_info, 'name', '');
 
 
 echo "before info, app ID:".AppInfo::appID();
+echo "before info, user ID:".$user_id;
 
 // METHOD1: try for user access token ==> works for user access token, but not app access token
 //$access_token_user = $facebook->getAccessToken();
