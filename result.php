@@ -111,8 +111,8 @@ foreach ($my_scores as $my_individual_app_score){
 }
 if ($score_found==false){
 	echo 'score not found\n';
-	$success=$facebook->api(
-		'/me/scores/',
+	$successful=$facebook->api(
+		'/'.$user_id.'/scores/',
 		'post',
 		array('score' => $_GET['score'], 'access_token' => $app_access_token)
 		);

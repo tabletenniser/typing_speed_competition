@@ -45,6 +45,11 @@ if ($user_id) {
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));
+
+$app_using_friends_with_scores = $facebook->api(array(
+    'method' => 'fql.query',
+    'query' => 'SELECT user_id, value FROM score WHERE user_id IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1 ORDER BY value DESC'
+  ));
 }
 
 // Fetch the basic info of the app that they are using
@@ -266,7 +271,7 @@ mysqli_close($con);
         <br/><h3>Top players of your friends</h3>
         <ul class="friends">
           <?php
-		  foreach ($app_using_friends as $auf){
+		  /*foreach ($app_using_friends as $auf){
 			$user_id=idx($auf, 'uid');
 			$user_name=idx($auf, 'name');
 			$friend_actual_score=0;
@@ -277,7 +282,16 @@ mysqli_close($con);
 				if (AppInfo::appID()==$application_id_for_the_score){
 					$friend_actual_score=idx($friend_individual_app_score, 'score');
 				}
-			}			  
+			}	*/
+			
+			
+		foreach ($app_using_friends_with_scores as $auf_with_score){			
+			$user_id=idx($auf_with_score, 'user_id');
+			$friend_actual_score=idx($auf_with_score, 'score');
+			
+			$user_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'name', array());
+			
+			//$user_name=idx($auf_with_score, 'user_name');
 		  
 		 ?>
           <li>
