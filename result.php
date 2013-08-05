@@ -24,7 +24,6 @@ $facebook = new Facebook(array(
   'trustForwarded' => true,
 ));
 
-header('Location: www.renren.com');
 
 
 // viewer's info
@@ -46,6 +45,9 @@ if ($user_id) {
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));
 }
+
+
+header('Location: www.renren.com');
 
 // Fetch the basic info of the app that they are using
 $app_info = $facebook->api('/'. AppInfo::appID());
