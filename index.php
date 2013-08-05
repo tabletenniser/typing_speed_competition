@@ -299,6 +299,10 @@ mysqli_close($con);
 			$user_id=idx($auf_with_score, 'user_id');
 			$friend_actual_score=idx($auf_with_score, 'value');			
 			$user_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'name', array());
+			$first_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'first_name', array());
+			$last_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'last_name', array());
+			
+		
 			
 			/*if ($GET{}<$friend_actual_score)
 				$my_current_placement=$i;
@@ -312,7 +316,11 @@ mysqli_close($con);
             <a href="https://www.facebook.com/<?php echo he($user_id); ?>" target="_top">
               <img src="https://graph.facebook.com/<?php echo he($user_id) ?>/picture?type=square" alt="<?php echo he($user_name); ?>"><br/>
               <?php 
-			  	echo he($user_name); 
+			  	echo he($first_name); 
+			  ?>
+			<br/>
+				<?php 
+			  	echo he($last_name); 
 			  ?>
             </a><br/>
 			<?php 
