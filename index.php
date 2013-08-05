@@ -290,15 +290,22 @@ mysqli_close($con);
 			}	*/
 			
 			echo "friends score array from fql".$app_using_friends_with_scores;
-				
-		foreach ($app_using_friends_with_scores as $auf_with_score){			
-			$user_id=idx($auf_with_score, 'user_id');
-			$friend_actual_score=idx($auf_with_score, 'value');
+		$i=0;
+		$my_current_placement=0;
+		$my_highest_placement=0;
+		foreach ($app_using_friends_with_scores as $auf_with_score){
+			$i++;
 			
+			$user_id=idx($auf_with_score, 'user_id');
+			$friend_actual_score=idx($auf_with_score, 'value');			
 			$user_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'name', array());
 			
+			/*if ($GET{}<$friend_actual_score)
+				$my_current_placement=$i;
+			if ($GET{}<$friend_actual_score)
+				$my_highest_placement=$i;*/
+			
 			//$user_name=idx($auf_with_score, 'user_name');
-		  
 		 ?>
           <li>
 		  	<div>
