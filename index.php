@@ -46,10 +46,15 @@ if ($user_id) {
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));
 
+echo "before fql call";
+
+
 $app_using_friends_with_scores = $facebook->api(array(
     'method' => 'fql.query',
-    'query' => 'SELECT user_id, value FROM score WHERE user_id IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1 ORDER BY value DESC'
+    'query' => 'SELECT user_id, value FROM score WHERE user_id IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND app_id = '.AppInfo::appID().' ORDER BY value DESC'
   ));
+echo "after fql call";
+
 }
 
 // Fetch the basic info of the app that they are using
