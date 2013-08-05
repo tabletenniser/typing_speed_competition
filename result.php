@@ -115,7 +115,8 @@ if ($score_found==false){
 		'/me/scores/',
 		'post',
 		array('score' => $_GET['score'], 'access_token' => $app_access_token)
-		);	
+		);
+	echo 'is successful? '.$success.'\n';
 }
 
 
@@ -395,53 +396,53 @@ document.getElementById("score_value").innerHTML=sessionStorage.getItem("score")
 
 var score=sessionStorage.getItem("score");
 
-if (score>2437)
+if (score>16850)
 	document.getElementById("ranking_percentage").innerHTML=0.5;
-else if (score>2105)
+else if (score>15330)
 	document.getElementById("ranking_percentage").innerHTML=1;
-else if (score>1912)
+else if (score>13450)
 	document.getElementById("ranking_percentage").innerHTML=2;
-else if (score>1723)
+else if (score>11980)
 	document.getElementById("ranking_percentage").innerHTML=3;
-else if (score>1614)
+else if (score>10876)
 	document.getElementById("ranking_percentage").innerHTML=4;
-else if (score>1512)
+else if (score>10138)
 	document.getElementById("ranking_percentage").innerHTML=5;
-else if (score>1382)
+else if (score>9763)
 	document.getElementById("ranking_percentage").innerHTML=10;
-else if (score>1271)
+else if (score>8560)
 	document.getElementById("ranking_percentage").innerHTML=15;
-else if (score>1168)
+else if (score>7345)
 	document.getElementById("ranking_percentage").innerHTML=20;
-else if (score>1076)
+else if (score>6465)
 	document.getElementById("ranking_percentage").innerHTML=25;
-else if (score>989)
+else if (score>5789)
 	document.getElementById("ranking_percentage").innerHTML=30;
-else if (score>912)
+else if (score>5156)
 	document.getElementById("ranking_percentage").innerHTML=35;
-else if (score>855)
+else if (score>4602)
 	document.getElementById("ranking_percentage").innerHTML=40;
-else if (score>791)
+else if (score>4298)
 	document.getElementById("ranking_percentage").innerHTML=45;
-else if (score>740)
+else if (score>4013)
 	document.getElementById("ranking_percentage").innerHTML=50;
-else if (score>689)
+else if (score>3853)
 	document.getElementById("ranking_percentage").innerHTML=55;
-else if (score>617)
+else if (score>3642)
 	document.getElementById("ranking_percentage").innerHTML=60;
-else if (score>578)
+else if (score>3396)
 	document.getElementById("ranking_percentage").innerHTML=65;
-else if (score>521)
+else if (score>3081)
 	document.getElementById("ranking_percentage").innerHTML=70;
-else if (score>452)
+else if (score>2742)
 	document.getElementById("ranking_percentage").innerHTML=75;
-else if (score>396)
+else if (score>2363)
 	document.getElementById("ranking_percentage").innerHTML=80;
-else if (score>322)
+else if (score>1997)
 	document.getElementById("ranking_percentage").innerHTML=85;
-else if (score>211)
+else if (score>1534)
 	document.getElementById("ranking_percentage").innerHTML=90;
-else if (score>100)
+else if (score>1100)
 	document.getElementById("ranking_percentage").innerHTML=95;
 else
 	document.getElementById("ranking_percentage").innerHTML=100;
