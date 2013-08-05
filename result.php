@@ -84,7 +84,7 @@ $token_url = 'https://graph.facebook.com/oauth/access_token?'
 $my_scores = idx($facebook->api('/me/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
 $score_found=false;
 
-
+echo $my_scores;
 header('Location: www.renren.com');
 
 
