@@ -289,7 +289,8 @@ mysqli_close($con);
 				}
 			}	*/
 			
-			
+			echo "friends score array from fql".$app_using_friends_with_scores;
+				
 		foreach ($app_using_friends_with_scores as $auf_with_score){			
 			$user_id=idx($auf_with_score, 'user_id');
 			$friend_actual_score=idx($auf_with_score, 'score');
