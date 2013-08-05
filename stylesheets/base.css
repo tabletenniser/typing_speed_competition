@@ -371,6 +371,12 @@ tr.highlight_row{
 	font-size: 9px;
 }
 
+div.friends_ranking{
+	display: inline;
+	width: 80px;
+	height: 80px;
+}
+
 a.link_to_another_page{
 	text-decoration:underline;
 }
