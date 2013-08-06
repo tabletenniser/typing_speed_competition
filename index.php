@@ -214,7 +214,7 @@ mysqli_close($con);
 			Please click on the textbox below to start and try to type as fast as you can~<br/>
 
 			
-			<input type="text" id="input_text" name="input_text" onkeypress="updateText(event);" onclick="start();" style="width: 660px; overflow:hidden;"></input>	
+			<input type="text" id="input_text" name="input_text" onkeypress="updateText(event);" onclick="start();" style="width: 660px; overflow:hidden; border: 3px inset; border-color: #444444"></input>	
 		</div>
 	</td></tr>
 	
