@@ -211,7 +211,7 @@ mysqli_close($con);
 				<p id="text_para" style="font-size: 18px; color: #222299; margin: 15px">
 		</p></div>
 	
-		<div class="input_box">
+		<div class="input_box" style="color: #112211;">
 			Please click on the textbox below to start and try to type as fast as you can~<br/>
 
 			
