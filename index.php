@@ -299,7 +299,11 @@ mysqli_close($con);
 			$first_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'first_name', array());
 			$last_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'last_name', array());
 			
-		
+			if ($user_id=$facebook->getUser())
+				echo "<li class='my_ranking'>";
+			else
+				echo "<li class='friends_ranking'>";
+			
 			
 			/*if ($GET{}<$friend_actual_score)
 				$my_current_placement=$i;
@@ -307,8 +311,8 @@ mysqli_close($con);
 				$my_highest_placement=$i;*/
 			
 			//$user_name=idx($auf_with_score, 'user_name');
-		 ?>
-          <li class="friends_ranking">
+			?>
+          
 		  	<div class="friends_ranking">
             <a href="https://www.facebook.com/<?php echo he($user_id); ?>" target="_top">
               <img src="https://graph.facebook.com/<?php echo he($user_id) ?>/picture?type=square" alt="<?php echo he($user_name); ?>"><br/>
