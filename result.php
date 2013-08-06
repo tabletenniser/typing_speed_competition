@@ -330,7 +330,11 @@ mysqli_close($con);
 		</table>
 	<br/>
 	</div>
-	</td></tr>
+	</td></tr><tr><td style="text-align: center;">
+	  <input type="button" id="retry" value="Retry"></input>
+	</td></tr><tr><td style="text-align: center;">
+	  <input type="button" id="sendRequest" value="Invite friends to compete" data-message="I want to compete typing speed with you"></input>
+	</td></tr>	<br/>
 	<tr><td class="horizontal_list">
 	<div>
         <h3>Top players of your friends: </h3>
@@ -396,9 +400,7 @@ mysqli_close($con);
           ?>
         </ul>
       </div>
-	  </td></tr><tr><td style="text-align: center;">
-	  <input type="button" id="sendRequest" value="Invite friends to compete" data-message="I want to compete typing speed with you"></input>
-	</td></tr>	
+	  </td></tr>
 </table>
 <br/>
 </div>
