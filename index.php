@@ -288,8 +288,6 @@ mysqli_close($con);
 					$friend_actual_score=idx($friend_individual_app_score, 'score');
 				}
 			}	*/
-			
-			echo "friends score array from fql".$app_using_friends_with_scores;
 		$i=0;
 		$my_current_placement=0;
 		$my_highest_placement=0;

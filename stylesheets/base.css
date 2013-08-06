@@ -384,10 +384,9 @@ a.link_to_another_page{
 
 ul.friends{
 	display: inline;
+	float: left;
 }
-li{
-	display: inline;
-}
+
 
 /* ------------------------------------------ */
 
