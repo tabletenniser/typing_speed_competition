@@ -371,10 +371,10 @@ tr.highlight_row{
 	font-size: 9px;
 }
 
-.friends_ranking{
+li.friends_ranking{
 	display: inline;
-	width: 80px;
-	height: 80px;
+	width: 120px;
+	height: 120px;
 	overflow: scroll;
 	float: left;
 }
