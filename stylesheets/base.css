@@ -376,25 +376,25 @@ li.friends_ranking{
 	padding: 5px;
 	display: inline;
 	width: 110px;
-	height: 110px;
+	height: 100px;
 	overflow: hidden;
 	float: left;
 	text-align: center;
 	font-size: 10px;
-	line-height: 1.1;
+	line-height: 1.3;
 }
 li.my_ranking{
-	padding: 5px;
+	padding: 10px;
 	display: inline;
 	width: 110px;
-	height: 110px;
+	height: 100px;
 	overflow: hidden;
 	float: left;
 	text-align: center;
 	font-size: 10px;
-	line-height: 1.1;
+	line-height: 1.3;
 	font-weight: bold;
-	background-color: #EEDDEE;
+	background-color: #E8FAFA;
 }
 
 a.link_to_another_page{
@@ -402,7 +402,7 @@ a.link_to_another_page{
 }
 
 td.horizontal_list{
-	background-color:#DFF2F2F2; 
+	background-color:#EDFFFF; 
 	padding: 5px 10px; 
 	margin: 15px;
 	width: inherit; 
