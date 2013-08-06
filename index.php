@@ -272,7 +272,7 @@ mysqli_close($con);
 	</td></tr>
 	<tr><td>
 	<div class="horizontal_list">
-        <br/><h3>Top players of your friends</h3>
+        <br/><h3>Top players of your friends: </h3>
         <ul class="friends">
           <?php
 		  /*foreach ($app_using_friends as $auf){
@@ -329,6 +329,7 @@ mysqli_close($con);
           ?>
         </ul>
       </div>
+	  </td></tr><tr><td>
 	  <input type="button" id="sendRequest" value="Invite friends to compete" data-message="I want to compete typing speed with you"></input>
 	</td></tr>	
 </table>
