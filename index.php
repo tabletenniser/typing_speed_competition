@@ -196,8 +196,7 @@ mysqli_close($con);
 <table class="background">
 	<tr><td>
 		<div id="welcome_msg">
-		<h1>Welcome to the typing-speed competition v2.0</h1>  
-		<br/>
+		<h1>Welcome to the typing-speed competition v2.0</h1> 
 		</div>
 	</td></tr>
 	<tr><td>
