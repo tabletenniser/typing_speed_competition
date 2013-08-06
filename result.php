@@ -348,7 +348,7 @@ mysqli_close($con);
 	</td></tr><tr><td style="text-align: center;">
 	  <input type="button" id="retry" value="Retry"></input>
 	</td></tr><tr><td style="text-align: center;">
-	<input type="hidden" id="postToWall" value="Post to wall" data-message="I have just surpassed _______'s high score!"></input>	  
+	<input type="button" id="postToWall" value="Post to wall" data-message="I have just surpassed _______'s high score!"></input>	  
 	  <input type="button" id="sendRequest" value="Invite friends to compete" data-message="I want to compete typing speed with you"></input>
 	<br/><br/></td></tr>	
 	<tr><td class="horizontal_list">
