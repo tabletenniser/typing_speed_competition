@@ -305,9 +305,9 @@ function start(){
 			
 			$user_id=idx($auf_with_score, 'user_id');
 			$friend_actual_score=idx($auf_with_score, 'value');			
-			$user_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'name', array());
-			$first_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'first_name', array());
-			$last_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'last_name', array());
+			$user_name = idx($facebook->api('/'.$user_id, 'get', array()), 'name', array());
+			$first_name = idx($facebook->api('/'.$user_id, 'get', array()), 'first_name', array());
+			$last_name = idx($facebook->api('/'.$user_id, 'get', array()), 'last_name', array());
 			
 			if ($user_id==$facebook->getUser()){
 				$first_name="YOU";

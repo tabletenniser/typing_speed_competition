@@ -51,6 +51,7 @@ if ($user_id) {
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));*/
   
+  $access_token = $facebook->getAccessToken();
   echo "app access token: ".$app_access_token;
 	  
  // if the score obtained is higher than the score in the Graph API, post the score and ask for a request to send to the user next
