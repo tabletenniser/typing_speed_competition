@@ -396,8 +396,8 @@ mysqli_close($con);
 			//$user_name=idx($auf_with_score, 'user_name');
 			?>
           
-		  	<div>
-            <a href="https://www.facebook.com/<?php echo he($user_id); ?>" target="_top">
+		  	<div><span style="font-size: 14px; color: #441111;">
+            <?php echo "#".$i.": ";?></span><a href="https://www.facebook.com/<?php echo he($user_id); ?>" target="_top">
               <img src="https://graph.facebook.com/<?php echo he($user_id) ?>/picture?type=square" alt="<?php echo he($user_name); ?>"><br/>
               <?php 
 			  	echo he($first_name); 
