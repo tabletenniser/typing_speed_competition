@@ -514,8 +514,8 @@ else
 	  function postToWall() {
           FB.ui(
             {
-              method  : 'apprequests',
-              message : <?php echo AppInfo::getUrl(); ?>
+              method  : 'feed',
+              message : '<?php echo AppInfo::getUrl(); ?>'
             },
             function (response) {
               // If response is null the user canceled the dialog
@@ -524,7 +524,7 @@ else
               }
             }
           );
-        });
+        };
     </script>	
 <?php 
 echo '<script type="text/javascript">';
