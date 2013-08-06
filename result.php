@@ -531,6 +531,7 @@ else
 <?php 
 echo '<script type="text/javascript">';
 //echo "postToWall();";
+echo "document.getElementById('postToWall').click();";
 echo '</script>';
 ?>
   </body>
