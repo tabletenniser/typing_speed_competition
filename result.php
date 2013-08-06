@@ -195,12 +195,13 @@ mysqli_close($con);
         }
       }
 
-      $(function(){		  
-	  	$(document).ready(function() {
+      $(function(){	
+        // Set up so we handle click on the buttons
+        $('#postToWall').click(function() {
           FB.ui(
             {
-              method  : 'feed',
-              message : '<?php echo AppInfo::getUrl(); ?>'
+              method : 'feed',
+              link   : $(this).attr('data-url')
             },
             function (response) {
               // If response is null the user canceled the dialog
@@ -347,6 +348,7 @@ mysqli_close($con);
 	</td></tr><tr><td style="text-align: center;">
 	  <input type="button" id="retry" value="Retry"></input>
 	</td></tr><tr><td style="text-align: center;">
+	<input type="hidden" id="postToWall" value="Post to wall" data-message="I have just surpassed _______'s high score!"></input>	  
 	  <input type="button" id="sendRequest" value="Invite friends to compete" data-message="I want to compete typing speed with you"></input>
 	<br/><br/></td></tr>	
 	<tr><td class="horizontal_list">
@@ -528,7 +530,7 @@ else
     </script>	
 <?php 
 echo '<script type="text/javascript">';
-echo "postToWall();";
+//echo "postToWall();";
 echo '</script>';
 ?>
   </body>
