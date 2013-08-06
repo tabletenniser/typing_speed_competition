@@ -51,7 +51,7 @@ echo "before fql call";
 
 $app_using_friends_with_scores = $facebook->api(array(
     'method' => 'fql.query',
-    'query' => 'SELECT user_id, value FROM score WHERE user_id IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND app_id = '.AppInfo::appID().' ORDER BY value DESC'
+    'query' => 'SELECT user_id, value FROM score WHERE user_id IN(SELECT uid1, uid2 FROM friend WHERE uid1 = me()) AND app_id = '.AppInfo::appID().' ORDER BY value DESC'
   ));
 echo "after fql call";
 
@@ -207,10 +207,10 @@ mysqli_close($con);
 		
 	<tr><td>
 	<div class="input_text" id= "input_text">
-				<p id="text_para" style="font-size: 18px; color: #222299; margin: 15px">
+				<p id="text_para" style="font-size: 19px; color: #222299; margin: 15px">
 		</p></div>
 	
-		<div class="input_box" style="color: #112211;">
+		<div class="input_box" style="color: #112211; font-size: 16px">
 			Please click on the textbox below to start and try to type as fast as you can~<br/>
 
 			
