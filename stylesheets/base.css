@@ -26,7 +26,7 @@ a:hover, a:active {
 h1 {
   color: #656565;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: normal;
   text-align: center;
 }
@@ -396,10 +396,11 @@ ul.friends{
 div.input_text{
 	background-color:#EEEEAA; 
 	padding: 0px 5px; 
-	margin: 30px;
+	margin: 15px;
 	width: inherit; 
 	height: auto; 
 	overflow:hidden;
+	font-size: 17px;
 	
 	border:2px solid #a1a1a1;
 	border-radius:10px;
