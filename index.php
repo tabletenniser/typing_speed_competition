@@ -520,15 +520,8 @@ function end(){
 	
 }
 	
-	</script>
-	
-
-		
-		
-	  
-      <?php } else { ?>
-		  
-		  
+	</script>	  
+      <?php } else { ?>		  
 	  <div>
         <h1>Welcome to typing test competition v2.0!</h1>
 		<br/>
