@@ -351,7 +351,7 @@ var input_text;
 var textCharacters = new Array();	// boolean array, 1 for correct char, 0 for wrong char
 
 var text_array = new Array();
-text_array[0] = "ab \" cd.";
+text_array[0] = "abcde dfefe";
 text_array[1] = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour.";
 text_array[2] = "On their return to England, Hawking attended Radlett School for a year and from September 1952, St Albans School. The family placed a high value on education. Hawking's father wanted his son to attend the well-regarded Westminster School, but the 13-year-old Hawking was ill on the day of the scholarship examination. His family could not afford the school fees without the financial aid of a scholarship, so Hawking remained at St Albans. A positive consequence was that Hawking remained with a close group of friends with whom he enjoyed board games, the manufacture of fireworks, model aeroplanes and boats.";
 text_array[3] = "As he slowly lost the ability to write, he developed compensatory visual methods, including seeing equations in terms of geometry. The physicist Werner Israel later compared the achievements to Mozart composing an entire symphony in his head. Hawking was, however, fiercely independent and unwilling to accept help or make concessions for his disabilities. Hawking preferred to be regarded as \"a scientist first, popular science writer second, and, in all the ways that matter, a normal human being with the same desires, drives, dreams, and ambitions as the next person.\”";
@@ -363,8 +363,8 @@ text_array[8] = "The term engineering itself has a much more recent etymology, d
 text_array[9] = "A computer network (or data network) is a telecommunications network that allows computers to exchange data. The physical connection between networked computing devices is established using either cable media or wireless media. The best-known computer network is the Internet. Network devices that originate, route and terminate the data are called network nodes. Nodes can include hosts such as servers and personal computers, as well as networking hardware. Two devices are said to be networked when a process in one device is able to exchange information with a process in another device.";
 text_array[10] = "Electrical engineering can trace its origins back to the experiments of Alessandro Volta in the 1800s, the experiments of Michael Faraday, Georg Ohm and others and the invention of the electric motor in 1872. The work of James Maxwell and Heinrich Hertz in the late 19th century gave rise to the field of electronics. The later inventions of the vacuum tube and the transistor further accelerated the development of electronics to such an extent that electrical and electronics engineers currently outnumber their colleagues of any other engineering specialty.";
 
-//var randomNumberGenerator=0;
-var randomNumberGenerator=Math.floor(Math.random()*10)+1;	// replace 10 with the max index value
+var randomNumberGenerator=0;
+//var randomNumberGenerator=Math.floor(Math.random()*10)+1;	// replace 10 with the max index value
 
 document.getElementById("text_para").innerHTML=text_array[randomNumberGenerator];
 

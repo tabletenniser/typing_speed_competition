@@ -11,7 +11,7 @@ if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != 
   exit();
 }
 
-header('Location: https://google.com');
+//header('Location: https://google.com');
 
 require_once('utils.php');		// global array and html helper functions
 require_once('sdk/src/facebook.php');	// fb API
