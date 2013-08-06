@@ -39,10 +39,15 @@ if ($user_id) {
     }
   }
 	
-  //FQL to get friends who are using the app
+  /*//FQL to get friends who are using the app
   $app_using_friends = $facebook->api(array(
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
+  ));*/
+
+$app_using_friends_with_scores = $facebook->api(array(
+    'method' => 'fql.query',
+    'query' => 'SELECT user_id, value FROM score WHERE user_id IN(SELECT uid1, uid2 FROM friend WHERE uid1 = me()) AND app_id = '.AppInfo::appID().' ORDER BY value DESC'
   ));
 }
 
@@ -326,19 +331,12 @@ mysqli_close($con);
 	<br/>
 	</div>
 	</td></tr>
-	<tr><td>
-		<div class="center_alignment">
-		<input type="button" id="retry" value="Retry" ></input><br/>
-		<input type="button" id="sendRequest" value="Compete with Friends" data-message="I want to compete typing speed with you"></input>
-		</div>
-	</td></tr>
-	<tr><td>
-	<br/>
-	<div class="horizontal_list">
-        <br/><h3>Top players of your friends</h3>
+	<tr><td class="horizontal_list">
+	<div>
+        <h3>Top players of your friends: </h3>
         <ul class="friends">
           <?php
-		  foreach ($app_using_friends as $auf){
+		  /*foreach ($app_using_friends as $auf){
 			$user_id=idx($auf, 'uid');
 			$user_name=idx($auf, 'name');
 			$friend_actual_score=0;
@@ -349,19 +347,48 @@ mysqli_close($con);
 				if (AppInfo::appID()==$application_id_for_the_score){
 					$friend_actual_score=idx($friend_individual_app_score, 'score');
 				}
-			}			  
-		  
-		 ?>
-          <li>
+			}	*/
+		$i=0;
+		$my_current_placement=0;
+		$my_highest_placement=0;
+		foreach ($app_using_friends_with_scores as $auf_with_score){
+			$i++;
+			
+			$user_id=idx($auf_with_score, 'user_id');
+			$friend_actual_score=idx($auf_with_score, 'value');			
+			$user_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'name', array());
+			$first_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'first_name', array());
+			$last_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'last_name', array());
+			
+			if ($user_id==$facebook->getUser()){
+				$first_name="YOU";
+				$last_name="";
+				echo "<li class='my_ranking'>";
+			}else{
+				echo "<li class='friends_ranking'>";
+			}
+			
+			/*if ($GET{}<$friend_actual_score)
+				$my_current_placement=$i;
+			if ($GET{}<$friend_actual_score)
+				$my_highest_placement=$i;*/
+			
+			//$user_name=idx($auf_with_score, 'user_name');
+			?>
+          
 		  	<div>
             <a href="https://www.facebook.com/<?php echo he($user_id); ?>" target="_top">
               <img src="https://graph.facebook.com/<?php echo he($user_id) ?>/picture?type=square" alt="<?php echo he($user_name); ?>"><br/>
               <?php 
-			  	echo he($user_name); 
+			  	echo he($first_name); 
 			  ?>
-            </a><br/>
+			<br/>
 			<?php 
-			  echo $friend_actual_score." "; ?>pts
+			  	echo he($last_name); 
+			?>
+            </a><br/><span style="font-size: 13px;">
+			<?php 
+			  echo $friend_actual_score." "; ?>pts </span>
 			</div>
           </li>
           <?php
@@ -369,7 +396,9 @@ mysqli_close($con);
           ?>
         </ul>
       </div>
-	</td></tr>
+	  </td></tr><tr><td style="text-align: center;">
+	  <input type="button" id="sendRequest" value="Invite friends to compete" data-message="I want to compete typing speed with you"></input>
+	</td></tr>	
 </table>
 <br/>
 </div>

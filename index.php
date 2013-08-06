@@ -41,10 +41,10 @@ if ($user_id) {
   $friends = idx($facebook->api('/me/friends?limit=4'), 'data', array());
   $photos = idx($facebook->api('/me/photos?limit=16'), 'data', array());
   //FQL
-  $app_using_friends = $facebook->api(array(
+  /*$app_using_friends = $facebook->api(array(
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
-  ));
+  ));*/
 
 echo "before fql call";
 
