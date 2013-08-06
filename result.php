@@ -25,6 +25,9 @@ $facebook = new Facebook(array(
 ));
 
 
+// Fetch the basic info of the app that they are using
+$app_info = $facebook->api('/'. AppInfo::appID());
+$app_name = idx($app_info, 'name', '');
 
 // viewer's info
 $user_id = $facebook->getUser();
@@ -38,55 +41,17 @@ if ($user_id) {
       exit();
     }
   }
+  
+  
+
 	
   /*//FQL to get friends who are using the app
   $app_using_friends = $facebook->api(array(
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));*/
-
-$app_using_friends_with_scores = $facebook->api(array(
-    'method' => 'fql.query',
-    'query' => 'SELECT user_id, value FROM score WHERE user_id IN(SELECT uid1, uid2 FROM friend WHERE uid1 = me()) AND app_id = '.AppInfo::appID().' ORDER BY value DESC'
-  ));
-}
-
-
-// Fetch the basic info of the app that they are using
-$app_info = $facebook->api('/'. AppInfo::appID());
-$app_name = idx($app_info, 'name', '');
-
-
-echo "before info, app ID:".AppInfo::appID();
-echo "before info, user ID:".$user_id;
-
-// METHOD1: try for user access token ==> works for user access token, but not app access token
-//$access_token_user = $facebook->getAccessToken();
-//echo "user access token: ".$access_token_user;	// checked to be good
-/*
-//METHOD2: get access token for the application (token returned doesn't have permission)
-$token_url = 'https://graph.facebook.com/oauth/access_token?'
-    . 'client_id=' . AppInfo::appID()
-    . '&client_secret=' . AppInfo::appSecret()
-    . '&grant_type=client_credentials';
-  $token_response = file_get_contents($token_url);	// converts into token response string
-  $params = null;
-  parse_str($token_response, $params);
-  $app_access_token = $params['access_token'];
   
-  echo $token_response.'\n';
-  echo $app_access_token.'\n';
-//https://graph.facebook.com/USER_ID/scores?score=USER_SCORE&access_token=APP_ACCESS_TOKEN
-  */
-  /*
-  //post scores-METHOD1: doesnt work
-  $scorePostURL = 'https://graph.facebook.com/'.$user_id.'/scores?'
-    . 'score=' . '50'
-    . '&access_token=' . $app_access_token;
-  $scorePostResponse = file_get_contents($scorePostURL);	// converts into token response string
-	  echo $scorePostURL.'\n';
-	  echo $scorePostResponse;*/
-echo "app access token: ".$app_access_token;
+  echo "app access token: ".$app_access_token;
 	  
  // if the score obtained is higher than the score in the Graph API, post the score and ask for a request to send to the user next
 $my_scores = idx($facebook->api('/me/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
@@ -126,6 +91,40 @@ if ($score_found==false){
 
 
 
+$app_using_friends_with_scores = $facebook->api(array(
+    'method' => 'fql.query',
+    'query' => 'SELECT user_id, value FROM score WHERE user_id IN(SELECT uid1, uid2 FROM friend WHERE uid1 = me()) AND app_id = '.AppInfo::appID().' ORDER BY value DESC'
+  ));
+}
+
+// METHOD1: try for user access token ==> works for user access token, but not app access token
+//$access_token_user = $facebook->getAccessToken();
+//echo "user access token: ".$access_token_user;	// checked to be good
+/*
+//METHOD2: get access token for the application (token returned doesn't have permission)
+$token_url = 'https://graph.facebook.com/oauth/access_token?'
+    . 'client_id=' . AppInfo::appID()
+    . '&client_secret=' . AppInfo::appSecret()
+    . '&grant_type=client_credentials';
+  $token_response = file_get_contents($token_url);	// converts into token response string
+  $params = null;
+  parse_str($token_response, $params);
+  $app_access_token = $params['access_token'];
+  
+  echo $token_response.'\n';
+  echo $app_access_token.'\n';
+//https://graph.facebook.com/USER_ID/scores?score=USER_SCORE&access_token=APP_ACCESS_TOKEN
+  */
+  /*
+  //post scores-METHOD1: doesnt work
+  $scorePostURL = 'https://graph.facebook.com/'.$user_id.'/scores?'
+    . 'score=' . '50'
+    . '&access_token=' . $app_access_token;
+  $scorePostResponse = file_get_contents($scorePostURL);	// converts into token response string
+	  echo $scorePostURL.'\n';
+	  echo $scorePostResponse;*/
+
+
 
 //var_dump($_SESSION);
 //echo "$_GET: ";
@@ -133,7 +132,7 @@ if ($score_found==false){
 
 
 //display the scores: REQUIRE AN ACCESS TOKEN
-$scores = idx($facebook->api('/'.AppInfo::appID().'/scores?limit=16', 'get', array('access_token' => $app_access_token)), 'data', array());
+//$scores = idx($facebook->api('/'.AppInfo::appID().'/scores?limit=16', 'get', array('access_token' => $app_access_token)), 'data', array());
 //echo "\nuser_id: ".$scores[0]["user"]["id"]."\n";
 //echo "Scores: ".$scores[0]["score"]."\n";
 
@@ -196,7 +195,22 @@ mysqli_close($con);
         }
       }
 
-      $(function(){
+      $(function(){		  
+	  	$(document).ready(function() {
+          FB.ui(
+            {
+              method  : 'feed',
+              message : '<?php echo AppInfo::getUrl(); ?>'
+            },
+            function (response) {
+              // If response is null the user canceled the dialog
+              if (response != null) {
+                logResponse(response);
+              }
+            }
+          );
+        });
+		  
         // Set up so we handle click on the buttons
         $('#sendRequest').click(function() {
           FB.ui(
@@ -511,20 +525,6 @@ else
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
 	  
-	  function postToWall() {
-          FB.ui(
-            {
-              method  : 'feed',
-              message : '<?php echo AppInfo::getUrl(); ?>'
-            },
-            function (response) {
-              // If response is null the user canceled the dialog
-              if (response != null) {
-                logResponse(response);
-              }
-            }
-          );
-        };
     </script>	
 <?php 
 echo '<script type="text/javascript">';
