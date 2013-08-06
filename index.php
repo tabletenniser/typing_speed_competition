@@ -311,7 +311,7 @@ mysqli_close($con);
 			
 			//$user_name=idx($auf_with_score, 'user_name');
 		 ?>
-          <li>
+          <li class="friends_ranking">
 		  	<div class="friends_ranking">
             <a href="https://www.facebook.com/<?php echo he($user_id); ?>" target="_top">
               <img src="https://graph.facebook.com/<?php echo he($user_id) ?>/picture?type=square" alt="<?php echo he($user_name); ?>"><br/>
@@ -319,9 +319,9 @@ mysqli_close($con);
 			  	echo he($first_name); 
 			  ?>
 			<br/>
-				<?php 
+			<?php 
 			  	echo he($last_name); 
-			  ?>
+			?>
             </a><br/>
 			<?php 
 			  echo $friend_actual_score." "; ?>pts
