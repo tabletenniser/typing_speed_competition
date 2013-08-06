@@ -373,6 +373,7 @@ tr.highlight_row{
 }
 
 li.friends_ranking{
+	padding: 5px;
 	display: inline;
 	width: 110px;
 	height: 110px;
@@ -383,6 +384,7 @@ li.friends_ranking{
 	line-height: 1.1;
 }
 li.my_ranking{
+	padding: 5px;
 	display: inline;
 	width: 110px;
 	height: 110px;
@@ -392,7 +394,7 @@ li.my_ranking{
 	font-size: 10px;
 	line-height: 1.1;
 	font-weight: bold;
-	background-color: #444444;
+	background-color: #EEDDEE;
 }
 
 a.link_to_another_page{
@@ -400,14 +402,14 @@ a.link_to_another_page{
 }
 
 td.horizontal_list{
-	background-color:#CCEEEE; 
-	padding: 0px 5px; 
+	background-color:#DFF2F2F2; 
+	padding: 5px 10px; 
 	margin: 15px;
 	width: inherit; 
 	height: auto; 
 	
 	border:2px solid #a1a1a1;
-	border-radius:10px;
+	border-radius:15px;
 }
 
 ul.friends{

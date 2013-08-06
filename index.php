@@ -269,10 +269,10 @@ mysqli_close($con);
 			</td>
 		</tr></table>
 		</div>
-	</td></tr>
+	<br/></td></tr>
 	<tr><td class="horizontal_list">
 	<div>
-        <br/><h3>Top players of your friends: </h3>
+        <h3>Top players of your friends: </h3>
         <ul class="friends">
           <?php
 		  /*foreach ($app_using_friends as $auf){
@@ -299,11 +299,13 @@ mysqli_close($con);
 			$first_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'first_name', array());
 			$last_name = idx($facebook->api('/'.$user_id, 'get', array('access_token' => $app_access_token)), 'last_name', array());
 			
-			if ($user_id==$facebook->getUser())
+			if ($user_id==$facebook->getUser()){
+				$first_name="YOU";
+				$last_name="";
 				echo "<li class='my_ranking'>";
-			else
+			}else{
 				echo "<li class='friends_ranking'>";
-			
+			}
 			
 			/*if ($GET{}<$friend_actual_score)
 				$my_current_placement=$i;
