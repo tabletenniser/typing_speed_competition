@@ -334,7 +334,7 @@ mysqli_close($con);
 	  <input type="button" id="retry" value="Retry"></input>
 	</td></tr><tr><td style="text-align: center;">
 	  <input type="button" id="sendRequest" value="Invite friends to compete" data-message="I want to compete typing speed with you"></input>
-	</td></tr>	<br/>
+	<br/><br/></td></tr>	
 	<tr><td class="horizontal_list">
 	<div>
         <h3>Top players of your friends: </h3>
@@ -510,10 +510,25 @@ else
         js.src = "//connect.facebook.net/en_US/all.js";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+	  
+	  function postToWall() {
+          FB.ui(
+            {
+              method  : 'apprequests',
+              message : <?php echo AppInfo::getUrl(); ?>
+            },
+            function (response) {
+              // If response is null the user canceled the dialog
+              if (response != null) {
+                logResponse(response);
+              }
+            }
+          );
+        });
     </script>	
 <?php 
 echo '<script type="text/javascript">';
-echo "alert('page is loaded');";
+echo "postToWall();";
 echo '</script>';
 ?>
   </body>
