@@ -379,10 +379,22 @@ li.friends_ranking{
 	overflow: auto;
 	float: left;
 	text-align: center;
+	font-size: 10px;
 }
 
 a.link_to_another_page{
 	text-decoration:underline;
+}
+
+div.horizontal_list{
+	background-color:#CCEEEE; 
+	padding: 0px 5px; 
+	margin: 15px;
+	width: inherit; 
+	height: auto; 
+	
+	border:2px solid #a1a1a1;
+	border-radius:10px;
 }
 
 ul.friends{
