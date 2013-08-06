@@ -335,7 +335,7 @@ mysqli_close($con);
           ?>
         </ul>
       </div>
-	  </td></tr><tr><td>
+	  </td></tr><tr><td style="text-align: center;">
 	  <input type="button" id="sendRequest" value="Invite friends to compete" data-message="I want to compete typing speed with you"></input>
 	</td></tr>	
 </table>

@@ -376,7 +376,7 @@ li.friends_ranking{
 	padding: 5px;
 	display: inline;
 	width: 110px;
-	height: 100px;
+	height: 90px;
 	overflow: hidden;
 	float: left;
 	text-align: center;
@@ -387,14 +387,14 @@ li.my_ranking{
 	padding: 10px;
 	display: inline;
 	width: 110px;
-	height: 100px;
+	height: 90px;
 	overflow: hidden;
 	float: left;
 	text-align: center;
 	font-size: 10px;
 	line-height: 1.3;
 	font-weight: bold;
-	background-color: #E8FAFA;
+	background-color: #DDDDEE;
 }
 
 a.link_to_another_page{
