@@ -375,17 +375,17 @@ tr.highlight_row{
 li.friends_ranking{
 	display: inline;
 	width: 110px;
-	height: 140px;
+	height: 110px;
 	overflow: hidden;
 	float: left;
 	text-align: center;
 	font-size: 10px;
 	line-height: 1.1;
 }
-li.friends_ranking{
+li.my_ranking{
 	display: inline;
 	width: 110px;
-	height: 140px;
+	height: 110px;
 	overflow: hidden;
 	float: left;
 	text-align: center;
