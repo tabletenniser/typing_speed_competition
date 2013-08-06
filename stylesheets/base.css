@@ -373,7 +373,7 @@ tr.highlight_row{
 }
 
 li.friends_ranking{
-	padding: 5px;
+	padding: 7px;
 	display: inline;
 	width: 110px;
 	height: 90px;
@@ -384,7 +384,7 @@ li.friends_ranking{
 	line-height: 1.3;
 }
 li.my_ranking{
-	padding: 10px;
+	padding: 7px;
 	display: inline;
 	width: 110px;
 	height: 90px;

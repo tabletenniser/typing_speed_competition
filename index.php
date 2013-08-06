@@ -219,7 +219,7 @@ mysqli_close($con);
 	</td></tr>
 	
 	<tr><td>
-		<div id="realtime_statistics">
+		<div id="realtime_statistics" style="font-weight: bold;">
 		<table>
 		<tr>
 			<td>
