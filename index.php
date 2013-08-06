@@ -270,8 +270,8 @@ mysqli_close($con);
 		</tr></table>
 		</div>
 	</td></tr>
-	<tr><td>
-	<div class="horizontal_list">
+	<tr><td class="horizontal_list">
+	<div>
         <br/><h3>Top players of your friends: </h3>
         <ul class="friends">
           <?php
@@ -319,9 +319,9 @@ mysqli_close($con);
 			<?php 
 			  	echo he($last_name); 
 			?>
-            </a><br/>
+            </a><br/><span style="font-size: 13px;">
 			<?php 
-			  echo $friend_actual_score." "; ?>pts
+			  echo $friend_actual_score." "; ?>pts </span>
 			</div>
           </li>
           <?php

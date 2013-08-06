@@ -376,17 +376,18 @@ li.friends_ranking{
 	display: inline;
 	width: 120px;
 	height: 150px;
-	overflow: auto;
+	overflow: hidden;
 	float: left;
 	text-align: center;
 	font-size: 10px;
+	line-height: 1.1;
 }
 
 a.link_to_another_page{
 	text-decoration:underline;
 }
 
-div.horizontal_list{
+td.horizontal_list{
 	background-color:#CCEEEE; 
 	padding: 0px 5px; 
 	margin: 15px;
