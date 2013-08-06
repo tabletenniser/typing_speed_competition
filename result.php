@@ -2,8 +2,6 @@
 //for IE iFrame 3rd party cookie blocking 
 header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
 require_once('AppInfo.php');	// contains appID, SECRET and URL
-
-	
 	
 // Enforce https on production
 if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
@@ -12,6 +10,8 @@ if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != 
   header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
   exit();
 }
+
+header('Location: https://google.com');
 
 require_once('utils.php');		// global array and html helper functions
 require_once('sdk/src/facebook.php');	// fb API
