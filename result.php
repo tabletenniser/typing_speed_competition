@@ -221,10 +221,6 @@ mysqli_close($con);
           );
         });
 		  
-		// Set up so we handle click on the buttons
-        $('#testingButton').click(function() {
-          alert("FUCK");
-        });
 		
         // Set up so we handle click on the buttons
         $('#sendRequest').click(function() {
@@ -364,11 +360,6 @@ mysqli_close($con);
 	</td></tr><tr><td style="text-align: center;">
 	  <input type="button" id="retry" value="Retry"></input>
 	</td></tr><tr><td style="text-align: center;">
-	
-	
-	<input type="button" id="testingButton" value="TEST"></input>	  
-	  
-	
 	<input type="button" id="postToWall" value="Post to wall" data-message="I have just surpassed _______'s high score!"></input>	  
 	  <input type="button" id="sendRequest" value="Invite friends to compete" data-message="I want to compete typing speed with you"></input>
 	<br/><br/></td></tr>	
@@ -515,8 +506,6 @@ else if (score>1100)
 else
 	document.getElementById("ranking_percentage").innerHTML=100;
 
-document.getElementById('testingButton').click();
-
       window.fbAsyncInit = function() {
         FB.init({
           appId      : '<?php echo AppInfo::appID(); ?>', // App ID
@@ -538,18 +527,11 @@ document.getElementById('testingButton').click();
         });
 
         FB.Canvas.setAutoGrow();
-      };
-
-      // Load the SDK Asynchronously
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-	  
-	  
+		
+		
+		
+		
+	  // FB may not necessarily be defined at this point since 
 	  FB.ui(
   {
     method: 'feed',
@@ -567,6 +549,21 @@ document.getElementById('testingButton').click();
     }
   }
 );
+		
+		
+      };
+
+      // Load the SDK Asynchronously
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+	  
+	  
+	  
     </script>	
 <?php 
 echo '<script type="text/javascript">';
