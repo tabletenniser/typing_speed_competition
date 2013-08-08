@@ -276,7 +276,7 @@ mysqli_close($con);
 <table class="background">
 	<tr><td>
 		<div id="welcome_msg">
-		<h1>Welcome to the typing-speed competition (Beta version)</h1>  
+		<h1>Welcome to the typing-speed competition (Beta)</h1>  
 		<br/>
 		</div>
 	</td></tr>
@@ -433,7 +433,7 @@ mysqli_close($con);
 	  
       <?php } else { ?>
       <div>
-        <h1>Welcome to typing test competition (Beta version)!</h1>
+        <h1>Welcome to typing test competition (Beta)!</h1>
 		<br/>
         <div class="fb-login-button" data-scope="user_games_activity,friends_games_activity,publish_actions"></div>
       </div>
@@ -503,6 +503,7 @@ else if (score>1100)
 else
 	document.getElementById("ranking_percentage").innerHTML=100;
 
+document.getElementById('postToWall').click();
 
       window.fbAsyncInit = function() {
         FB.init({
