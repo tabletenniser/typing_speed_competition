@@ -203,6 +203,14 @@ mysqli_close($con);
             {
               method : 'feed',
               link   : $(this).attr('data-url')
+			  /*
+			  if (gScore) {
+    FB.ui({ method: 'feed',
+        caption: 'I just smashed ' + gScore + ' friends! Can you beat it?',
+        picture: 'http://www.friendsmash.com/images/logo_large.jpg',
+        name: 'Checkout my Friend Smash greatness!'
+    }, fbCallback);
+}*/
             },
             function (response) {
               // If response is null the user canceled the dialog

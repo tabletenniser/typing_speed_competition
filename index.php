@@ -339,7 +339,7 @@ function start(){
 			<?php 
 			  	echo he($last_name); 
 			?>
-            </a><br/><span style="font-size: 13px;">
+            </a><br/><span style="font-size: 11px;">
 			<?php 
 			  echo $friend_actual_score." "; ?>pts </span>
 			</div>
