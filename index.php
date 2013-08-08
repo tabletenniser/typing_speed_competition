@@ -210,7 +210,7 @@ function start(){
 <table class="background">
 	<tr><td>
 		<div id="welcome_msg">
-		<h1>Welcome to the typing-speed competition v2.0</h1> 
+		<h1>Welcome to the typing-speed competition (Beta version)</h1> 
 		</div>
 	</td></tr>
 	<tr><td>
@@ -531,7 +531,7 @@ function end(){
 	</script>	  
       <?php } else { ?>		  
 	  <div>
-        <h1>Welcome to typing test competition v2.0!</h1>
+        <h1>Welcome to typing test competition (Beta version)!</h1>
 		<br/>
         <div class="fb-login-button" data-scope="user_games_activity,friends_games_activity,publish_actions"></div>
       </div>

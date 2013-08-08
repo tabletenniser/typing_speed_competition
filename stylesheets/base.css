@@ -375,7 +375,7 @@ tr.highlight_row{
 li.friends_ranking{
 	padding: 4px;
 	display: inline;
-	width: 90px;
+	width: 90px; 
 	height: 80px;
 	overflow: hidden;
 	float: left;
