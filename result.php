@@ -366,7 +366,7 @@ mysqli_close($con);
 	</td></tr><tr><td style="text-align: center;">
 	
 	
-	<input type="button" id="testingButton" value="TEST""></input>	  
+	<input type="button" id="testingButton" value="TEST"></input>	  
 	  
 	
 	<input type="button" id="postToWall" value="Post to wall" data-message="I have just surpassed _______'s high score!"></input>	  
@@ -515,7 +515,6 @@ else if (score>1100)
 else
 	document.getElementById("ranking_percentage").innerHTML=100;
 
-alert("button click");
 document.getElementById('testingButton').click();
 
       window.fbAsyncInit = function() {
