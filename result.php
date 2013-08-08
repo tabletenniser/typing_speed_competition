@@ -28,6 +28,7 @@ $facebook = new Facebook(array(
 // Fetch the basic info of the app that they are using
 $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
+$is_new_high_score=false;
 
 // viewer's info
 $user_id = $facebook->getUser();
@@ -77,6 +78,7 @@ foreach ($my_scores as $my_individual_app_score){
     			array('score' => $_GET['score'], 'access_token' => $app_access_token)
 				);	
 			echo 'is successful? '.$success.'\n';
+			$is_new_high_score=true;
 		}
 	}
 }
@@ -88,6 +90,7 @@ if ($score_found==false){
 		array('score' => $_GET['score'], 'access_token' => $app_access_token)
 		);
 	echo 'is successful? '.$success.'\n';
+	$is_new_high_score=true;
 }
 
 
@@ -383,6 +386,8 @@ mysqli_close($con);
 		$i=0;
 		$my_current_placement=0;
 		$my_highest_placement=0;
+		$friend_passed_name="";
+		$update_friend_passed=true;
 		foreach ($app_using_friends_with_scores as $auf_with_score){
 			$i++;
 			
@@ -396,14 +401,18 @@ mysqli_close($con);
 				$first_name="YOU";
 				$last_name="";
 				echo "<li class='my_ranking'>";
+				$update_friend_passed=false;
 			}else{
 				echo "<li class='friends_ranking'>";
+				if ($update_friend_passed){
+					$friend_passed_name=$user_name;
+				}
 			}
 			
+			
+			
 			/*if ($GET{}<$friend_actual_score)
-				$my_current_placement=$i;
-			if ($GET{}<$friend_actual_score)
-				$my_highest_placement=$i;*/
+				$my_current_placement=$i;*/
 			
 			//$user_name=idx($auf_with_score, 'user_name');
 			?>
@@ -530,29 +539,53 @@ else
 		
 		
 		
+		if (<?php echo $is_new_high_score;?>==true){
+		  	// FB may not necessarily be defined at this point since 
+	  	FB.ui(
+			{
+			method: 'feed',
+			name: 'Facebook Dialogs',
+			link: 'https://developers.facebook.com/docs/reference/dialogs/',
+			picture: 'http://fbrell.com/f8.jpg',
+			caption: 'Reference Documentation',
+			description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+			},
+			function(response) {
+				if (response && response.post_id) {
+  					alert('Post was published.');
+				} else {
+  					alert('Post was not published.');
+				}
+			}
+		);	
+		}else if(<?php echo $friend_passed_name?>!=""){
+			var randomNumber=Math.floor(Math.random()*3);
+			if (randomNumber>=2){
+				FB.ui(
+			{
+			method: 'feed',
+			name: 'Facebook Dialogs',
+			link: 'https://developers.facebook.com/docs/reference/dialogs/',
+			picture: 'http://fbrell.com/f8.jpg',
+			caption: 'Reference Documentation',
+			description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+			},
+			function(response) {
+				if (response && response.post_id) {
+  					alert('Post was published.');
+				} else {
+  					alert('Post was not published.');
+				}
+			}
+			);	
+			}
+		}
 		
-	  // FB may not necessarily be defined at this point since 
-	  FB.ui(
-  {
-    method: 'feed',
-    name: 'Facebook Dialogs',
-    link: 'https://developers.facebook.com/docs/reference/dialogs/',
-    picture: 'http://fbrell.com/f8.jpg',
-    caption: 'Reference Documentation',
-    description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
-  },
-  function(response) {
-    if (response && response.post_id) {
-      alert('Post was published.');
-    } else {
-      alert('Post was not published.');
-    }
-  }
-);
 		
 		
       };
 
+	  
       // Load the SDK Asynchronously
       (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
