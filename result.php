@@ -537,9 +537,10 @@ else
 
         FB.Canvas.setAutoGrow();
 		
+		var is_new_high_score=<?php echo $is_new_high_score;?>;
+		var friend_passed_name=<?php echo $friend_passed_name?>;
 		
-		
-		if (<?php echo $is_new_high_score;?>==true){
+		if (is_new_high_score==true){
 		  	// FB may not necessarily be defined at this point since 
 	  	FB.ui(
 			{
@@ -558,7 +559,7 @@ else
 				}
 			}
 		);	
-		}else if(<?php echo $friend_passed_name?>!=""){
+		}else if(friend_passed_name!=""){
 			var randomNumber=Math.floor(Math.random()*3);
 			if (randomNumber>=2){
 				FB.ui(
