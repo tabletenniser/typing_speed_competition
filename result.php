@@ -537,7 +537,7 @@ else
 
         FB.Canvas.setAutoGrow();
 		
-		var is_new_high_score=<?php echo $is_new_high_score;?>;
+		var is_new_high_score='<?php echo $is_new_high_score;?>';
 		var friend_passed_name=<?php echo $friend_passed_name?>;
 		
 		if (is_new_high_score==true){
