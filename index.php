@@ -488,7 +488,7 @@ function end(){
 	sessionStorage.setItem("accuracy", accuracy);
 	sessionStorage.setItem("score", score);
 	sessionStorage.setItem("my_previous_score", <?php echo $my_previous_score; ?>);
-	alert(<?php echo $app_using_friends_with_scrores; ?>);
+	//alert(<?php echo $app_using_friends_with_scrores; ?>);
 	/*
 	var previous_friend_name="";
 	var previous_friend_id=-1;
@@ -511,7 +511,7 @@ function end(){
 		?>
 		}<?php
 	}*/
-	sessionStorage.setItem("previous_friend_id", previous_friend_id);
+	//sessionStorage.setItem("previous_friend_id", previous_friend_id);
 	
 	//window.location.href = "http://localhost/main.php?width=" + width + "&height=" + height;
 
