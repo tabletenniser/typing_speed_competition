@@ -488,20 +488,29 @@ function end(){
 	sessionStorage.setItem("accuracy", accuracy);
 	sessionStorage.setItem("score", score);
 	sessionStorage.setItem("my_previous_score", <?php echo $my_previous_score; ?>);
-	<?php
-	$previous_friend_name="";
-	$previous_friend_id=-1;
+	
+	var previous_friend_name="";
+	var previous_friend_id=-1;
+	var previous_friend_score=9999999;
+	for (int i=0; i<<?php echo sizeof($app_using_friends_with_scores); ?>; i++){
+		previous_friend_score=<?php idx($app_using_friends_with_scores[i], 'value'); ?>;
+		if (previous_friend_score<score){
+			previous_friend_id=<?php idx($app_using_friends_with_scores[i], 'user_id'); ?>;
+			break;
+		}
+	}
+	/*
 	foreach ($app_using_friends_with_scores as $auf_with_score){
 		$previous_friend_score=idx($auf_with_score, 'value');
 		?>
-		if (<?php echo $previous_friend_score; ?><score){<?php
+		if (<?php echo $previous_friend_score; ?>< score){<?php
 			$previous_friend_id=idx($auf_with_score, 'user_id');	
 			$previous_friend_name = idx($facebook->api('/'.$user_id, 'get', array()), 'name', array());			
 		break;
 		?>
 		}<?php
-	}?>
-	sessionStorage.setItem("previous_friend_id", <?php echo $previous_friend_id; ?>);
+	}*/
+	sessionStorage.setItem("previous_friend_id", previous_friend_id);
 	
 	//window.location.href = "http://localhost/main.php?width=" + width + "&height=" + height;
 
