@@ -304,6 +304,7 @@ function start(){
 		$i=0;
 		$my_current_placement=0;
 		$my_highest_placement=0;
+		$my_previous_score=-1;
 		foreach ($app_using_friends_with_scores as $auf_with_score){
 			$i++;
 			
@@ -316,6 +317,8 @@ function start(){
 			if ($user_id==$facebook->getUser()){
 				$first_name="YOU";
 				$last_name="";
+				$my_previous_score=$friend_actual_score;
+				
 				echo "<li class='my_ranking'>";
 			}else{
 				echo "<li class='friends_ranking'>";
@@ -473,6 +476,8 @@ function end(){
 	var accuracy=(1-err/position)*100;
 	var speed=Math.round(numOfWords/time_diff*1000)/1000;
 	var score=Math.round(speed*accuracy*accuracy);
+	
+	alert(<?php echo $my_previous_score; ?>);
 	
 	// set session variables to pass values to result.php
 	sessionStorage.setItem("time", Math.round(time_diff*1000)/1000);
