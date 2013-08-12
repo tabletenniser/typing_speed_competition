@@ -537,10 +537,10 @@ else
 
         FB.Canvas.setAutoGrow();
 		
-		var is_new_high_score='<?php echo $is_new_high_score;?>';
-		var friend_passed_name=<?php echo $friend_passed_name?>;
+		//var is_new_high_score='<?php echo $is_new_high_score;?>';
+		//var friend_passed_name=<?php echo $friend_passed_name?>;
 		
-		if (score>sessionStorage.getItem("my_previous_score");){
+		if (score>sessionStorage.getItem("my_previous_score")){
 		  	// FB may not necessarily be defined at this point since 
 	  	FB.ui(
 			{
@@ -557,13 +557,13 @@ else
               }
 			}
 		);	
-		}else if(friend_passed_name!=""){
+		}else if(sessionStorage.getItem("my_previous_score")!=-1){
 			var randomNumber=Math.floor(Math.random()*3);
-			if (randomNumber>=2){
+			if (randomNumber>=0){	// change this number to 2 to get 33% of request sending
 				FB.ui(
 			{
-			method: 'feed',
-			name: 'Facebook Dialogs',
+			method: 'apprequests',
+			name: 'Typing speed challenge',
 			link: 'https://developers.facebook.com/docs/reference/dialogs/',
 			picture: 'http://fbrell.com/f8.jpg',
 			caption: 'Reference Documentation',
