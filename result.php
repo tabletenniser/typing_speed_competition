@@ -460,7 +460,7 @@ document.getElementById("wrongCharacters_value").innerHTML=sessionStorage.getIte
 document.getElementById("speed_value").innerHTML=sessionStorage.getItem("speed")+" words/s";
 document.getElementById("accuracy_value").innerHTML=sessionStorage.getItem("accuracy")+"%";
 var score=sessionStorage.getItem("score");
-document.getElementById("score_value").innerHTML=sessionStorage.getItem("score")+" pts";
+document.getElementById("score_value").innerHTML=score+" pts";
 
 var score=sessionStorage.getItem("score");
 
@@ -540,23 +540,21 @@ else
 		var is_new_high_score='<?php echo $is_new_high_score;?>';
 		var friend_passed_name=<?php echo $friend_passed_name?>;
 		
-		if (is_new_high_score==true){
+		if (score>sessionStorage.getItem("my_previous_score");){
 		  	// FB may not necessarily be defined at this point since 
 	  	FB.ui(
 			{
 			method: 'feed',
-			name: 'Facebook Dialogs',
+			name: 'New Typing Speed Record',
 			link: 'https://developers.facebook.com/docs/reference/dialogs/',
 			picture: 'http://fbrell.com/f8.jpg',
-			caption: 'Reference Documentation',
-			description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+			caption: 'New Typing Speed Record',
+			description: '____ has just achieved a new typing speed record: ____ words/s with an accuracy of ___%!!!'
 			},
 			function(response) {
-				if (response && response.post_id) {
-  					alert('Post was published.');
-				} else {
-  					alert('Post was not published.');
-				}
+				if (response != null) {
+                	logResponse(response);
+              }
 			}
 		);	
 		}else if(friend_passed_name!=""){
