@@ -492,12 +492,12 @@ function end(){
 	sessionStorage.setItem("accuracy", accuracy);
 	sessionStorage.setItem("score", score);
 	sessionStorage.setItem("my_previous_score", <?php echo $my_previous_score; ?>);
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	//alert(<?php echo $app_using_friends_with_scrores; ?>);
 	/*
-=======
+//=======
 	
->>>>>>> parent of d46bc06... font_size_adjustment
+//>>>>>>> parent of d46bc06... font_size_adjustment
 	var previous_friend_name="";
 	var previous_friend_id=-1;
 	var previous_friend_score=9999999;
