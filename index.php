@@ -525,37 +525,6 @@ function end(){
     		}*/
 	window.location = "result.php?score="+score;
 	
-	/*
-	input_text=document.getElementById("input_text").value;
-	
-	var end_time=new Date().getTime()/1000;
-	var time_diff=end_time-start_time;
-	
-//alert ("you have typed for "+(time_diff)+" seconds");
-	
-	
-	if (window.XMLHttpRequest){//for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp=new XMLHttpRequest();
-	}else{//  for IE6, IE5
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-
-	xmlhttp.onreadystatechange=function(){
-		if (xmlhttp.readyState==4 && xmlhttp.status==200){
-			//document.getElementById("debug").innerHTML=xmlhttp.responseText;
-			window.location = "http://typingtest.p.ht/questions.php";
-		}
-	}
-	
-	var errPercentage=err/pos*100;
-	var speed=numOfWords/time_diff;
-
-	xmlhttp.open("GET","real_ajax.php?time_diff="+time_diff+
-	"&input_text="+encodeURIComponent(input_text)+"&numOfWords="+encodeURIComponent(numOfWords)+"&errPercentage="+errPercentage,true);
-	
-	alert ("you have typed "+numOfWords+" words in "+time_diff+" seconds. (speed="+speed+" words per sec) Among the "+pos+" characters you have typed, "+err+" are wrong ("+errPercentage+"%)");
-	xmlhttp.send();*/
-	
 }
 	
 	</script>	  
