@@ -514,8 +514,7 @@ function end(){
 		?>
 		}<?php
 	}*/
-	//sessionStorage.setItem("previous_friend_id", previous_friend_id);
-	
+	//sessionStorage.setItem("previous_friend_id", previous_friend_id);	
 	//window.location.href = "http://localhost/main.php?width=" + width + "&height=" + height;
 
 	// clear all cokies
