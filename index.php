@@ -8,7 +8,6 @@ require_once('AppInfo.php');
 
 // Enforce https on production
 if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
-	trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
 	header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 	exit();
 }
@@ -34,8 +33,6 @@ if ($user_id) {
     $basic = $facebook->api('/me');
   } catch (FacebookApiException $e) {
     if (!$facebook->getUser()) {
-		trigger_error("Cannot get user ID", E_USER_NOTICE);
-  
       header('Location: '. AppInfo::getUrl($_SERVER['REQUEST_URI']));
       exit();
     }
@@ -52,7 +49,25 @@ if ($user_id) {
   ));*/
 
 echo "before fql call";
+$app_using_friends_with_scores = $facebook->api(array(
+    'method' => 'fql.query',
+    'query' => 'SELECT user_id, value FROM score WHERE user_id IN(SELECT uid1, uid2 FROM friend WHERE uid1 = me()) AND app_id = '.AppInfo::appID().' ORDER BY value DESC'
+  ));
+echo "after fql call";
 
+}
+
+
+
+
+
+
+
+
+
+
+
+/*
 $user_id = $facebook->getUser();
 if ($user_id) {
   try {
@@ -84,7 +99,7 @@ if ($user_id) {
     'method' => 'fql.query',
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));
-}
+}*/
 
 // Fetch the basic info of the app that they are using
 $app_info = $facebook->api('/'. AppInfo::appID());
