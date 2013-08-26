@@ -1,13 +1,7 @@
 <?php
 
-/**
- * This sample app is provided to kickstart your experience using Facebook's
- * resources for developers.  This sample app provides examples of several
- * key concepts, including authentication, the Graph API, and FQL (Facebook
- * Query Language). Please visit the docs at 'developers.facebook.com/docs'
- * to learn more about the resources available to you
- */
-
+//for IE iFrame 3rd party cookie blocking 
+header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
 // Provides access to app specific values such as your app id and app secret.
 // Defined in 'AppInfo.php'
 require_once('AppInfo.php');
