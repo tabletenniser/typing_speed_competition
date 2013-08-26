@@ -4,9 +4,7 @@ header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT
 require_once('AppInfo.php');	// contains appID, SECRET and URL
 	
 // Enforce https on production
-if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
- trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
- 
+if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') { 
   header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
   exit();
 }
@@ -37,7 +35,6 @@ if ($user_id) {
     $basic = $facebook->api('/me');
   } catch (FacebookApiException $e) {
     if (!$facebook->getUser()) {
-		trigger_error("Cannot get user ID", E_USER_NOTICE);  
       header('Location: '. AppInfo::getUrl($_SERVER['REQUEST_URI']));
       exit();
     }
@@ -82,6 +79,10 @@ foreach ($my_scores as $my_individual_app_score){
 		}
 	}
 }
+
+echo $_GET['score'];
+echo  $app_access_token;
+
 if ($score_found==false){
 	echo 'score not found\n';
 	$successful=$facebook->api(
