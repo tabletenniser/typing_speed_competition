@@ -23,6 +23,7 @@ $facebook = new Facebook(array(
   'trustForwarded' => true,
 ));
 $access_token = $facebook->getAccessToken();
+$access_token="";
 echo "app access token: ".$app_access_token;
 
 
