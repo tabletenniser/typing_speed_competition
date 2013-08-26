@@ -64,14 +64,6 @@ $app_name = idx($app_info, 'name', '');
 echo "before info, app ID:".AppInfo::appID();
 echo "before info, user ID:".$user_id;
 
-
-
-
-
-
-
-
-
 /*
 $user_id = $facebook->getUser();
 if ($user_id) {
