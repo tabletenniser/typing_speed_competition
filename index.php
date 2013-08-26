@@ -518,7 +518,7 @@ function end(){
 	sessionStorage.setItem("score", score);
 	//sessionStorage.setItem("my_previous_score", <?php echo $my_previous_score; ?>);
 
-	//window.location = "result.php?score="+score;
+	window.location = "result.php?score="+score;
 	
 }
 
