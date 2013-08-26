@@ -8,23 +8,13 @@ require_once('AppInfo.php');
 
 // Enforce https on production
 if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
-  header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-  exit();
+	trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
+	header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+	exit();
 }
 
 // This provides access to helper functions defined in 'utils.php'
 require_once('utils.php');
-
-
-/*****************************************************************************
- *
- * The content below provides examples of how to fetch Facebook data using the
- * Graph API and FQL.  It uses the helper functions defined in 'utils.php' to
- * do so.  You should change this section so that it prepares all of the
- * information that you want to display to the user.
- *
- ****************************************************************************/
-
 require_once('sdk/src/facebook.php');
 
 $facebook = new Facebook(array(
@@ -33,6 +23,9 @@ $facebook = new Facebook(array(
   'sharedSession' => true,
   'trustForwarded' => true,
 ));
+$access_token = $facebook->getAccessToken();
+echo "app access token: ".$app_access_token;
+
 
 $user_id = $facebook->getUser();
 if ($user_id) {
