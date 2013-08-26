@@ -419,9 +419,11 @@ document.getElementById("text_para").innerHTML=text_array[randomNumberGenerator]
 
 	</script>	  
      
+	  <?php }else{ ?>
 	  
-	  
-	  
+	  <?php 
+	  } 	  
+	  ?>
 	  
 	  
 	  
