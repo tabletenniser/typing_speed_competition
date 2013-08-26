@@ -54,10 +54,15 @@ $app_using_friends_with_scores = $facebook->api(array(
     'query' => 'SELECT user_id, value FROM score WHERE user_id IN(SELECT uid1, uid2 FROM friend WHERE uid1 = me()) AND app_id = '.AppInfo::appID().' ORDER BY value DESC'
   ));
 echo "after fql call";
-
 }
 
+// Fetch the basic info of the app that they are using
+$app_info = $facebook->api('/'. AppInfo::appID());
+$app_name = idx($app_info, 'name', '');
 
+
+echo "before info, app ID:".AppInfo::appID();
+echo "before info, user ID:".$user_id;
 
 
 
@@ -103,8 +108,29 @@ if ($user_id) {
 
 // Fetch the basic info of the app that they are using
 $app_info = $facebook->api('/'. AppInfo::appID());
-
 $app_name = idx($app_info, 'name', '');
+
+
+/*
+define("DB_HOST","mysql13.000webhost.com");
+define("DB_USER","a2110984_sta286");
+define("DB_PASS","3q3PDmGx");
+define("DB_NAME","a2110984_sta286");
+
+// establish connection to individual database
+if(!defined('DB_HOST')) {
+	die("ERROR: config.php not configured.  Please run <a href='install.php'>install</a>.");
+}
+$con=mysqli_connect(DB_HOST, DB_USER, DB_PASS) or die("FATAL ERROR: Unable to connect to MySQL database.");
+mysqli_select_db($con, DB_NAME) or die("FATAL ERROR: Unable to select database " . DB_NAME);
+mysqli_set_charset($con, "utf8");
+
+
+	mysqli_query($con, "INSERT INTO typingtest (textEntered)	
+	VALUES (N'a bc')") or die (mysqli_error($con));
+			
+mysqli_close($con);
+	*/
 
 ?>
 <!DOCTYPE html>
