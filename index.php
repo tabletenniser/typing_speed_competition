@@ -194,10 +194,20 @@ mysqli_close($con);
           document.createElement(tags.pop());
       </script>
     <![endif]-->
-  </head>
-  <body>
+</head>
+<body>
     <div id="fb-root"></div>
-    <script type="text/javascript">
+<script type="text/javascript">	
+function start(){
+	if (!started){
+		start_time=new Date().getTime()/1000;
+		//var int=self.
+		TimerID=setInterval(function(){clock()},1000);
+		started=true;
+	}
+	//timerID=setTimeout(function(){clock()},1000);
+//alert (start_time);
+}
       window.fbAsyncInit = function() {
         FB.init({
           appId      : '<?php echo AppInfo::appID(); ?>', // App ID
@@ -229,7 +239,8 @@ mysqli_close($con);
         js.src = "//connect.facebook.net/en_US/all.js";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
-    </script>
+    </script>	
+
 
     <header class="clearfix">
       <?php if (isset($basic)) { ?>
