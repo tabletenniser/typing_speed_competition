@@ -417,6 +417,153 @@ var randomNumberGenerator=0;
 
 document.getElementById("text_para").innerHTML=text_array[randomNumberGenerator];
 
+var time = 0;
+var TimerID=0;
+var err = 0;
+//var pos = 0;
+var position=0;
+var numOfWords=0;
+var innerText="";
+var previousText="";
+var isCorrectChar=false;
+var timePassedInSec=0;
+var started=false;
+
+
+function clock()
+  {
+	  timePassedInSec++;
+	  document.getElementById("time").innerHTML=Math.round(timePassedInSec*1000)/1000;	// 3 decimal places
+	  document.getElementById("speed").innerHTML=Math.round(numOfWords/timePassedInSec*1000)/1000;
+	  
+	if (position==0){
+		document.getElementById("accuracy").innerHTML=0;	  
+	  	document.getElementById("score").innerHTML=0;
+	}else if (speed==0 || err/position==1){
+			document.getElementById("score").innerHTML=0;
+	}else{		  	
+	  	document.getElementById("accuracy").innerHTML=Math.round((1-err/position)*100000)/1000;	  
+	  	document.getElementById("score").innerHTML=Math.round(numOfWords/timePassedInSec*10000*(1-err/position)*(1-err/position));	
+	}
+  }
+
+
+// this function is invoked when the user presses a key
+function updateText(event){
+var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
+//alert ("You've pressed"+chCode);
+
+	//var input_text=document.getElementById("input_text").value;
+//alert("new Text: input"+input_text.charAt(input_text.length-1)+"text"+text.charAt(pos));
+
+	//if the user inputs the correct character
+position++;
+
+	if (String.fromCharCode(chCode)==text_array[randomNumberGenerator].charAt(position-1)){		
+		isCorrectChar=true;
+	}else{
+		err++;
+		isCorrectChar=false;
+	}
+	
+	if (text_array[randomNumberGenerator].charAt(position-1)==" "){
+			numOfWords++;
+			document.getElementById("word_entered").innerHTML=numOfWords;
+	}
+	
+	//pos++;
+	
+	if (position==text_array[randomNumberGenerator].length){
+		numOfWords+=1;
+		document.getElementById("word_entered").innerHTML=numOfWords;
+		end();
+	}
+	
+	//innerText=innerText.substr(0, pos-1);	
+	if (isCorrectChar){
+		previousText+="<span style='color: #2222EE'>"+text_array[randomNumberGenerator].charAt(position-1)+"</span>";
+	}
+	else{
+		previousText+="<span style='color: #EE2222'>"+text_array[randomNumberGenerator].charAt(position-1)+"</span>";
+		document.getElementById("char_entered_wrong").innerHTML=err;
+	}
+	innerText=previousText;
+	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text_array[randomNumberGenerator].charAt(position)+"</span>";
+	//innerText+=text_array[randomNumberGenerator].substr(pos+1, text_array[randomNumberGenerator].length - pos);	// 2nd para is the length selected
+	innerText+=text_array[randomNumberGenerator].substr(position+1);
+	
+	
+	document.getElementById("char_entered").innerHTML=position;
+	document.getElementById("text_para").innerHTML=innerText;
+	//document.getElementById("text_para").innerHTML=text.substr(0, pos)+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
+}
+
+
+function end(){
+	window.clearInterval(TimerID);
+	//window.clearTimeout(timerID);
+	
+	// calculation of values required
+	var end_time=new Date().getTime()/1000;
+	var time_diff=end_time-start_time;
+	var accuracy=(1-err/position)*100;
+	var speed=Math.round(numOfWords/time_diff*1000)/1000;
+	var score=Math.round(speed*accuracy*accuracy);
+	
+	//alert(<?php echo $my_previous_score; ?>);
+	
+	// set session variables to pass values to result.php
+	sessionStorage.setItem("time", Math.round(time_diff*1000)/1000);
+	sessionStorage.setItem("words", numOfWords);
+	sessionStorage.setItem("charactersEntered", position);
+	sessionStorage.setItem("wrongCharacters", err);
+	sessionStorage.setItem("speed", speed);
+	sessionStorage.setItem("accuracy", accuracy);
+	sessionStorage.setItem("score", score);
+	sessionStorage.setItem("my_previous_score", <?php echo $my_previous_score; ?>);
+//<<<<<<< HEAD
+	//alert(<?php echo $app_using_friends_with_scrores; ?>);
+	/*
+//=======
+	
+//>>>>>>> parent of d46bc06... font_size_adjustment
+	var previous_friend_name="";
+	var previous_friend_id=-1;
+	var previous_friend_score=9999999;
+	for (int i=0; i<<?php echo sizeof($app_using_friends_with_scores); ?>; i++){
+		previous_friend_score=<?php idx($app_using_friends_with_scores[i], 'value'); ?>;
+		if (previous_friend_score<score){
+			previous_friend_id=<?php idx($app_using_friends_with_scores[i], 'user_id'); ?>;
+			break;
+		}
+	}
+	/*
+	foreach ($app_using_friends_with_scores as $auf_with_score){
+		$previous_friend_score=idx($auf_with_score, 'value');
+		?>
+		if (<?php echo $previous_friend_score; ?>< score){<?php
+			$previous_friend_id=idx($auf_with_score, 'user_id');	
+			$previous_friend_name = idx($facebook->api('/'.$user_id, 'get', array()), 'name', array());			
+		break;
+		?>
+		}<?php
+	}*/
+	//sessionStorage.setItem("previous_friend_id", previous_friend_id);	
+	//window.location.href = "http://localhost/main.php?width=" + width + "&height=" + height;
+
+	// clear all cokies
+	/*var cookies = document.cookie.split(";");
+		    for (var i = 0; i < cookies.length; i++) {
+    			var cookie = cookies[i];
+    			var eqPos = cookie.indexOf("=");
+    			var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    			document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    		}*/
+	window.location = "result.php?score="+score;
+	
+}
+
+
 	</script>	  
      
 	  <?php } ?>
