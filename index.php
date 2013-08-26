@@ -506,7 +506,7 @@ function end(){
 	var speed=Math.round(numOfWords/time_diff*1000)/1000;
 	var score=Math.round(speed*accuracy*accuracy);
 	
-	//alert(<?php echo $my_previous_score; ?>);
+	alert(<?php echo $my_previous_score; ?>);
 	
 	// set session variables to pass values to result.php
 	sessionStorage.setItem("time", Math.round(time_diff*1000)/1000);
