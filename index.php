@@ -243,7 +243,159 @@ function start(){
 
 
     <header class="clearfix">
-      <?php if (isset($basic)) { ?>
+     <?php if (isset($basic)) { ?>     
+      <div><table class="background">
+	<tr><td>
+		<div id="welcome_msg">
+		<h1>Welcome to the typing-speed competition (Beta)</h1> 
+		</div>
+	</td></tr>
+	<tr><td>
+		<div id="author">
+		<h6>---- By Aaron Wang</h6>
+		</div>
+	</td></tr>
+		
+	<tr><td>
+	<div class="input_text" id= "input_text">
+				<p id="text_para" style="font-size: 19px; color: #222299; margin: 15px">
+		</p></div>
+	
+		<div class="input_box" style="color: #112211; font-size: 16px">
+			Please click on the textbox below to start and try to type as fast as you can~<br/>
+
+			
+			<input type="text" id="input_text" name="input_text" onkeypress="updateText(event);" onclick="start();" style="width: 660px; overflow:hidden; border: 3px inset; border-color: #444444"></input>	
+		</div>
+	</td></tr>
+	
+	<tr><td>
+		<div id="realtime_statistics" style="font-weight: bold;">
+		<table>
+		<tr>
+			<td>
+				<h2>Time: </h2>
+			</td>
+			<td>
+				<h2><span id="time">0</span> s</h2>
+			</td>
+			<td>
+				<h2>Words: </h2>
+			</td>
+			<td>
+				<h2><span id="word_entered">0</span></h2>
+			</td>
+		</tr><tr>
+			<td>
+				<h2>Characters Enetred: </h2>
+			</td>
+			<td>
+				<h2><span id="char_entered">0</span></h2>
+			</td>
+			<td>
+				<h2>Wrong Characters: </h2>
+			</td>
+			<td>
+				<h2><span id="char_entered_wrong">0</span></h2>
+			</td>
+		</tr><tr>
+			<td>
+				<h2>Speed: </h2>
+			</td>
+			<td>
+				<h2><span id="speed">0</span> word/s</h2>
+			</td>
+			<td>
+				<h2>Accuracy: </h2>
+			</td>
+			<td>
+				<h2><span id="accuracy">0</span>%</h2>
+			</td>
+		</tr><tr>
+			<td>
+				<h2>Total Score: </h2>
+			</td>
+			<td>
+				<h2><span id="score">0</span> pts</h2>
+			</td>
+		</tr></table>
+		</div>
+	<br/></td></tr>
+	<tr><td class="horizontal_list">
+	<div>
+        <h3>Top players of your friends: </h3>
+        <ul class="friends">
+          <?php
+		  /*foreach ($app_using_friends as $auf){
+			$user_id=idx($auf, 'uid');
+			$user_name=idx($auf, 'name');
+			$friend_actual_score=0;
+		  
+			$friend_scores = idx($facebook->api('/'.$user_id.'/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
+			foreach ($friend_scores as $friend_individual_app_score){
+				$application_id_for_the_score = idx(idx($friend_individual_app_score, 'application'), 'id');
+				if (AppInfo::appID()==$application_id_for_the_score){
+					$friend_actual_score=idx($friend_individual_app_score, 'score');
+				}
+			}	*/
+		$i=0;
+		$my_current_placement=0;
+		$my_highest_placement=0;
+		$my_previous_score=-1;
+		foreach ($app_using_friends_with_scores as $auf_with_score){
+			$i++;
+			
+			$user_id=idx($auf_with_score, 'user_id');
+			$friend_actual_score=idx($auf_with_score, 'value');			
+			$user_name = idx($facebook->api('/'.$user_id, 'get', array()), 'name', array());
+			$first_name = idx($facebook->api('/'.$user_id, 'get', array()), 'first_name', array());
+			$last_name = idx($facebook->api('/'.$user_id, 'get', array()), 'last_name', array());
+			
+			if ($user_id==$facebook->getUser()){
+				$first_name="YOU";
+				$last_name="";
+				$my_previous_score=$friend_actual_score;
+				
+				echo "<li class='my_ranking'>";
+			}else{
+				echo "<li class='friends_ranking'>";
+			}
+			
+			/*if ($GET{}<$friend_actual_score)
+				$my_current_placement=$i;
+			if ($GET{}<$friend_actual_score)
+				$my_highest_placement=$i;*/
+			
+			//$user_name=idx($auf_with_score, 'user_name');
+			?>
+          
+		  	<div>
+            <a href="https://www.facebook.com/<?php echo he($user_id); ?>" target="_top">
+              <img src="https://graph.facebook.com/<?php echo he($user_id) ?>/picture?type=square" alt="<?php echo he($user_name); ?>"><br/>
+              <?php 
+			  	echo he($first_name); 
+			  ?>
+			<br/>
+			<?php 
+			  	echo he($last_name); 
+			?>
+            </a><br/><span style="font-size: 11px;">
+			<?php 
+			  echo $friend_actual_score." "; ?>pts </span>
+			</div>
+          </li>
+          <?php
+            }
+          ?>
+        </ul>
+      </div>
+	  </td></tr><tr><td style="text-align: center;">
+	  <input type="button" id="sendRequest" value="Invite friends to compete" data-message="I want to compete typing speed with you"></input>
+	</td></tr>	
+</table>
+      </div>
+	  
+	  
       <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
 
       <div>
