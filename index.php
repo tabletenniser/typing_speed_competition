@@ -520,45 +520,8 @@ function end(){
 	sessionStorage.setItem("speed", speed);
 	sessionStorage.setItem("accuracy", accuracy);
 	sessionStorage.setItem("score", score);
-	sessionStorage.setItem("my_previous_score", <?php echo $my_previous_score; ?>);
-//<<<<<<< HEAD
-	//alert(<?php echo $app_using_friends_with_scrores; ?>);
-	/*
-//=======
+	//sessionStorage.setItem("my_previous_score", <?php echo $my_previous_score; ?>);
 	
-//>>>>>>> parent of d46bc06... font_size_adjustment
-	var previous_friend_name="";
-	var previous_friend_id=-1;
-	var previous_friend_score=9999999;
-	for (int i=0; i<<?php echo sizeof($app_using_friends_with_scores); ?>; i++){
-		previous_friend_score=<?php idx($app_using_friends_with_scores[i], 'value'); ?>;
-		if (previous_friend_score<score){
-			previous_friend_id=<?php idx($app_using_friends_with_scores[i], 'user_id'); ?>;
-			break;
-		}
-	}
-	/*
-	foreach ($app_using_friends_with_scores as $auf_with_score){
-		$previous_friend_score=idx($auf_with_score, 'value');
-		?>
-		if (<?php echo $previous_friend_score; ?>< score){<?php
-			$previous_friend_id=idx($auf_with_score, 'user_id');	
-			$previous_friend_name = idx($facebook->api('/'.$user_id, 'get', array()), 'name', array());			
-		break;
-		?>
-		}<?php
-	}*/
-	//sessionStorage.setItem("previous_friend_id", previous_friend_id);	
-	//window.location.href = "http://localhost/main.php?width=" + width + "&height=" + height;
-
-	// clear all cokies
-	/*var cookies = document.cookie.split(";");
-		    for (var i = 0; i < cookies.length; i++) {
-    			var cookie = cookies[i];
-    			var eqPos = cookie.indexOf("=");
-    			var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    			document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    		}*/
 	window.location = "result.php?score="+score;
 	
 }
