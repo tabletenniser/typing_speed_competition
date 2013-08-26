@@ -394,6 +394,198 @@ function start(){
 	</td></tr>	
 </table>
       </div>
+	   <script type="text/javascript">			
+var start_time;
+var input_text;
+var textCharacters = new Array();	// boolean array, 1 for correct char, 0 for wrong char
+
+var text_array = new Array();
+text_array[0] = "abcde dfefe";
+text_array[1] = "The term \"design of experiments\" derives from early statistical work performed by Sir Ronald Fisher. He was described as \"a genius who almost single-handedly created the foundations for modern statistical science.\" Fisher initiated the principles of design of experiments and elaborated on his studies of \"analysis of variance\". Perhaps even more important, Fisher began his systematic approach to the analysis of real data as the springboard for the development of new statistical methods. He began to pay particular attention to the labour involved in the necessary computations performed by hand, and developed methods that were as practical as they were founded in rigour.";
+text_array[2] = "On their return to England, Hawking attended Radlett School for a year and from September 1952, St Albans School. The family placed a high value on education. Hawking's father wanted his son to attend the well-regarded Westminster School, but the 13-year-old Hawking was ill on the day of the scholarship examination. His family could not afford the school fees without the financial aid of a scholarship, so Hawking remained at St Albans. A positive consequence was that Hawking remained with a close group of friends with whom he enjoyed board games, the manufacture of fireworks, model aeroplanes and boats.";
+text_array[3] = "As he slowly lost the ability to write, he developed compensatory visual methods, including seeing equations in terms of geometry. The physicist Werner Israel later compared the achievements to Mozart composing an entire symphony in his head. Hawking was, however, fiercely independent and unwilling to accept help or make concessions for his disabilities. Hawking preferred to be regarded as \"a scientist first, popular science writer second, and, in all the ways that matter, a normal human being with the same desires, drives, dreams, and ambitions as the next person.\”";
+text_array[4] = "The Nobel Prize is a set of annual international awards bestowed in a number of categories by Scandinavian committees in recognition of cultural and/or scientific advances. The will of the Swedish philanthropist inventor Alfred Nobel established the prizes in 1895. The prizes in Physics, Chemistry, Physiology or Medicine, Literature, and Peace were first awarded in 1901. The related Nobel Memorial Prize in Economic Sciences was created in 1968. Between 1901 and 2012, the Nobel Prizes and the Prize in Economic Sciences were awarded 555 times to 863 people and organizations.";
+text_array[5] = "The atom is a basic unit of matter that consists of a dense central nucleus surrounded by a cloud of negatively charged electrons. The atomic nucleus contains a mix of positively charged protons and electrically neutral neutrons. The electrons of an atom are bound to the nucleus by the electromagnetic force. Likewise, a group of atoms can remain bound to each other by chemical bonds based on the same force, forming a molecule. An atom containing an equal number of protons and electrons is electrically neutral, otherwise it is positively or negatively charged and is known as an ion."
+text_array[6] = "A pencil is a writing implement or art medium usually constructed of a narrow, solid pigment core inside a protective casing. The case prevents the core from breaking, and also from marking the user’s hand during use. Pencils create marks via physical abrasion, leaving behind a trail of solid core material that adheres to a sheet of paper or other surface. They are noticeably distinct from pens, which dispense liquid or gel ink that stain the light color of the paper. Most pencil cores are made of graphite mixed with a clay binder, leaving grey or black marks that can be easily erased.";
+text_array[7] = "The value of graphite was soon realised to be enormous, mainly because it could be used to line the moulds for cannonballs, and the mines were taken over by the Crown and guarded. When sufficient stores of graphite had been accumulated, the mines were flooded to prevent theft until more was required. Graphite had to be smuggled out for use in pencils. Because graphite is soft, it requires some form of encasement. Graphite sticks were initially wrapped in string or sheepskin for stability. The news of the usefulness of these early pencils spread far and wide, attracting the attention of artists all over the known world.";
+text_array[8] = "The term engineering itself has a much more recent etymology, deriving from the word engineer, which itself dates back to 1325, when an engine'er (literally, one who operates an engine) originally referred to \"a constructor of military engines.\" In this context, now obsolete, an \"engine\" referred to a military machine, i.e., a mechanical contraption used in war (for example, a catapult). Notable exceptions of the obsolete usage which have survived to the present day are military engineering corps, e.g., the U.S. Army Corps of Engineers.";
+text_array[9] = "A computer network (or data network) is a telecommunications network that allows computers to exchange data. The physical connection between networked computing devices is established using either cable media or wireless media. The best-known computer network is the Internet. Network devices that originate, route and terminate the data are called network nodes. Nodes can include hosts such as servers and personal computers, as well as networking hardware. Two devices are said to be networked when a process in one device is able to exchange information with a process in another device.";
+text_array[10] = "Electrical engineering can trace its origins back to the experiments of Alessandro Volta in the 1800s, the experiments of Michael Faraday, Georg Ohm and others and the invention of the electric motor in 1872. The work of James Maxwell and Heinrich Hertz in the late 19th century gave rise to the field of electronics. The later inventions of the vacuum tube and the transistor further accelerated the development of electronics to such an extent that electrical and electronics engineers currently outnumber their colleagues of any other engineering specialty.";
+
+var randomNumberGenerator=0;
+//var randomNumberGenerator=Math.floor(Math.random()*10)+1;	// replace 10 with the max index value
+
+document.getElementById("text_para").innerHTML=text_array[randomNumberGenerator];
+
+var time = 0;
+var TimerID=0;
+var err = 0;
+//var pos = 0;
+var position=0;
+var numOfWords=0;
+var innerText="";
+var previousText="";
+var isCorrectChar=false;
+var timePassedInSec=0;
+var started=false;
+
+
+function clock()
+  {
+	  timePassedInSec++;
+	  document.getElementById("time").innerHTML=Math.round(timePassedInSec*1000)/1000;	// 3 decimal places
+	  document.getElementById("speed").innerHTML=Math.round(numOfWords/timePassedInSec*1000)/1000;
+	  
+	if (position==0){
+		document.getElementById("accuracy").innerHTML=0;	  
+	  	document.getElementById("score").innerHTML=0;
+	}else if (speed==0 || err/position==1){
+			document.getElementById("score").innerHTML=0;
+	}else{		  	
+	  	document.getElementById("accuracy").innerHTML=Math.round((1-err/position)*100000)/1000;	  
+	  	document.getElementById("score").innerHTML=Math.round(numOfWords/timePassedInSec*10000*(1-err/position)*(1-err/position));	
+	}
+  }
+
+
+// this function is invoked when the user presses a key
+function updateText(event){
+var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
+//alert ("You've pressed"+chCode);
+
+	//var input_text=document.getElementById("input_text").value;
+//alert("new Text: input"+input_text.charAt(input_text.length-1)+"text"+text.charAt(pos));
+
+	//if the user inputs the correct character
+position++;
+
+	if (String.fromCharCode(chCode)==text_array[randomNumberGenerator].charAt(position-1)){		
+		isCorrectChar=true;
+	}else{
+		err++;
+		isCorrectChar=false;
+	}
+	
+	if (text_array[randomNumberGenerator].charAt(position-1)==" "){
+			numOfWords++;
+			document.getElementById("word_entered").innerHTML=numOfWords;
+	}
+	
+	//pos++;
+	
+	if (position==text_array[randomNumberGenerator].length){
+		numOfWords+=1;
+		document.getElementById("word_entered").innerHTML=numOfWords;
+		end();
+	}
+	
+	//innerText=innerText.substr(0, pos-1);	
+	if (isCorrectChar){
+		previousText+="<span style='color: #2222EE'>"+text_array[randomNumberGenerator].charAt(position-1)+"</span>";
+	}
+	else{
+		previousText+="<span style='color: #EE2222'>"+text_array[randomNumberGenerator].charAt(position-1)+"</span>";
+		document.getElementById("char_entered_wrong").innerHTML=err;
+	}
+	innerText=previousText;
+	innerText+="<span style='text-decoration: underline; font-weight: bold;'>"+text_array[randomNumberGenerator].charAt(position)+"</span>";
+	//innerText+=text_array[randomNumberGenerator].substr(pos+1, text_array[randomNumberGenerator].length - pos);	// 2nd para is the length selected
+	innerText+=text_array[randomNumberGenerator].substr(position+1);
+	
+	
+	document.getElementById("char_entered").innerHTML=position;
+	document.getElementById("text_para").innerHTML=innerText;
+	//document.getElementById("text_para").innerHTML=text.substr(0, pos)+"<span style='text-decoration: underline; font-weight: bold;'>"+text.charAt(pos)+"</span>"+text.substr(pos+1, text.length - pos);
+}
+
+
+function end(){
+	window.clearInterval(TimerID);
+	//window.clearTimeout(timerID);
+	
+	// calculation of values required
+	var end_time=new Date().getTime()/1000;
+	var time_diff=end_time-start_time;
+	var accuracy=(1-err/position)*100;
+	var speed=Math.round(numOfWords/time_diff*1000)/1000;
+	var score=Math.round(speed*accuracy*accuracy);
+	
+	//alert(<?php echo $my_previous_score; ?>);
+	
+	// set session variables to pass values to result.php
+	sessionStorage.setItem("time", Math.round(time_diff*1000)/1000);
+	sessionStorage.setItem("words", numOfWords);
+	sessionStorage.setItem("charactersEntered", position);
+	sessionStorage.setItem("wrongCharacters", err);
+	sessionStorage.setItem("speed", speed);
+	sessionStorage.setItem("accuracy", accuracy);
+	sessionStorage.setItem("score", score);
+	sessionStorage.setItem("my_previous_score", <?php echo $my_previous_score; ?>);
+//<<<<<<< HEAD
+	//alert(<?php echo $app_using_friends_with_scrores; ?>);
+	/*
+//=======
+	
+//>>>>>>> parent of d46bc06... font_size_adjustment
+	var previous_friend_name="";
+	var previous_friend_id=-1;
+	var previous_friend_score=9999999;
+	for (int i=0; i<<?php echo sizeof($app_using_friends_with_scores); ?>; i++){
+		previous_friend_score=<?php idx($app_using_friends_with_scores[i], 'value'); ?>;
+		if (previous_friend_score<score){
+			previous_friend_id=<?php idx($app_using_friends_with_scores[i], 'user_id'); ?>;
+			break;
+		}
+	}
+	/*
+	foreach ($app_using_friends_with_scores as $auf_with_score){
+		$previous_friend_score=idx($auf_with_score, 'value');
+		?>
+		if (<?php echo $previous_friend_score; ?>< score){<?php
+			$previous_friend_id=idx($auf_with_score, 'user_id');	
+			$previous_friend_name = idx($facebook->api('/'.$user_id, 'get', array()), 'name', array());			
+		break;
+		?>
+		}<?php
+	}*/
+	//sessionStorage.setItem("previous_friend_id", previous_friend_id);	
+	//window.location.href = "http://localhost/main.php?width=" + width + "&height=" + height;
+
+	// clear all cokies
+	/*var cookies = document.cookie.split(";");
+		    for (var i = 0; i < cookies.length; i++) {
+    			var cookie = cookies[i];
+    			var eqPos = cookie.indexOf("=");
+    			var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    			document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    		}*/
+	window.location = "result.php?score="+score;
+	
+}
+	
+	</script>	  
+      <?php } else { ?>		  
+	  <div>
+        <h1>Welcome to typing test competition (Beta)!</h1>
+		<br/>
+        <div class="fb-login-button" data-scope="user_games_activity,friends_games_activity,publish_actions"></div>
+      </div>
+      <?php } 
+	  
+	  ?>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	  
 	  
       <p id="picture" style="background-image: url(https://graph.facebook.com/<?php echo he($user_id); ?>/picture?type=normal)"></p>
