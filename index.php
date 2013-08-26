@@ -505,8 +505,9 @@ function end(){
 	var accuracy=(1-err/position)*100;
 	var speed=Math.round(numOfWords/time_diff*1000)/1000;
 	var score=Math.round(speed*accuracy*accuracy);
+	var previous_score=<?php echo $my_previous_score; ?>;
 	
-	alert(<?php echo $my_previous_score; ?>);
+	//alert(<?php echo $my_previous_score; ?>);
 	
 	// set session variables to pass values to result.php
 	sessionStorage.setItem("time", Math.round(time_diff*1000)/1000);
@@ -516,7 +517,7 @@ function end(){
 	sessionStorage.setItem("speed", speed);
 	sessionStorage.setItem("accuracy", accuracy);
 	sessionStorage.setItem("score", score);
-	sessionStorage.setItem("my_previous_score", <?php echo $my_previous_score; ?>);
+	sessionStorage.setItem("my_previous_score", previous_score);
 
 	window.location = "result.php?score="+score;
 	
