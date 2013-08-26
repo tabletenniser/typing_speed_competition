@@ -6,10 +6,10 @@ header('Location: https://google.com');
 header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
 require_once('AppInfo.php');	// contains appID, SECRET and URL
 
-	
+	header('Location: https://google.com');
 // Enforce https on production
 if (substr(AppInfo::getUrl(), 0, 8) != 'https://' && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
-header('Location: https://google.com');
+
 	trigger_error("Cannot establish a secure connection using HTTPS", E_USER_NOTICE);
  
   header('Location: https://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
