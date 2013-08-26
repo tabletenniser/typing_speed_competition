@@ -27,6 +27,32 @@ $access_token = $facebook->getAccessToken();
 echo "app access token: ".$app_access_token;
 
 
+// viewer's info
+$user_id = $facebook->getUser();
+if ($user_id) {
+  try {
+    $basic = $facebook->api('/me');
+  } catch (FacebookApiException $e) {
+    if (!$facebook->getUser()) {
+		trigger_error("Cannot get user ID", E_USER_NOTICE);
+  
+      header('Location: '. AppInfo::getUrl($_SERVER['REQUEST_URI']));
+      exit();
+    }
+  }
+	
+	//graph API to retrieve likes, friends and photos
+  $likes = idx($facebook->api('/me/likes?limit=4'), 'data', array());
+  $friends = idx($facebook->api('/me/friends?limit=4'), 'data', array());
+  $photos = idx($facebook->api('/me/photos?limit=16'), 'data', array());
+  //FQL
+  /*$app_using_friends = $facebook->api(array(
+    'method' => 'fql.query',
+    'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
+  ));*/
+
+echo "before fql call";
+
 $user_id = $facebook->getUser();
 if ($user_id) {
   try {
