@@ -541,6 +541,9 @@ else
 		//var is_new_high_score='<?php echo $is_new_high_score;?>';
 		//var friend_passed_name=<?php echo $friend_passed_name?>;
 		
+		alert(score);
+		alert(sessionStorage.getItem("my_previous_score"));
+		
 		if (score>sessionStorage.getItem("my_previous_score")){
 		  	// FB may not necessarily be defined at this point since 
 	  	FB.ui(
