@@ -519,10 +519,14 @@ function end(){
 
 	</script>	  
      
+	  <?php }else{ ?>
+	  <div>
+        <h1>Welcome to typing test competition (Beta)!</h1>
+		<br/>
+        <div class="fb-login-button" data-scope="user_games_activity,friends_games_activity,publish_actions"></div>
+      </div>
+	  
 	  <?php } ?>
-	  
-	  
-	  
 	  
 	  
 	  
