@@ -602,10 +602,10 @@ else
 	  
     </script>	
 <?php 
-echo '<script type="text/javascript">';
+//echo '<script type="text/javascript">';
 //echo "postToWall();";
-echo "document.getElementById('postToWall').click();";
-echo '</script>';
+//echo "document.getElementById('postToWall').click();";
+//echo '</script>';
 ?>
   </body>
 </html>
