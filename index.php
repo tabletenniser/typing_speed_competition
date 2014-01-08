@@ -1,7 +1,7 @@
 <?php
 
 //for IE iFrame 3rd party cookie blocking 
-//header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
 
 //prevent safari from refreshing
 header('P3P: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"');
@@ -29,7 +29,7 @@ $facebook = new Facebook(array(
 ));
 $access_token = $facebook->getAccessToken();
 //$access_token="";
-echo "app access token: ".$app_access_token;
+//echo "app access token: ".$app_access_token;
 
 
 // viewer's info
@@ -54,20 +54,18 @@ if ($user_id) {
     'query' => 'SELECT uid, name FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));*/
 
-echo "before fql call";
 $app_using_friends_with_scores = $facebook->api(array(
     'method' => 'fql.query',
     'query' => 'SELECT user_id, value FROM score WHERE user_id IN(SELECT uid1, uid2 FROM friend WHERE uid1 = me()) AND app_id = '.AppInfo::appID().' ORDER BY value DESC'
   ));
-echo "after fql call";
 }
 
 // Fetch the basic info of the app that they are using
 $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
 
-echo "before info, app ID:".AppInfo::appID();
-echo "before info, user ID:".$user_id;
+//echo "before info, app ID:".AppInfo::appID();
+//echo "before info, user ID:".$user_id;
 
 /*
 $user_id = $facebook->getUser();

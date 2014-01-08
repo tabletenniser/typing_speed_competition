@@ -50,13 +50,13 @@ if ($user_id) {
   ));*/
   
   $access_token = $facebook->getAccessToken();
-  echo "app access token: ".$app_access_token;
+  //echo "app access token: ".$app_access_token;
 	  
  // if the score obtained is higher than the score in the Graph API, post the score and ask for a request to send to the user next
 $my_scores = idx($facebook->api('/me/scores/', 'get', array('access_token' => $app_access_token)), 'data', array());
 $score_found=false;
 
-echo $my_scores;
+//echo $my_scores;
 
 
 foreach ($my_scores as $my_individual_app_score){
@@ -65,7 +65,7 @@ foreach ($my_scores as $my_individual_app_score){
 		$score_found=true;
 		$my_previous_score=idx($my_individual_app_score, 'score');
 		
-		echo "my previous score: ".$my_previous_score;
+		//echo "my previous score: ".$my_previous_score;
 		
 		if ($_GET['score']>$my_previous_score){
 			// post scores on the api-METHOD2
@@ -74,23 +74,21 @@ foreach ($my_scores as $my_individual_app_score){
     			'post',
     			array('score' => $_GET['score'], 'access_token' => $app_access_token)
 				);	
-			echo 'is successful? '.$success.'\n';
+			//echo 'is successful? '.$success.'\n';
 			$is_new_high_score=true;
 		}
 	}
 }
 
-echo $_GET['score'];
-echo  $app_access_token;
 
 if ($score_found==false){
-	echo 'score not found\n';
+	//echo 'score not found\n';
 	$successful=$facebook->api(
 		'/'.$user_id.'/scores/',
 		'post',
 		array('score' => $_GET['score'], 'access_token' => $app_access_token)
 		);
-	echo 'is successful? '.$success.'\n';
+	//echo 'is successful? '.$success.'\n';
 	$is_new_high_score=true;
 }
 
@@ -541,8 +539,8 @@ else
 		//var is_new_high_score='<?php echo $is_new_high_score;?>';
 		//var friend_passed_name=<?php echo $friend_passed_name?>;
 		
-		alert(score);
-		alert(sessionStorage.getItem("my_previous_score"));
+		//alert(score);
+		//alert(sessionStorage.getItem("my_previous_score"));
 		
 		if (score>sessionStorage.getItem("my_previous_score")){
 		  	// FB may not necessarily be defined at this point since 
@@ -575,9 +573,9 @@ else
 			},
 			function(response) {
 				if (response && response.post_id) {
-  					alert('Post was published.');
+  					//alert('Post was published.');
 				} else {
-  					alert('Post was not published.');
+  					//alert('Post was not published.');
 				}
 			}
 			);	
